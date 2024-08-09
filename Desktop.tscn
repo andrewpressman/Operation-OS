@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7orqndgslsdv"]
+[gd_scene load_steps=4 format=3 uid="uid://c7orqndgslsdv"]
 
 [ext_resource type="Texture2D" uid="uid://c7ecxux7xtje8" path="res://Assets/Images/TempTorrN.jpg" id="1_umpn1"]
 [ext_resource type="Script" path="res://DesktopController.gd" id="1_uxprf"]
+[ext_resource type="PackedScene" uid="uid://d2shk4b3e116w" path="res://Tasks/Numpad.tscn" id="3_eqxxn"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_uxprf")
@@ -63,3 +64,5 @@ vertical_alignment = 1
 position = Vector2(608, 288)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("1_umpn1")
+
+[node name="Window" parent="." instance=ExtResource("3_eqxxn")]

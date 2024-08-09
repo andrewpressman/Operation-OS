@@ -24,5 +24,3 @@ func DisplayNumpad(view : bool):
 	else:
 		pass
 		
-#TESTING
-#new line

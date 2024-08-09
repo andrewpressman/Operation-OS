@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://d2shk4b3e116w"]
+[gd_scene load_steps=2 format=3 uid="uid://d2shk4b3e116w"]
+
+[ext_resource type="Script" path="res://Tasks/Numpad.gd" id="1_kf71x"]
 
 [node name="Window" type="Window"]
 initial_position = 2
@@ -6,6 +8,7 @@ size = Vector2i(200, 320)
 unresizable = true
 popup_window = true
 content_scale_aspect = 1
+script = ExtResource("1_kf71x")
 metadata/_edit_lock_ = true
 
 [node name="Enter" type="Button" parent="."]
@@ -85,13 +88,13 @@ offset_right = 184.0
 offset_bottom = 120.0
 text = "9"
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Display" type="Panel" parent="."]
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 176.0
 offset_bottom = 56.0
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="Label" type="Label" parent="Display"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
@@ -100,3 +103,15 @@ offset_bottom = 40.0
 text = "1234567891"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="Enter" to="." method="GoButton"]
+[connection signal="pressed" from="Button0" to="." method="ButtonZero"]
+[connection signal="pressed" from="Button1" to="." method="ButtonOne"]
+[connection signal="pressed" from="Button2" to="." method="ButtonTwo"]
+[connection signal="pressed" from="Button3" to="." method="ButtonThree"]
+[connection signal="pressed" from="Button4" to="." method="ButtonFour"]
+[connection signal="pressed" from="Button5" to="." method="ButtonFive"]
+[connection signal="pressed" from="Button6" to="." method="ButtonSix"]
+[connection signal="pressed" from="Button7" to="." method="ButtonSeven"]
+[connection signal="pressed" from="Button8" to="." method="ButtonEight"]
+[connection signal="pressed" from="Button9" to="." method="ButtonNine"]
