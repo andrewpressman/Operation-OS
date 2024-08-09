@@ -2,71 +2,95 @@ extends Window
 
 var KeyNumber : String
 var WholeNumber: String
+var TypeLockout : bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	SetKey("12345")
+	TypeLockout = false
 
 func Clear():
 	WholeNumber = ""	
 	$Display/Label.text = WholeNumber
 
+func Kill():
+	queue_free()
+
+func SetKey(key : String):
+	KeyNumber = key
+	
 func UpdateNumber():
 	if WholeNumber.length() < 6:
 		$Display/Label.text = WholeNumber
 	#TODO: logic to check for secret codes if I want them
 
-func Match():
-	if WholeNumber == KeyNumber:
-		return true
+func Match(type : bool):
+	TypeLockout = true
+	if type:
+		$Display/Label.text = "SUCESS"
+		await get_tree().create_timer(2).timeout
+		Kill()
 	else:
-		return false
+		$Display/Label.text = "FAILURE"
+		await get_tree().create_timer(2).timeout
+	
+	TypeLockout = false
+	Clear()
 
 func GoButton():
 	var CompareString = WholeNumber.substr(0,5)
+	print(CompareString + "\n" + KeyNumber)
 	if CompareString == KeyNumber:
-		Match() #Add logic for success
+		Match(true) #Add logic for success
 	else:
-		Match() #Add logic for failure
-		
-	Clear()
+		Match(false) #Add logic for failure
 
 func ButtonZero():
-	WholeNumber += "0"
-	UpdateNumber()
+	if !TypeLockout: 
+		WholeNumber += "0"
+		UpdateNumber()
 
 func ButtonOne():
-	WholeNumber += "1"
-	UpdateNumber()
+	if !TypeLockout: 
+		WholeNumber += "1"
+		UpdateNumber()
 
 func ButtonTwo():
-	WholeNumber += "2"
-	UpdateNumber()
+	if !TypeLockout: 
+		WholeNumber += "2"
+		UpdateNumber()
 
 func ButtonThree():
-	WholeNumber += "3"
-	UpdateNumber()
+	if !TypeLockout: 
+		WholeNumber += "3"
+		UpdateNumber()
 
 func ButtonFour():
-	WholeNumber += "4"
-	UpdateNumber()
+	if !TypeLockout: 
+		WholeNumber += "4"
+		UpdateNumber()
 
 func ButtonFive():
-	WholeNumber += "5"
-	UpdateNumber()
+	if !TypeLockout: 
+		WholeNumber += "5"
+		UpdateNumber()
 
 func ButtonSix():
-	WholeNumber += "6"
-	UpdateNumber()
+	if !TypeLockout: 
+		WholeNumber += "6"
+		UpdateNumber()
 
 func ButtonSeven():
-	WholeNumber += "7"
-	UpdateNumber()
+	if !TypeLockout: 
+		WholeNumber += "7"
+		UpdateNumber()
 
 func ButtonEight():
-	WholeNumber += "8"
-	UpdateNumber()
+	if !TypeLockout: 
+		WholeNumber += "8"
+		UpdateNumber()
 
 func ButtonNine():
-	WholeNumber += "9"
-	UpdateNumber()
+	if !TypeLockout: 
+		WholeNumber += "9"
+		UpdateNumber()
