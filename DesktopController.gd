@@ -7,7 +7,8 @@ var NumpadIst: Node = null
 #var FileManager = preload("res://Tasks/Numpad.tscn")
 #var Messenger = preload("res://Tasks/Numpad.tscn")
 #var Memo = preload("res://Tasks/Numpad.tscn")
-#var Buttons = preload("res://Tasks/Numpad.tscn")
+var Buttons = preload("res://Tasks/Buttons.tscn")
+var ButtonsIst: Node = null
 
 
 # Called when the node enters the scene tree for the first time.
@@ -26,6 +27,17 @@ func DisplayNumpad():
 		NumpadIst.queue_free()
 		NumpadIst = null
 	else:
-		var p1 = Numpad.instantiate()
-		NumpadIst = p1
-		add_child(p1)
+		var t1 = Numpad.instantiate()
+		NumpadIst = t1
+		add_child(t1)
+		t1.SetKey("12345")
+
+func DisplayButtons():
+	if ButtonsIst and is_instance_valid(ButtonsIst):
+		ButtonsIst.queue_free()
+		ButtonsIst = null
+	else:
+		var t2 = Buttons.instantiate()
+		ButtonsIst = t2
+		add_child(t2)
+		t2.SetTarget(1)

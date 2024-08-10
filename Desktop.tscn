@@ -43,6 +43,14 @@ offset_right = 512.0
 offset_bottom = 72.0
 text = "Memo"
 
+[node name="Buttons" type="Button" parent="Taskbar"]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 8.0
+offset_right = 640.0
+offset_bottom = 72.0
+text = "????"
+
 [node name="Clock" type="Panel" parent="Taskbar"]
 layout_mode = 0
 offset_left = 960.0
@@ -59,9 +67,14 @@ Time: N/A"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Header" type="Panel" parent="."]
+offset_right = 1152.0
+offset_bottom = 64.0
+
 [node name="Logo" type="Sprite2D" parent="."]
 position = Vector2(608, 288)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("1_umpn1")
 
 [connection signal="pressed" from="Taskbar/NumberPad" to="." method="DisplayNumpad"]
+[connection signal="pressed" from="Taskbar/Buttons" to="." method="DisplayButtons"]

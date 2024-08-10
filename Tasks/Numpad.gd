@@ -6,7 +6,6 @@ var TypeLockout : bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	SetKey("12345")
 	TypeLockout = false
 
 func Clear():
@@ -39,7 +38,6 @@ func Match(type : bool):
 
 func GoButton():
 	var CompareString = WholeNumber.substr(0,5)
-	print(CompareString + "\n" + KeyNumber)
 	if CompareString == KeyNumber:
 		Match(true) #Add logic for success
 	else:
