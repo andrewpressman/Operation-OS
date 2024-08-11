@@ -7,6 +7,7 @@ var TypeLockout : bool
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	TypeLockout = false
+	SetKey()
 
 func Clear():
 	WholeNumber = ""	
@@ -15,8 +16,11 @@ func Clear():
 func Kill():
 	queue_free()
 
-func SetKey(key : String):
-	KeyNumber = key
+func SetKey():
+	if !GlobalObj.ObjectiveComplete:
+		KeyNumber = str(GlobalObj.NumberpadNum)
+	else:
+		KeyNumber = "null"
 	
 func UpdateNumber():
 	if WholeNumber.length() < 6:
@@ -27,11 +31,14 @@ func Match(type : bool):
 	TypeLockout = true
 	if type:
 		$Display/Label.text = "SUCESS"
-		await get_tree().create_timer(2).timeout
+		if GlobalVar.CurrentObj == 1 && !GlobalObj.ObjectiveComplete:
+			GlobalVar.Score += 1
+		GlobalObj.ObjectiveComplete = true
+		await get_tree().create_timer(1).timeout
 		Kill()
 	else:
 		$Display/Label.text = "FAILURE"
-		await get_tree().create_timer(2).timeout
+		await get_tree().create_timer(.5).timeout
 	
 	TypeLockout = false
 	Clear()

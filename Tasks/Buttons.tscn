@@ -12,18 +12,21 @@ offset_left = 64.0
 offset_top = 64.0
 offset_right = 192.0
 offset_bottom = 192.0
+text = "RED"
 
 [node name="Blue" type="Button" parent="."]
 offset_left = 448.0
 offset_top = 64.0
 offset_right = 576.0
 offset_bottom = 192.0
+text = "BLUE"
 
 [node name="Green" type="Button" parent="."]
 offset_left = 256.0
 offset_top = 64.0
 offset_right = 384.0
 offset_bottom = 192.0
+text = "GREEN"
 
 [node name="Display" type="Panel" parent="."]
 anchors_preset = 5
@@ -44,6 +47,7 @@ offset_bottom = 42.0
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="close_requested" from="." to="." method="Kill"]
 [connection signal="pressed" from="Red" to="." method="RedButton"]
 [connection signal="pressed" from="Blue" to="." method="BlueButton"]
 [connection signal="pressed" from="Green" to="." method="GreenButton"]

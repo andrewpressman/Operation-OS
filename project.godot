@@ -17,7 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalObjectives="*res://global_Objectives.gd"
+GlobalObj="*res://global_Objectives.gd"
+GlobalVar="*res://global_Variables.gd"
 
 [display]
 
