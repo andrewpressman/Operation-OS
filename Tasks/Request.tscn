@@ -1,0 +1,76 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3ocxjuqehi5p"]
+
+[ext_resource type="Script" path="res://Tasks/Request.gd" id="1_q3wqe"]
+
+[node name="Requests" type="Window"]
+initial_position = 2
+size = Vector2i(448, 512)
+script = ExtResource("1_q3wqe")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 8.0
+offset_top = 392.0
+offset_right = 440.0
+offset_bottom = 504.0
+
+[node name="Approve" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 200.0
+offset_bottom = 104.0
+text = "Approve	"
+
+[node name="Deny" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 8.0
+offset_right = 424.0
+offset_bottom = 104.0
+text = "Deny"
+
+[node name="Panel2" type="Panel" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 440.0
+offset_bottom = 384.0
+
+[node name="Header" type="Label" parent="Panel2"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 416.0
+offset_bottom = 48.0
+text = "Request No: N/A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Body" type="Label" parent="Panel2"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 72.0
+offset_right = 408.0
+offset_bottom = 304.0
+text = "Company: N/A
+Supervisor: N/A
+Risk: N/A
+Details:
+N/A"
+
+[node name="Suggestion" type="Label" parent="Panel2"]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 320.0
+offset_right = 424.0
+offset_bottom = 368.0
+text = " Action: None"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Analyze" type="Button" parent="Panel2"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 320.0
+offset_right = 200.0
+offset_bottom = 368.0
+text = "Review"

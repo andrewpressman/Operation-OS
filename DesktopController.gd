@@ -4,9 +4,13 @@ extends Node2D
 #var Options = #prelead options
 var Numpad = preload("res://Tasks/Numpad.tscn")
 var NumpadIst: Node = null
-#var FileManager = preload("res://Tasks/Numpad.tscn")
-#var Messenger = preload("res://Tasks/Numpad.tscn")
-#var Memo = preload("res://Tasks/Numpad.tscn")
+
+var FileManager = preload("res://Tasks/FileManager.tscn")
+var FileManagerIst: Node = null
+
+var Request = preload("res://Tasks/Request.tscn")
+var RequestIst : Node = null
+
 var Buttons = preload("res://Tasks/Buttons.tscn")
 var ButtonsIst: Node = null
 
@@ -79,4 +83,21 @@ func DisplayButtons():
 		var t2 = Buttons.instantiate()
 		ButtonsIst = t2
 		add_child(t2)
-
+		
+func DisplayRequest():
+	if RequestIst && is_instance_valid(RequestIst):
+		RequestIst.queue_free()
+		RequestIst = null
+	else:
+		var t3 = Request.instantiate()
+		RequestIst = t3
+		add_child(t3)
+		
+func DisplayFileManager():
+	if FileManagerIst && is_instance_valid(FileManagerIst):
+		FileManagerIst.queue_free()
+		FileManagerIst = null
+	else:
+		var t4 = FileManager.instantiate()
+		FileManagerIst = t4
+		add_child(t4)

@@ -1,0 +1,98 @@
+[gd_scene load_steps=2 format=3 uid="uid://dev5dbnhd2diw"]
+
+[ext_resource type="Script" path="res://Tasks/FileManager.gd" id="1_oo73u"]
+
+[node name="Panel" type="Window"]
+initial_position = 2
+size = Vector2i(640, 384)
+script = ExtResource("1_oo73u")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Transfer" type="Button" parent="."]
+offset_left = 192.0
+offset_top = 256.0
+offset_right = 448.0
+offset_bottom = 320.0
+text = "Transfer"
+
+[node name="Progress" type="Panel" parent="."]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 576.0
+offset_bottom = 192.0
+
+[node name="One" type="ColorRect" parent="Progress"]
+visible = false
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 128.0
+color = Color(0, 0.584314, 0, 1)
+
+[node name="Two" type="ColorRect" parent="Progress"]
+visible = false
+layout_mode = 0
+offset_left = 64.0
+offset_right = 128.0
+offset_bottom = 128.0
+color = Color(0, 0.584314, 0, 1)
+
+[node name="Three" type="ColorRect" parent="Progress"]
+visible = false
+layout_mode = 0
+offset_left = 128.0
+offset_right = 192.0
+offset_bottom = 128.0
+color = Color(0, 0.584314, 0, 1)
+
+[node name="Four" type="ColorRect" parent="Progress"]
+visible = false
+layout_mode = 0
+offset_left = 192.0
+offset_right = 256.0
+offset_bottom = 128.0
+color = Color(0, 0.584314, 0, 1)
+
+[node name="Five" type="ColorRect" parent="Progress"]
+visible = false
+layout_mode = 0
+offset_left = 256.0
+offset_right = 320.0
+offset_bottom = 128.0
+color = Color(0, 0.584314, 0, 1)
+
+[node name="Six" type="ColorRect" parent="Progress"]
+visible = false
+layout_mode = 0
+offset_left = 256.0
+offset_right = 320.0
+offset_bottom = 128.0
+color = Color(0, 0.584314, 0, 1)
+
+[node name="Seven" type="ColorRect" parent="Progress"]
+visible = false
+layout_mode = 0
+offset_left = 320.0
+offset_right = 384.0
+offset_bottom = 128.0
+color = Color(0, 0.584314, 0, 1)
+
+[node name="Eight" type="ColorRect" parent="Progress"]
+visible = false
+layout_mode = 0
+offset_left = 384.0
+offset_right = 448.0
+offset_bottom = 128.0
+color = Color(0, 0.584314, 0, 1)
+
+[node name="Nine" type="ColorRect" parent="Progress"]
+visible = false
+layout_mode = 0
+offset_left = 448.0
+offset_right = 512.0
+offset_bottom = 128.0
+color = Color(0, 0.584314, 0, 1)
+
+[connection signal="timeout" from="Timer" to="." method="TimeDelay"]
+[connection signal="button_down" from="Transfer" to="." method="ButtonDown"]
+[connection signal="button_up" from="Transfer" to="." method="ButtonUp"]

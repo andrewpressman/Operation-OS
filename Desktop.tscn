@@ -6,6 +6,13 @@
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_uxprf")
 
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 1216.0
+offset_bottom = 704.0
+color = Color(0, 0.435294, 0.733333, 1)
+
 [node name="Taskbar" type="Panel" parent="."]
 offset_top = 568.0
 offset_right = 1152.0
@@ -35,13 +42,13 @@ offset_right = 384.0
 offset_bottom = 72.0
 text = "MSG"
 
-[node name="MemoRedactor" type="Button" parent="Taskbar"]
+[node name="Requests" type="Button" parent="Taskbar"]
 layout_mode = 0
 offset_left = 448.0
 offset_top = 8.0
 offset_right = 512.0
 offset_bottom = 72.0
-text = "Memo"
+text = "MEMO"
 
 [node name="Buttons" type="Button" parent="Taskbar"]
 layout_mode = 0
@@ -99,5 +106,7 @@ texture = ExtResource("1_umpn1")
 wait_time = 15.0
 
 [connection signal="pressed" from="Taskbar/NumberPad" to="." method="DisplayNumpad"]
+[connection signal="pressed" from="Taskbar/FileManager" to="." method="DisplayFileManager"]
+[connection signal="pressed" from="Taskbar/Requests" to="." method="DisplayRequest"]
 [connection signal="pressed" from="Taskbar/Buttons" to="." method="DisplayButtons"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

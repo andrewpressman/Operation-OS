@@ -14,6 +14,12 @@ offset_right = 192.0
 offset_bottom = 192.0
 text = "RED"
 
+[node name="ColorRect" type="ColorRect" parent="Red"]
+layout_mode = 0
+offset_right = 130.0
+offset_bottom = 130.0
+color = Color(1, 0, 0, 1)
+
 [node name="Blue" type="Button" parent="."]
 offset_left = 448.0
 offset_top = 64.0
@@ -21,12 +27,24 @@ offset_right = 576.0
 offset_bottom = 192.0
 text = "BLUE"
 
+[node name="ColorRect" type="ColorRect" parent="Blue"]
+layout_mode = 0
+offset_right = 130.0
+offset_bottom = 130.0
+color = Color(0, 0, 1, 1)
+
 [node name="Green" type="Button" parent="."]
 offset_left = 256.0
 offset_top = 64.0
 offset_right = 384.0
 offset_bottom = 192.0
 text = "GREEN"
+
+[node name="ColorRect" type="ColorRect" parent="Green"]
+layout_mode = 0
+offset_right = 130.0
+offset_bottom = 130.0
+color = Color(0, 1, 0, 1)
 
 [node name="Display" type="Panel" parent="."]
 anchors_preset = 5

@@ -26,7 +26,7 @@ func UpdateNumber():
 	if WholeNumber.length() < 6:
 		$Display/Label.text = WholeNumber
 	#TODO: logic to check for secret codes if I want them
-
+	
 func Match(type : bool):
 	TypeLockout = true
 	if type:
