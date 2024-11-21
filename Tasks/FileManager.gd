@@ -1,4 +1,6 @@
 extends Window
+#640x, 384y
+
 
 var Next : bool
 
@@ -8,9 +10,16 @@ var Complete : bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Message.visible = false
 	ResetProgress()
-	Next = true
+	if GlobalVar.CurrentObj == 3:
+		Next = true
+	else:
+		Next = false
 	Complete = false
+
+func Kill():
+	queue_free()
 
 func _process(delta):
 	if TransferActive && Next && !Complete:
@@ -37,15 +46,6 @@ func _process(delta):
 				$Progress/Six.visible = true
 				$Timer.start()
 			7:
-				$Progress/Seven.visible = true
-				$Timer.start()
-			8:
-				$Progress/Eight.visible = true
-				$Timer.start()
-			9:
-				$Progress/Nine.visible = true
-				$Timer.start()
-			10:
 				Complete = true
 		Progress += 1
 	
@@ -56,6 +56,12 @@ func ButtonUp():
 	TransferActive = false
 	if !Complete:
 		ResetProgress()
+	else:
+		GlobalObj.TaskFailed = false
+		GlobalObj.ObjectiveComplete = true
+		$Message.visible = true
+		await get_tree().create_timer(.5).timeout
+		Kill()
 	
 func ResetProgress():
 	Progress = 0
@@ -66,9 +72,6 @@ func ResetProgress():
 	$Progress/Four.visible = false
 	$Progress/Five.visible = false
 	$Progress/Six.visible = false
-	$Progress/Seven.visible = false
-	$Progress/Eight.visible = false
-	$Progress/Nine.visible = false
 	
 func TimeDelay():
 		Next = true

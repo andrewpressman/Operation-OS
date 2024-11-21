@@ -1,6 +1,46 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5wvidfv3nema"]
+[gd_scene load_steps=6 format=3 uid="uid://b5wvidfv3nema"]
 
 [ext_resource type="Script" path="res://Tasks/Buttons.gd" id="1_y6534"]
+[ext_resource type="StyleBox" uid="uid://d03i1mx53io2p" path="res://Assets/StyleBoxes/Buttons.tres" id="2_gfsxd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmp8j"]
+bg_color = Color(0.980392, 0, 0, 0.686275)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qow8u"]
+bg_color = Color(0, 0, 0.686275, 0.686275)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65n1i"]
+bg_color = Color(0, 0.686275, 0, 0.686275)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="Window" type="Window"]
 initial_position = 2
@@ -12,39 +52,22 @@ offset_left = 64.0
 offset_top = 64.0
 offset_right = 192.0
 offset_bottom = 192.0
-text = "RED"
-
-[node name="ColorRect" type="ColorRect" parent="Red"]
-layout_mode = 0
-offset_right = 130.0
-offset_bottom = 130.0
-color = Color(1, 0, 0, 1)
+theme_override_styles/hover = SubResource("StyleBoxFlat_dmp8j")
+theme_override_styles/normal = ExtResource("2_gfsxd")
 
 [node name="Blue" type="Button" parent="."]
 offset_left = 448.0
 offset_top = 64.0
 offset_right = 576.0
 offset_bottom = 192.0
-text = "BLUE"
-
-[node name="ColorRect" type="ColorRect" parent="Blue"]
-layout_mode = 0
-offset_right = 130.0
-offset_bottom = 130.0
-color = Color(0, 0, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_qow8u")
 
 [node name="Green" type="Button" parent="."]
 offset_left = 256.0
 offset_top = 64.0
 offset_right = 384.0
 offset_bottom = 192.0
-text = "GREEN"
-
-[node name="ColorRect" type="ColorRect" parent="Green"]
-layout_mode = 0
-offset_right = 130.0
-offset_bottom = 130.0
-color = Color(0, 1, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_65n1i")
 
 [node name="Display" type="Panel" parent="."]
 anchors_preset = 5

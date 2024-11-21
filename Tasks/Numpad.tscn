@@ -9,7 +9,6 @@ unresizable = true
 popup_window = true
 content_scale_aspect = 1
 script = ExtResource("1_kf71x")
-metadata/_edit_lock_ = true
 
 [node name="Enter" type="Button" parent="."]
 offset_left = 136.0

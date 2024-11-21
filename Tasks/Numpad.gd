@@ -33,13 +33,16 @@ func Match(type : bool):
 		$Display/Label.text = "SUCESS"
 		if GlobalVar.CurrentObj == 1 && !GlobalObj.ObjectiveComplete:
 			GlobalVar.Score += 1
-		GlobalObj.ObjectiveComplete = true
+			GlobalObj.TaskFailed == false
 		await get_tree().create_timer(1).timeout
 		Kill()
 	else:
 		$Display/Label.text = "FAILURE"
+		GlobalObj.TaskFailed == true
 		await get_tree().create_timer(.5).timeout
 	
+	
+	GlobalObj.ObjectiveComplete = true
 	TypeLockout = false
 	Clear()
 

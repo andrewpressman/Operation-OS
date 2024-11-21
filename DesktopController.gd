@@ -8,7 +8,7 @@ var NumpadIst: Node = null
 var FileManager = preload("res://Tasks/FileManager.tscn")
 var FileManagerIst: Node = null
 
-var Request = preload("res://Tasks/Request.tscn")
+var Request = preload("res://Tasks/Memo.tscn")
 var RequestIst : Node = null
 
 var Buttons = preload("res://Tasks/Buttons.tscn")
@@ -20,31 +20,44 @@ var CurrentScore : int = 0
 func _ready():
 	GlobalVar.Score = 0
 	GlobalVar.Lives = 3
-	_on_timer_timeout()
+	GlobalVar.Tasks = 10
+	GetNewTask()
 
 func _process(delta):
 	if CurrentScore != GlobalVar.Score:
 		UpdateScore()
+		
+	if GlobalObj.ObjectiveComplete == true:
+		GlobalObj.ObjectiveComplete == false
+		GlobalVar.Tasks = GlobalVar.Tasks - 1
+		if GlobalVar.Score == 10:
+			$TempWinner.visible = true
+		elif GlobalVar.Lives == 0:
+			$TempLoser.visible = true
+		else:
+			GetNewTask()
+			
 
 func CheckLives():
-	if !GlobalObj.ObjectiveComplete:
+	if GlobalObj.TaskFailed:
 		GlobalVar.Lives -= 1
 		
-func _on_timer_timeout():
+func GetNewTask():
 	CheckLives()
 	#TODO: prevent repeat objectives???
-	var Obj = randi() % 3 + 1
+	var Obj = randi_range(1,4)
 	match Obj:
 		1:
 			GlobalObj.GetRandomNumber()
 		2:
 			GlobalObj.GetRandomButton()
 		3:
-			print("ObjectiveTBD")
+			GlobalObj.GetFileTransfer()
+		4:
+			GlobalObj.GetMemoReview()
 	
 	SetObjective()
 	UpdateScore()
-	$Timer.start()
 	
 func SetObjective():
 	var Objective : String = "Current Objective: "
@@ -54,12 +67,15 @@ func SetObjective():
 		2:
 			Objective = Objective + "Press button " + GlobalObj.ButtonText
 		3:
-			Objective = Objective + "Do nothing: "
+			Objective = Objective + "Transfer Files"
+		4:
+			Objective = Objective + "Review Memo"
 	
+	Objective = Objective + "\n Tasks Left: " +  str(GlobalVar.Tasks)
 	$Header/ObjectiveText.text = Objective
 
 func UpdateScore():
-	$Header/Score.text = "Current Score: " + str(GlobalVar.Score)
+	$Header/Score.text = "Current Score: " + str(GlobalVar.Score) + "\nLives: " + str(GlobalVar.Lives)
 	
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -101,3 +117,6 @@ func DisplayFileManager():
 		var t4 = FileManager.instantiate()
 		FileManagerIst = t4
 		add_child(t4)
+
+func DisplayMessages():
+	$MissingText.visible = !$MissingText.visible

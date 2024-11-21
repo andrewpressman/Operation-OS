@@ -1,11 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://b3ocxjuqehi5p"]
 
-[ext_resource type="Script" path="res://Tasks/Request.gd" id="1_q3wqe"]
+[ext_resource type="Script" path="res://Tasks/MemoReview.gd" id="1_0nkbs"]
 
 [node name="Requests" type="Window"]
 initial_position = 2
 size = Vector2i(448, 512)
-script = ExtResource("1_q3wqe")
+script = ExtResource("1_0nkbs")
 
 [node name="Panel" type="Panel" parent="."]
 offset_left = 8.0
@@ -29,13 +29,13 @@ offset_right = 424.0
 offset_bottom = 104.0
 text = "Deny"
 
-[node name="Panel2" type="Panel" parent="."]
+[node name="Memo" type="Panel" parent="."]
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 440.0
 offset_bottom = 384.0
 
-[node name="Header" type="Label" parent="Panel2"]
+[node name="Header" type="Label" parent="Memo"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
@@ -45,7 +45,7 @@ text = "Request No: N/A"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Body" type="Label" parent="Panel2"]
+[node name="Body" type="Label" parent="Memo"]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 72.0
@@ -56,8 +56,9 @@ Supervisor: N/A
 Risk: N/A
 Details:
 N/A"
+autowrap_mode = 2
 
-[node name="Suggestion" type="Label" parent="Panel2"]
+[node name="Suggestion" type="Label" parent="Memo"]
 layout_mode = 0
 offset_left = 232.0
 offset_top = 320.0
@@ -67,10 +68,15 @@ text = " Action: None"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Analyze" type="Button" parent="Panel2"]
+[node name="Analyze" type="Button" parent="Memo"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 320.0
 offset_right = 200.0
 offset_bottom = 368.0
 text = "Review"
+
+[connection signal="close_requested" from="." to="." method="Kill"]
+[connection signal="pressed" from="Panel/Approve" to="." method="OnApprovePressed"]
+[connection signal="pressed" from="Panel/Deny" to="." method="OnDenyPressed"]
+[connection signal="pressed" from="Memo/Analyze" to="." method="Review"]
