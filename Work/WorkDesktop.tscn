@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c7orqndgslsdv"]
 
-[ext_resource type="Script" path="res://DesktopController.gd" id="1_efasj"]
+[ext_resource type="Script" path="res://Work/WorkController.gd" id="1_efasj"]
 [ext_resource type="Texture2D" uid="uid://c7ecxux7xtje8" path="res://Assets/Images/TempTorrN.jpg" id="2_i3hxq"]
 
 [node name="WorkScreen" type="Node2D"]
@@ -140,9 +140,15 @@ offset_right = 1090.0
 offset_bottom = 591.0
 text = "This button does nothing"
 
+[node name="Button" type="Button" parent="."]
+offset_left = 8.0
+offset_top = 152.0
+offset_right = 120.0
+offset_bottom = 200.0
+text = "Go Home"
+
 [connection signal="pressed" from="Taskbar/NumberPad" to="." method="DisplayNumpad"]
 [connection signal="pressed" from="Taskbar/FileManager" to="." method="DisplayFileManager"]
 [connection signal="pressed" from="Taskbar/Messenger" to="." method="DisplayMessages"]
 [connection signal="pressed" from="Taskbar/Requests" to="." method="DisplayRequest"]
 [connection signal="pressed" from="Taskbar/Buttons" to="." method="DisplayButtons"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

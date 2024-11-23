@@ -1,0 +1,214 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7ona7h1qsp11"]
+
+[ext_resource type="Script" path="res://Home/HomeController.gd" id="1_ajhhb"]
+[ext_resource type="Texture2D" uid="uid://c7ecxux7xtje8" path="res://Assets/Images/TempTorrN.jpg" id="2_jwsf8"]
+[ext_resource type="Script" path="res://Home/finances.gd" id="3_g7ciq"]
+
+[node name="HomeScreen" type="Node2D"]
+script = ExtResource("1_ajhhb")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(2.64719e-07, 0.511858, 0.191942, 1)
+metadata/_edit_lock_ = true
+
+[node name="Taskbar" type="Panel" parent="."]
+offset_top = 600.0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="UnlockedFiles" type="Button" parent="Taskbar"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 8.0
+offset_right = 128.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 12
+text = "Files"
+
+[node name="Finances" type="Button" parent="Taskbar"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 8.0
+offset_right = 256.0
+offset_bottom = 40.0
+rotation = 0.00132338
+theme_override_font_sizes/font_size = 12
+text = "Finances"
+
+[node name="Messenger" type="Button" parent="Taskbar"]
+visible = false
+layout_mode = 0
+offset_left = 960.0
+offset_top = 8.0
+offset_right = 1024.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 12
+text = "MSG"
+
+[node name="Button" type="Button" parent="Taskbar"]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 8.0
+offset_right = 1088.0
+offset_bottom = 40.0
+text = "Go to work"
+
+[node name="Header" type="Panel" parent="."]
+offset_right = 2304.0
+offset_bottom = 80.0
+scale = Vector2(0.5, 0.5)
+
+[node name="Clock" type="Panel" parent="Header"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 80.0
+
+[node name="Label" type="Label" parent="Header/Clock"]
+layout_mode = 0
+offset_top = 8.0
+offset_right = 184.0
+offset_bottom = 67.0
+theme_override_font_sizes/font_size = 20
+text = "Date: today
+Time: N/A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ObjectiveText" type="Label" parent="Header"]
+layout_mode = 0
+offset_left = 784.0
+offset_top = 8.0
+offset_right = 1536.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 20
+text = "Current Objetive:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="Header"]
+layout_mode = 0
+offset_left = 2000.0
+offset_top = 8.0
+offset_right = 2160.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 20
+text = "Score:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(38.5153, 71.4592)
+rotation = 3.14159
+scale = Vector2(0.172577, 0.137296)
+texture = ExtResource("2_jwsf8")
+
+[node name="Finances" type="Panel" parent="."]
+offset_left = 512.0
+offset_top = 64.0
+offset_right = 1088.0
+offset_bottom = 576.0
+script = ExtResource("3_g7ciq")
+metadata/_edit_lock_ = true
+
+[node name="Money" type="Panel" parent="Finances"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 192.0
+offset_bottom = 64.0
+
+[node name="Label" type="Label" parent="Finances/Money"]
+layout_mode = 0
+offset_right = 176.0
+offset_bottom = 48.0
+text = "Current Money: XXX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Stats" type="Panel" parent="Finances"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 16.0
+offset_right = 552.0
+offset_bottom = 192.0
+
+[node name="Label" type="Label" parent="Finances/Stats"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 16.0
+offset_right = 128.0
+offset_bottom = 112.0
+theme_override_font_sizes/font_size = 13
+text = "Health: XX
+
+Hunger: XX
+
+Security: XX
+
+Debt: XX"
+
+[node name="Bills" type="Panel" parent="Finances"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 128.0
+offset_right = 352.0
+offset_bottom = 448.0
+
+[node name="CheckBox" type="CheckBox" parent="Finances/Bills"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 40.0
+offset_right = 139.0
+offset_bottom = 71.0
+text = " Rent: XXX"
+
+[node name="CheckBox2" type="CheckBox" parent="Finances/Bills"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 80.0
+offset_right = 141.0
+offset_bottom = 111.0
+text = " Food: XXX"
+
+[node name="CheckBox3" type="CheckBox" parent="Finances/Bills"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 120.0
+offset_right = 145.0
+offset_bottom = 151.0
+text = " Meds: XXX"
+
+[node name="CheckBox4" type="CheckBox" parent="Finances/Bills"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 160.0
+offset_right = 165.0
+offset_bottom = 191.0
+text = " Security: XXX"
+
+[node name="Label" type="Label" parent="Finances/Bills"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 264.0
+offset_right = 165.0
+offset_bottom = 287.0
+text = "Amount Due: xxx"
+
+[node name="Pay" type="Button" parent="Finances"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 384.0
+offset_right = 512.0
+offset_bottom = 448.0
+text = "Pay bills"
+
+[node name="Files" type="Panel" parent="."]
+offset_left = 80.0
+offset_top = 64.0
+offset_right = 448.0
+offset_bottom = 576.0
+
+[connection signal="pressed" from="Taskbar/UnlockedFiles" to="." method="FilesButton"]
+[connection signal="pressed" from="Taskbar/Finances" to="." method="FinancesButton"]
