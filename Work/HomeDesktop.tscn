@@ -156,7 +156,7 @@ offset_top = 128.0
 offset_right = 352.0
 offset_bottom = 448.0
 
-[node name="CheckBox" type="CheckBox" parent="Finances/Bills"]
+[node name="Rent" type="CheckBox" parent="Finances/Bills"]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 40.0
@@ -164,7 +164,7 @@ offset_right = 139.0
 offset_bottom = 71.0
 text = " Rent: XXX"
 
-[node name="CheckBox2" type="CheckBox" parent="Finances/Bills"]
+[node name="Food" type="CheckBox" parent="Finances/Bills"]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 80.0
@@ -172,7 +172,7 @@ offset_right = 141.0
 offset_bottom = 111.0
 text = " Food: XXX"
 
-[node name="CheckBox3" type="CheckBox" parent="Finances/Bills"]
+[node name="Meds" type="CheckBox" parent="Finances/Bills"]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 120.0
@@ -180,7 +180,7 @@ offset_right = 145.0
 offset_bottom = 151.0
 text = " Meds: XXX"
 
-[node name="CheckBox4" type="CheckBox" parent="Finances/Bills"]
+[node name="Security" type="CheckBox" parent="Finances/Bills"]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 160.0
@@ -188,7 +188,7 @@ offset_right = 165.0
 offset_bottom = 191.0
 text = " Security: XXX"
 
-[node name="Label" type="Label" parent="Finances/Bills"]
+[node name="AmountDue" type="Label" parent="Finances/Bills"]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 264.0
@@ -212,3 +212,8 @@ offset_bottom = 576.0
 
 [connection signal="pressed" from="Taskbar/UnlockedFiles" to="." method="FilesButton"]
 [connection signal="pressed" from="Taskbar/Finances" to="." method="FinancesButton"]
+[connection signal="pressed" from="Finances/Bills/Rent" to="Finances" method="ToggleRent"]
+[connection signal="pressed" from="Finances/Bills/Food" to="Finances" method="ToggleFood"]
+[connection signal="pressed" from="Finances/Bills/Meds" to="Finances" method="ToggleMeds"]
+[connection signal="pressed" from="Finances/Bills/Security" to="Finances" method="ToggleSecurity"]
+[connection signal="pressed" from="Finances/Pay" to="Finances" method="PayBills"]
