@@ -6,6 +6,9 @@ func _ready() -> void:
 	$Finances.visible = false
 	$Files.visible = false
 
+func GoWork():
+	get_tree().change_scene_to_file("res://Work/WorkDesktop.tscn")
+
 func FinancesButton():
 	$Finances.visible = !$Finances.visible
 	

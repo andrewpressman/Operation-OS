@@ -30,7 +30,7 @@ func UpdateStats():
 						 Debt: " + str(GlobalVar.Debt)
 
 func UpdateDue():
-	$Bills/AmountDue.text = "Amount Due: $" + str(AmountDue)
+	$AmountDue.text = "Amount Due: $" + str(AmountDue)
 
 func SetPrices():
 	if GlobalVar.CurrentLevel == 0:
@@ -52,7 +52,6 @@ func SetPrices():
 	$Bills/Security.text = "Security: $" + str(GlobalVar.SecurityPrice)
 
 func PayBills():
-	print("amountDue: " + str(AmountDue) + "\n")
 	if AmountDue < GlobalVar.Money:
 		GlobalVar.Money += -AmountDue
 	#elif GlobalVar.Money > 0 :
@@ -60,19 +59,9 @@ func PayBills():
 		GlobalVar.Money = 0
 		CurrentDebt = (GlobalVar.Money - AmountDue) * -1 + GlobalVar.Debt
 		GlobalVar.Debt = CurrentDebt
-		print(str(GlobalVar.Debt))
 
 	UpdateMoney()
 	UpdateStats()
-
-#
-# if Due <= Money -> subtract due
-# if Due > Money subtract due / increase debt
-#
-#
-#
-#
-#
 
 func ToggleRent():
 	PaidRent = !PaidRent

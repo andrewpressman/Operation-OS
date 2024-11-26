@@ -30,18 +30,25 @@ func _process(delta):
 	if GlobalObj.ObjectiveComplete == true:
 		GlobalObj.ObjectiveComplete == false
 		GlobalVar.Tasks = GlobalVar.Tasks - 1
-		if GlobalVar.Score == 10:
+		if GlobalVar.Score == 10: #TODO: Convert to Global Variable
+			#TODO: convert Score to Money
 			$TempWinner.visible = true
 		elif GlobalVar.Lives == 0:
+			#TODO: something?
 			$TempLoser.visible = true
 		else:
 			GetNewTask()
-			
 
+#Go to home Desktop			
+func GoHome():
+	get_tree().change_scene_to_file("res://Home/HomeDesktop.tscn")
+
+#Check lives
 func CheckLives():
 	if GlobalObj.TaskFailed:
 		GlobalVar.Lives -= 1
 		
+#Gets a new objective
 func GetNewTask():
 	CheckLives()
 	#TODO: prevent repeat objectives???
@@ -58,7 +65,8 @@ func GetNewTask():
 	
 	SetObjective()
 	UpdateScore()
-	
+
+#Sets objective text
 func SetObjective():
 	var Objective : String = "Current Objective: "
 	match GlobalVar.CurrentObj:
@@ -74,9 +82,12 @@ func SetObjective():
 	Objective = Objective + "\n Tasks Left: " +  str(GlobalVar.Tasks)
 	$Header/ObjectiveText.text = Objective
 
+#Updates score
 func UpdateScore():
 	$Header/Score.text = "Current Score: " + str(GlobalVar.Score) + "\nLives: " + str(GlobalVar.Lives)
 	
+#Button to open settings windo
+#TODO: add settings
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		#Show Options Window
@@ -91,6 +102,7 @@ func DisplayNumpad():
 		NumpadIst = t1
 		add_child(t1)
 
+#TODO: convert to control panel
 func DisplayButtons():
 	if ButtonsIst && is_instance_valid(ButtonsIst):
 		ButtonsIst.queue_free()

@@ -133,14 +133,13 @@ offset_bottom = 400.0
 text = "A loser is you"
 
 [node name="MissingText" type="Label" parent="."]
-visible = false
 offset_left = 896.0
 offset_top = 568.0
 offset_right = 1090.0
 offset_bottom = 591.0
 text = "This button does nothing"
 
-[node name="Button" type="Button" parent="."]
+[node name="GoHome" type="Button" parent="."]
 offset_left = 8.0
 offset_top = 152.0
 offset_right = 120.0
@@ -152,3 +151,4 @@ text = "Go Home"
 [connection signal="pressed" from="Taskbar/Messenger" to="." method="DisplayMessages"]
 [connection signal="pressed" from="Taskbar/Requests" to="." method="DisplayRequest"]
 [connection signal="pressed" from="Taskbar/Buttons" to="." method="DisplayButtons"]
+[connection signal="pressed" from="GoHome" to="." method="GoHome"]
