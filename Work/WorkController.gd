@@ -75,7 +75,7 @@ func SetObjective():
 		2:
 			Objective = Objective + "Press button " + GlobalObj.ButtonText
 		3:
-			Objective = Objective + "Transfer Files"
+			Objective = Objective + "Transfer Files from: " + GlobalObj.FileSourceText + " to " + GlobalObj.FileTargetText
 		4:
 			Objective = Objective + "Review Memo"
 	

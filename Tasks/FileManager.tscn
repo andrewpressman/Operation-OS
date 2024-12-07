@@ -3,23 +3,23 @@
 [ext_resource type="Script" path="res://Tasks/FileManager.gd" id="1_oo73u"]
 
 [node name="Panel" type="Window"]
-initial_position = 2
-size = Vector2i(640, 384)
+initial_position = 1
+size = Vector2i(768, 384)
 script = ExtResource("1_oo73u")
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Transfer" type="Button" parent="."]
-offset_left = 192.0
+offset_left = 256.0
 offset_top = 256.0
-offset_right = 448.0
+offset_right = 512.0
 offset_bottom = 320.0
 text = "Transfer"
 
 [node name="Progress" type="Panel" parent="."]
-offset_left = 128.0
+offset_left = 192.0
 offset_top = 64.0
-offset_right = 512.0
+offset_right = 576.0
 offset_bottom = 192.0
 
 [node name="One" type="ColorRect" parent="Progress"]
@@ -71,15 +71,34 @@ color = Color(0, 0.584314, 0, 1)
 
 [node name="Message" type="Label" parent="."]
 visible = false
-offset_left = 232.0
-offset_top = 96.0
-offset_right = 408.0
-offset_bottom = 160.0
+offset_left = 296.0
+offset_top = 4.0
+offset_right = 472.0
+offset_bottom = 68.0
 text = "Success"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="close_requested" from="." to="." method="Kill"]
+[node name="Source" type="OptionButton" parent="."]
+offset_left = 16.0
+offset_top = 64.0
+offset_right = 184.0
+offset_bottom = 88.0
+theme_override_font_sizes/font_size = 12
+selected = 0
+item_count = 1
+popup/item_0/text = "File Source"
+
+[node name="Target" type="OptionButton" parent="."]
+offset_left = 584.0
+offset_top = 64.0
+offset_right = 752.0
+offset_bottom = 89.0
+theme_override_font_sizes/font_size = 12
+selected = 0
+item_count = 1
+popup/item_0/text = "File Target"
+
 [connection signal="timeout" from="Timer" to="." method="TimeDelay"]
 [connection signal="button_down" from="Transfer" to="." method="ButtonDown"]
 [connection signal="button_up" from="Transfer" to="." method="ButtonUp"]
