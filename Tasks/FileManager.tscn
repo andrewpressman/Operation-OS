@@ -99,6 +99,7 @@ selected = 0
 item_count = 1
 popup/item_0/text = "File Target"
 
+[connection signal="close_requested" from="." to="." method="Kill"]
 [connection signal="timeout" from="Timer" to="." method="TimeDelay"]
 [connection signal="button_down" from="Transfer" to="." method="ButtonDown"]
 [connection signal="button_up" from="Transfer" to="." method="ButtonUp"]

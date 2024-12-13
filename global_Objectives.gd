@@ -16,7 +16,7 @@ var ButtonText : String
 func GetRandomButton():
 	GlobalVar.CurrentObj = 2
 	ObjectiveComplete = false
-	var random_number = randi() % 3 + 1
+	var random_number = randi_range(1,4)
 	TargetButton = random_number
 	match random_number:
 		1:
@@ -25,6 +25,8 @@ func GetRandomButton():
 			ButtonText = "Blue"
 		3:
 			ButtonText = "Green"
+		4:
+			ButtonText = "Yellow"
 
 var FileTransfered : bool
 var FileSource : int

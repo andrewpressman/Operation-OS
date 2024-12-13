@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7ona7h1qsp11"]
+[gd_scene load_steps=5 format=3 uid="uid://b7ona7h1qsp11"]
 
 [ext_resource type="Script" path="res://Home/HomeController.gd" id="1_h8ttb"]
 [ext_resource type="Texture2D" uid="uid://c7ecxux7xtje8" path="res://Assets/Images/TempTorrN.jpg" id="2_83bdw"]
 [ext_resource type="Script" path="res://Home/finances.gd" id="3_qon11"]
+[ext_resource type="Script" path="res://Home/FilesCLI.gd" id="4_x257b"]
 
 [node name="HomeScreen" type="Node2D"]
 script = ExtResource("1_h8ttb")
@@ -217,25 +218,35 @@ offset_bottom = 383.0
 
 [node name="TEMP" type="Label" parent="Finances/Upgrades"]
 layout_mode = 0
-offset_left = 32.0
+offset_left = 8.0
 offset_top = 8.0
-offset_right = 128.0
+offset_right = 160.0
 offset_bottom = 248.0
-text = "Upgrade A
-
-Upgrade B
-
-Upgrade C
-
-Upgrade D
-
-Upgrade E"
+text = "Swap upgrades for status imparments that effect gameplay and require extra costs to fix / have positive and negative tradeoffs
+"
+autowrap_mode = 3
 
 [node name="Files" type="Panel" parent="."]
 offset_left = 80.0
 offset_top = 64.0
 offset_right = 448.0
 offset_bottom = 576.0
+script = ExtResource("4_x257b")
+
+[node name="Label" type="Label" parent="Files"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 64.0
+offset_right = 304.0
+offset_bottom = 440.0
+text = "Locked and unlocked file list goes here
+
+Buttons open a window with given file
+
+Audio files, Text files, images"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [connection signal="pressed" from="Taskbar/UnlockedFiles" to="." method="FilesButton"]
 [connection signal="pressed" from="Taskbar/Finances" to="." method="FinancesButton"]

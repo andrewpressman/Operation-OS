@@ -1,11 +1,11 @@
 extends Window
+#768, 448
 
 var PressedButton : int
 var TargetButton : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Red.modulate
 	SetTarget()
 
 #close the window
@@ -17,7 +17,7 @@ func SetTarget():
 	if !GlobalObj.ObjectiveComplete:
 		TargetButton = GlobalObj.TargetButton
 	else:
-		TargetButton = 4
+		TargetButton = 5
 
 #Sends a success when correct button is complete, fail when incorrect
 func MatchButton():
@@ -47,6 +47,10 @@ func BlueButton():
 	
 func GreenButton():
 	PressedButton = 3
+	MatchButton()
+
+func YellowButton():
+	PressedButton = 4
 	MatchButton()
 
 #175

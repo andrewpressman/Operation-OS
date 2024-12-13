@@ -1,7 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5wvidfv3nema"]
+[gd_scene load_steps=8 format=3 uid="uid://b5wvidfv3nema"]
 
 [ext_resource type="Script" path="res://Tasks/Buttons.gd" id="1_y6534"]
 [ext_resource type="StyleBox" uid="uid://d03i1mx53io2p" path="res://Assets/StyleBoxes/Buttons.tres" id="2_gfsxd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65n1i"]
+bg_color = Color(0.686275, 0.686275, 0, 0.686275)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmp8j"]
 bg_color = Color(0.980392, 0, 0, 0.686275)
@@ -29,7 +42,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65n1i"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_na2dj"]
 bg_color = Color(0, 0.686275, 0, 0.686275)
 border_width_left = 2
 border_width_top = 2
@@ -42,40 +55,68 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="Window" type="Window"]
-initial_position = 2
-size = Vector2i(640, 256)
-script = ExtResource("1_y6534")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s0c3u"]
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
 
-[node name="Red" type="Button" parent="."]
-offset_left = 64.0
+[node name="Window" type="Window"]
+initial_position = 1
+size = Vector2i(768, 448)
+unresizable = true
+script = ExtResource("1_y6534")
+metadata/_edit_lock_ = true
+
+[node name="Confirm" type="Button" parent="."]
+offset_left = 576.0
+offset_top = 8.0
+offset_right = 736.0
+offset_bottom = 56.0
+text = "Confirm??"
+
+[node name="Buttons" type="Panel" parent="."]
+offset_left = 256.0
 offset_top = 64.0
-offset_right = 192.0
-offset_bottom = 192.0
+offset_right = 512.0
+offset_bottom = 288.0
+
+[node name="Yellow" type="Button" parent="Buttons"]
+offset_left = 136.0
+offset_top = 120.0
+offset_right = 232.0
+offset_bottom = 216.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_65n1i")
+
+[node name="Red" type="Button" parent="Buttons"]
+offset_left = 24.0
+offset_top = 120.0
+offset_right = 120.0
+offset_bottom = 216.0
 theme_override_styles/hover = SubResource("StyleBoxFlat_dmp8j")
 theme_override_styles/normal = ExtResource("2_gfsxd")
 
-[node name="Blue" type="Button" parent="."]
-offset_left = 448.0
-offset_top = 64.0
-offset_right = 576.0
-offset_bottom = 192.0
+[node name="Blue" type="Button" parent="Buttons"]
+offset_left = 136.0
+offset_top = 8.0
+offset_right = 232.0
+offset_bottom = 104.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_qow8u")
 
-[node name="Green" type="Button" parent="."]
-offset_left = 256.0
-offset_top = 64.0
-offset_right = 384.0
-offset_bottom = 192.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_65n1i")
+[node name="Green" type="Button" parent="Buttons"]
+offset_left = 24.0
+offset_top = 8.0
+offset_right = 120.0
+offset_bottom = 104.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_na2dj")
 
 [node name="Display" type="Panel" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -88.0
+offset_left = -128.0
 offset_top = 8.0
-offset_right = 88.0
+offset_right = 128.0
 offset_bottom = 56.0
 grow_horizontal = 2
 
@@ -88,7 +129,124 @@ offset_bottom = 42.0
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Levers" type="Panel" parent="."]
+offset_left = 32.0
+offset_top = 64.0
+offset_right = 224.0
+offset_bottom = 432.0
+
+[node name="Panel" type="Panel" parent="Levers"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 88.0
+offset_bottom = 320.0
+
+[node name="Panel2" type="Panel" parent="Levers"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 16.0
+offset_right = 176.0
+offset_bottom = 320.0
+
+[node name="Label" type="Label" parent="Levers"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 328.0
+offset_right = 88.0
+offset_bottom = 359.0
+text = "L1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Levers"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 328.0
+offset_right = 176.0
+offset_bottom = 359.0
+text = "R1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dials" type="Panel" parent="."]
+offset_left = 240.0
+offset_top = 296.0
+offset_right = 528.0
+offset_bottom = 432.0
+
+[node name="Panel2" type="Panel" parent="Dials"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 8.0
+offset_right = 272.0
+offset_bottom = 128.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_s0c3u")
+
+[node name="Panel3" type="Panel" parent="Dials"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 136.0
+offset_bottom = 128.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_s0c3u")
+
+[node name="Switches" type="Panel" parent="."]
+offset_left = 544.0
+offset_top = 64.0
+offset_right = 744.0
+offset_bottom = 432.0
+
+[node name="CheckBox1" type="CheckButton" parent="Switches"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 16.0
+offset_right = 156.0
+offset_bottom = 47.0
+text = "Option A"
+
+[node name="CheckBox2" type="CheckButton" parent="Switches"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 80.0
+offset_right = 156.0
+offset_bottom = 111.0
+text = "Option B"
+
+[node name="CheckBox3" type="CheckButton" parent="Switches"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 144.0
+offset_right = 156.0
+offset_bottom = 175.0
+text = "Option C"
+
+[node name="CheckBox4" type="CheckButton" parent="Switches"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 208.0
+offset_right = 156.0
+offset_bottom = 239.0
+text = "Option D"
+
+[node name="CheckBox5" type="CheckButton" parent="Switches"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 272.0
+offset_right = 156.0
+offset_bottom = 303.0
+text = "Option E"
+
+[node name="CheckBox6" type="CheckButton" parent="Switches"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 328.0
+offset_right = 156.0
+offset_bottom = 359.0
+text = "Option F"
+
 [connection signal="close_requested" from="." to="." method="Kill"]
-[connection signal="pressed" from="Red" to="." method="RedButton"]
-[connection signal="pressed" from="Blue" to="." method="BlueButton"]
-[connection signal="pressed" from="Green" to="." method="GreenButton"]
+[connection signal="pressed" from="Buttons/Yellow" to="." method="GreenButton"]
+[connection signal="pressed" from="Buttons/Red" to="." method="RedButton"]
+[connection signal="pressed" from="Buttons/Blue" to="." method="BlueButton"]
+[connection signal="pressed" from="Buttons/Green" to="." method="GreenButton"]
