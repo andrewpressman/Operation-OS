@@ -12,21 +12,15 @@ func GetRandomNumber():
 
 
 var TargetButton : int
-var ButtonText : String
+var LeversL1 : float = 5
+var LeversR1 : float = 3
+var SwitchBoard = [0,1,0,1,0,1]
 func GetRandomButton():
 	GlobalVar.CurrentObj = 2
 	ObjectiveComplete = false
 	var random_number = randi_range(1,4)
 	TargetButton = random_number
-	match random_number:
-		1:
-			ButtonText = "Red"
-		2:
-			ButtonText = "Blue"
-		3:
-			ButtonText = "Green"
-		4:
-			ButtonText = "Yellow"
+
 
 var FileTransfered : bool
 var FileSource : int

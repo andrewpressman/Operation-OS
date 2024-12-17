@@ -73,7 +73,7 @@ func SetObjective():
 		1:
 			Objective = Objective + "Input number " + str(GlobalObj.NumberpadNum)
 		2:
-			Objective = Objective + "Press button " + GlobalObj.ButtonText
+			Objective = Objective + "Do button Panel"
 		3:
 			Objective = Objective + "Transfer Files from: " + GlobalObj.FileSourceText + " to " + GlobalObj.FileTargetText
 		4:
