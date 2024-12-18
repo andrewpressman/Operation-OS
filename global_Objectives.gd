@@ -11,15 +11,29 @@ func GetRandomNumber():
 	NumberpadNum = random_number
 
 
+var TargetWindow: int
 var TargetButton : int
-var LeversL1 : float = 5
-var LeversR1 : float = 3
-var SwitchBoard = [0,1,0,1,0,1]
+var LeversL1 : float
+var LeversR1 : float
+var TargetLeversL1 : float
+var TargetLeversR1 : float
+var TargetSwitch : int
+var SwitchBoard = [0,0,0,0,0,0]
 func GetRandomButton():
 	GlobalVar.CurrentObj = 2
 	ObjectiveComplete = false
-	var random_number = randi_range(1,4)
-	TargetButton = random_number
+	var random_number = randi_range(1,3)
+	TargetWindow = random_number
+	match TargetWindow:
+		1:
+			TargetButton = randi_range(1,4)
+		2:
+			var Lrand = randi_range(1,10)
+			var Rrand = randi_range(1,10)
+			TargetLeversL1 = Lrand
+			TargetLeversR1 = Rrand
+		3:
+			TargetSwitch = randi_range(0,5)
 
 
 var FileTransfered : bool
