@@ -18,6 +18,11 @@ func _ready() -> void:
 	PaidFood = false
 	PaidMeds = false
 	PaidSecurity = false
+	$Pay.disabled = false
+	$Bills/Rent.disabled = false
+	$Bills/Food.disabled = false
+	$Bills/Meds.disabled = false
+	$Bills/Security.disabled = false
 	AmountDue = 0
 
 func UpdateMoney():
@@ -31,7 +36,7 @@ func UpdateStats():
 
 func UpdateDue():
 	$AmountDue.text = "Amount Due: $" + str(AmountDue)
-
+	
 func SetPrices():
 	if GlobalVar.CurrentLevel == 0:
 		GlobalVar.Money = GlobalVar.StartMoney
@@ -60,8 +65,32 @@ func PayBills():
 		CurrentDebt = (GlobalVar.Money - AmountDue) * -1 + GlobalVar.Debt
 		GlobalVar.Debt = CurrentDebt
 
+	if PaidRent: 
+		$Bills/Rent.text = "Rent: PAID"
+		$Bills/Rent.disabled = true
+		$Bills/Rent.button_pressed = false
+	if PaidFood:
+		$Bills/Food.text = "Food: PAID" 
+		$Bills/Food.disabled = true
+		$Bills/Food.button_pressed = false
+	if PaidMeds:
+		$Bills/Meds.text = "Meds: PAID"
+		$Bills/Meds.disabled = true
+		$Bills/Meds.button_pressed = false
+	if PaidSecurity:
+		$Bills/Security.text = "Security: PAID"
+		$Bills/Security.disabled = true
+		$Bills/Security.button_pressed = false
+	
+	if AmountDue == 0:
+		$Pay.disabled = true
+	else:
+		$Pay.disabled = false	
+	
 	UpdateMoney()
 	UpdateStats()
+	AmountDue = 0
+	UpdateDue()
 
 func ToggleRent():
 	PaidRent = !PaidRent
