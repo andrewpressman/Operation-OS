@@ -4,6 +4,9 @@ var PaidRent: bool
 var PaidFood : bool
 var PaidMeds : bool
 var PaidSecurity : bool
+var PaidDebt : bool
+
+var DebtAmout: int
 
 var AmountDue : int
 var CurrentDebt: int
@@ -18,12 +21,24 @@ func _ready() -> void:
 	PaidFood = false
 	PaidMeds = false
 	PaidSecurity = false
-	$Pay.disabled = false
-	$Bills/Rent.disabled = false
-	$Bills/Food.disabled = false
-	$Bills/Meds.disabled = false
-	$Bills/Security.disabled = false
+	PaidDebt = false
+	SetAvailable()
 	AmountDue = 0
+
+func SetAvailable():
+	if GlobalVar.Debt == 0:
+		$Pay.disabled = false
+		$Bills/Rent.disabled = false
+		$Bills/Food.disabled = false
+		$Bills/Meds.disabled = false
+		$Bills/Security.disabled = false
+		$Bills/Debt.visible = false
+	else:
+		$Bills/Debt.visible = true
+		$Bills/Rent.disabled = true
+		$Bills/Food.disabled = true
+		$Bills/Meds.disabled = true
+		$Bills/Security.disabled = true
 
 func UpdateMoney():
 	$Money/Label.text = "Current Money: " + str(GlobalVar.Money)
@@ -44,7 +59,7 @@ func SetPrices():
 		GlobalVar.FoodPrice = GlobalVar.StartFoodPrice
 		GlobalVar.MedsPrice = GlobalVar.StartMedsPrice
 		GlobalVar.SecurityPrice = GlobalVar.StartSecurityPrice
-		GlobalVar.Debt = GlobalVar.StartDebt
+		#GlobalVar.Debt = GlobalVar.StartDebt
 	else:
 		GlobalVar.RentPrice += GlobalVar.RentIncrease
 		GlobalVar.FoodPrice += GlobalVar.FoodIncrease
@@ -55,11 +70,16 @@ func SetPrices():
 	$Bills/Food.text = "Food: $" + str(GlobalVar.FoodPrice) 
 	$Bills/Meds.text = "Meds: $" + str(GlobalVar.MedsPrice)
 	$Bills/Security.text = "Security: $" + str(GlobalVar.SecurityPrice)
+	
+	if GlobalVar.Money > GlobalVar.Debt:
+		$Bills/Debt.text = "Debt: $" + str(GlobalVar.Debt)
+	else:
+		$Bills/Debt.text = "Debt: $" + str(GlobalVar.Money)
+	
 
 func PayBills():
-	if AmountDue < GlobalVar.Money:
+	if AmountDue <= GlobalVar.Money:
 		GlobalVar.Money += -AmountDue
-	#elif GlobalVar.Money > 0 :
 	else:
 		GlobalVar.Money = 0
 		CurrentDebt = (GlobalVar.Money - AmountDue) * -1 + GlobalVar.Debt
@@ -81,6 +101,11 @@ func PayBills():
 		$Bills/Security.text = "Security: PAID"
 		$Bills/Security.disabled = true
 		$Bills/Security.button_pressed = false
+	if PaidDebt:
+		$Bills/Debt.text = "Debt: PAID"
+		$Bills/Debt.disabled = true
+		$Bills/Debt.button_pressed = false
+		GlobalVar.Debt = GlobalVar.Debt - DebtAmout
 	
 	if AmountDue == 0:
 		$Pay.disabled = true
@@ -91,6 +116,7 @@ func PayBills():
 	UpdateStats()
 	AmountDue = 0
 	UpdateDue()
+	SetAvailable()
 
 func ToggleRent():
 	PaidRent = !PaidRent
@@ -122,4 +148,20 @@ func ToggleSecurity():
 		AmountDue += GlobalVar.SecurityPrice
 	else:
 		AmountDue += -GlobalVar.SecurityPrice
+	UpdateDue()
+
+func ToggleDebt():
+	PaidDebt = !PaidDebt
+	if PaidDebt:
+		if GlobalVar.Money > GlobalVar.Debt:
+			DebtAmout = GlobalVar.Debt
+			AmountDue += GlobalVar.Debt
+		else:
+			DebtAmout = GlobalVar.Money
+			AmountDue += GlobalVar.Money
+	else:
+		if GlobalVar.Money > GlobalVar.Debt:
+			AmountDue -= GlobalVar.Debt
+		else:
+			AmountDue -= GlobalVar.Money
 	UpdateDue()

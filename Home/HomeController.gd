@@ -7,6 +7,7 @@ func _ready() -> void:
 	$Files.visible = false
 
 func GoWork():
+	GlobalVar.CurrentLevel += 1
 	get_tree().change_scene_to_file("res://Work/WorkDesktop.tscn")
 
 func FinancesButton():

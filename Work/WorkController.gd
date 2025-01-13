@@ -47,6 +47,8 @@ func GoHome():
 func CheckLives():
 	if GlobalObj.TaskFailed:
 		GlobalVar.Lives -= 1
+	else:
+		GlobalVar.Money += GlobalVar.Salary
 		
 #Gets a new objective
 func GetNewTask():
@@ -84,7 +86,7 @@ func SetObjective():
 
 #Updates score
 func UpdateScore():
-	$Header/Score.text = "Current Score: " + str(GlobalVar.Score) + "\nLives: " + str(GlobalVar.Lives)
+	$Header/Score.text = "Money: " + str(GlobalVar.Money) + "\nFailures: " + str(GlobalVar.Lives)
 	
 #Button to open settings windo
 #TODO: add settings

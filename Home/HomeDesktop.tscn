@@ -193,6 +193,15 @@ offset_bottom = 191.0
 scale = Vector2(1.2, 1.2)
 text = " Security: XXX"
 
+[node name="Debt" type="CheckBox" parent="Finances/Bills"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 200.0
+offset_right = 142.0
+offset_bottom = 231.0
+scale = Vector2(1.2, 1.2)
+text = " Debt: XXX"
+
 [node name="AmountDue" type="Label" parent="Finances"]
 layout_mode = 0
 offset_left = 160.0
@@ -255,4 +264,5 @@ autowrap_mode = 3
 [connection signal="pressed" from="Finances/Bills/Food" to="Finances" method="ToggleFood"]
 [connection signal="pressed" from="Finances/Bills/Meds" to="Finances" method="ToggleMeds"]
 [connection signal="pressed" from="Finances/Bills/Security" to="Finances" method="ToggleSecurity"]
+[connection signal="pressed" from="Finances/Bills/Debt" to="Finances" method="ToggleDebt"]
 [connection signal="pressed" from="Finances/Pay" to="Finances" method="PayBills"]

@@ -7,8 +7,9 @@ var Lives : int
 var Tasks : int
 
 #Home variables
-var GainedMoney : int
-var Money: int
+var Money: int = 0
+var Salary: int = 50
+#TODO: add salary increase modifier
 
 var RentPrice: int
 var RentIncrease: int

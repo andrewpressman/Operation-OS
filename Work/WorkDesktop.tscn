@@ -103,8 +103,8 @@ offset_top = 8.0
 offset_right = 2160.0
 offset_bottom = 56.0
 theme_override_font_sizes/font_size = 20
-text = "Score:
-Lives:"
+text = "Money:
+Falures:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
