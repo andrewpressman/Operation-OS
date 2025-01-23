@@ -17,10 +17,23 @@ var ButtonsIst: Node = null
 var CurrentScore : int = 0
 
 # Called when the node enters the scene tree for the first time.
+# Lives = amount of times the player can fail a task
+# Tasks = Number of tasks the player is given per shift
 func _ready():
-	GlobalVar.Score = 0
-	GlobalVar.Lives = 3
-	GlobalVar.Tasks = 10
+	#Set inital values
+	match GlobalVar.CurrentLevel:
+		1: 
+			GlobalVar.Score = 0
+			GlobalVar.Lives = 5
+			GlobalVar.Tasks = 10
+			#add value to make rewards dynamic
+		2:
+			GlobalVar.Lives = 10
+			GlobalVar.Tasks = 15
+		3:
+			GlobalVar.Lives = 10
+			GlobalVar.Tasks = 20
+		#Continue down for more levels
 	GetNewTask()
 
 func _process(delta):
@@ -28,8 +41,10 @@ func _process(delta):
 		UpdateScore()
 		
 	if GlobalObj.ObjectiveComplete == true:
-		GlobalObj.ObjectiveComplete == false
+		GlobalObj.ObjectiveComplete = false
 		GlobalVar.Tasks = GlobalVar.Tasks - 1
+		
+		#TEMP: show fail and victory
 		if GlobalVar.Score == 10: #TODO: Convert to Global Variable
 			#TODO: convert Score to Money
 			$TempWinner.visible = true
@@ -46,7 +61,7 @@ func GoHome():
 #Check lives
 func CheckLives():
 	if GlobalObj.TaskFailed:
-		GlobalVar.Lives -= 1
+		GlobalVar.Lives = GlobalVar.Lives - 1
 	else:
 		GlobalVar.Money += GlobalVar.Salary
 		

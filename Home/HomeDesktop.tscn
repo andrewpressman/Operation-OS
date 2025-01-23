@@ -132,15 +132,14 @@ vertical_alignment = 1
 layout_mode = 0
 offset_left = 448.0
 offset_top = 16.0
-offset_right = 552.0
-offset_bottom = 192.0
+offset_right = 560.0
+offset_bottom = 280.0
 
 [node name="Label" type="Label" parent="Finances/Stats"]
 layout_mode = 0
-offset_left = 8.0
 offset_top = 16.0
-offset_right = 96.0
-offset_bottom = 160.0
+offset_right = 112.0
+offset_bottom = 256.0
 theme_override_font_sizes/font_size = 13
 text = "Health: XX
 
@@ -149,6 +148,7 @@ Hunger: XX
 Security: XX
 
 Debt: XX"
+horizontal_alignment = 1
 
 [node name="Bills" type="Panel" parent="Finances"]
 layout_mode = 0

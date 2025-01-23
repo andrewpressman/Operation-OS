@@ -121,12 +121,12 @@ func Verify(con : bool):
 	if con:
 		$Display/Label.text = "SUCESS"
 		if GlobalVar.CurrentObj == 2 && !GlobalObj.ObjectiveComplete:
-			GlobalObj.TaskFailed == false
+			GlobalObj.TaskFailed = false
 			GlobalVar.Score += 1
 		await get_tree().create_timer(2).timeout
 		Kill()
 	else:
-		GlobalObj.TaskFailed == false
+		GlobalObj.TaskFailed = true
 		$Display/Label.text = "FAILURE"
 		await get_tree().create_timer(1).timeout
 		Kill()

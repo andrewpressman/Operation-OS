@@ -3,8 +3,9 @@ extends Node
 #Work variables
 var Score : int
 var CurrentObj : int
-var Lives : int
-var Tasks : int
+
+var Lives : int #numebr of times the player can fail a task
+var Tasks : int #Number of tasks the player is given
 
 #Home variables
 var Money: int = 0
@@ -23,7 +24,11 @@ var MedsIncrease: int
 var SecurityPrice : int
 var SecurityIncrease: int
 
-var Debt : int
+#Status trackers
+var Debt : int #straight number
+var Health : int # 0 -> 100
+var Hunger : int # 0 - 100 -> starving, hungry, irritated, fed, full
+var Security : int #0 - 100 -> Imminent Threat, In Danger, Low Risk, Safe
 
 #Intial Starting Values
 var StartMoney : int = 500

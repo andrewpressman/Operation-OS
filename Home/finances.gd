@@ -44,10 +44,30 @@ func UpdateMoney():
 	$Money/Label.text = "Current Money: " + str(GlobalVar.Money)
 
 func UpdateStats():
-	$Stats/Label.text = "Health: XX\n
-						 Hunger: XX\n
-						 Security: XX\n
-						 Debt: " + str(GlobalVar.Debt)
+	var Hunger
+	var Security
+	if GlobalVar.Hunger < 10:
+		Hunger  = "Starving"
+	elif GlobalVar.Hunger < 30:
+		Hunger = "Irritated"
+	elif GlobalVar.Hunger < 60:
+		Hunger = "Fed"
+	else:
+		Hunger = "Full"
+	
+	if GlobalVar.Security < 20:
+		Security  = "High Risk"
+	elif GlobalVar.Security < 30:
+		Security = "Med Risk"
+	elif GlobalVar.Security < 80:
+		Security = "Low Risk"
+	else:
+		Security = "Safe"
+	
+	$Stats/Label.text = "Health: \n" + str(GlobalVar.Health) + "\n
+						 Hunger: \n" + Hunger + "\n
+						 Security: \n" + Security + "\n
+						 Debt: \n" + str(GlobalVar.Debt)
 
 func UpdateDue():
 	$AmountDue.text = "Amount Due: $" + str(AmountDue)
@@ -59,7 +79,9 @@ func SetPrices():
 		GlobalVar.FoodPrice = GlobalVar.StartFoodPrice
 		GlobalVar.MedsPrice = GlobalVar.StartMedsPrice
 		GlobalVar.SecurityPrice = GlobalVar.StartSecurityPrice
-		#GlobalVar.Debt = GlobalVar.StartDebt
+		GlobalVar.Health = 100
+		GlobalVar.Hunger = 100
+		GlobalVar.Security = 100
 	else:
 		GlobalVar.RentPrice += GlobalVar.RentIncrease
 		GlobalVar.FoodPrice += GlobalVar.FoodIncrease
