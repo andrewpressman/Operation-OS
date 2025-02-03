@@ -5,7 +5,13 @@ extends Node2D
 func _ready() -> void:
 	$Finances.visible = false
 	$Files.visible = false
-
+	$Taskbar/GoWork.disabled = true
+	$Taskbar/GoWork.text = "Unpaid Bills"
+	
+func EnableWork():
+	$Taskbar/GoWork.text = "Go to work"
+	$Taskbar/GoWork.disabled = false
+	
 func GoWork():
 	GlobalVar.CurrentLevel += 1
 	get_tree().change_scene_to_file("res://Work/WorkDesktop.tscn")

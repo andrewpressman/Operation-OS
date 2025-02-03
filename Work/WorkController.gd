@@ -16,10 +16,14 @@ var ButtonsIst: Node = null
 
 var CurrentScore : int = 0
 
+var ShiftComplete : bool
+
 # Called when the node enters the scene tree for the first time.
 # Lives = amount of times the player can fail a task
 # Tasks = Number of tasks the player is given per shift
 func _ready():
+	$GoHome.visible = false
+	ShiftComplete = false
 	#Set inital values
 	match GlobalVar.CurrentLevel:
 		1: 
@@ -35,6 +39,7 @@ func _ready():
 			GlobalVar.Tasks = 20
 		#Continue down for more levels
 	GetNewTask()
+	
 
 func _process(delta):
 	if CurrentScore != GlobalVar.Score:
@@ -45,12 +50,16 @@ func _process(delta):
 		GlobalVar.Tasks = GlobalVar.Tasks - 1
 		
 		#TEMP: show fail and victory
-		if GlobalVar.Score == 10: #TODO: Convert to Global Variable
-			#TODO: convert Score to Money
-			$TempWinner.visible = true
-		elif GlobalVar.Lives == 0:
+		if GlobalVar.Lives == 0:
 			#TODO: something?
 			$TempLoser.visible = true
+		elif GlobalVar.Tasks == 0:
+			$GoHome.visible = true
+			if ShiftComplete == false:
+				print("Test")
+				ShiftComplete = true
+				GlobalVar.CurrentObj = 5
+				SetObjective()
 		else:
 			GetNewTask()
 
@@ -95,6 +104,8 @@ func SetObjective():
 			Objective = Objective + "Transfer Files from: " + GlobalObj.FileSourceText + " to " + GlobalObj.FileTargetText
 		4:
 			Objective = Objective + "Review Memo"
+		5:
+			Objective = Objective + "Shift Complete"
 	
 	Objective = Objective + "\n Tasks Left: " +  str(GlobalVar.Tasks)
 	$Header/ObjectiveText.text = Objective

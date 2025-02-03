@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7orqndgslsdv"]
+[gd_scene load_steps=4 format=3 uid="uid://c7orqndgslsdv"]
 
 [ext_resource type="Script" path="res://Work/WorkController.gd" id="1_efasj"]
+[ext_resource type="Script" path="res://Work/clock.gd" id="2_3wvif"]
 [ext_resource type="Texture2D" uid="uid://c7ecxux7xtje8" path="res://Assets/Images/TempTorrN.jpg" id="2_i3hxq"]
 
 [node name="WorkScreen" type="Node2D"]
@@ -10,6 +11,7 @@ script = ExtResource("1_efasj")
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0.435294, 0.733333, 1)
+metadata/_edit_lock_ = true
 
 [node name="Taskbar" type="Panel" parent="."]
 offset_top = 600.0
@@ -71,6 +73,7 @@ scale = Vector2(0.5, 0.5)
 layout_mode = 0
 offset_right = 192.0
 offset_bottom = 80.0
+script = ExtResource("2_3wvif")
 
 [node name="Label" type="Label" parent="Header/Clock"]
 layout_mode = 0
@@ -140,6 +143,7 @@ offset_bottom = 591.0
 text = "This button does nothing"
 
 [node name="GoHome" type="Button" parent="."]
+visible = false
 offset_left = 8.0
 offset_top = 152.0
 offset_right = 120.0

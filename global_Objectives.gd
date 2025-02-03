@@ -19,11 +19,12 @@ var TargetLeversL1 : float
 var TargetLeversR1 : float
 var TargetSwitch : int
 var SwitchBoard = [0,0,0,0,0,0]
+
 func GetRandomButton():
 	GlobalVar.CurrentObj = 2
 	ObjectiveComplete = false
-	var random_number = randi_range(1,3)
-	TargetWindow = random_number
+	TargetWindow = randi_range(1,3)
+	print(str(TargetWindow))
 	match TargetWindow:
 		1:
 			TargetButton = randi_range(1,4)

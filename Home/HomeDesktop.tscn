@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7ona7h1qsp11"]
+[gd_scene load_steps=6 format=3 uid="uid://b7ona7h1qsp11"]
 
 [ext_resource type="Script" path="res://Home/HomeController.gd" id="1_h8ttb"]
 [ext_resource type="Texture2D" uid="uid://c7ecxux7xtje8" path="res://Assets/Images/TempTorrN.jpg" id="2_83bdw"]
+[ext_resource type="Script" path="res://Work/clock.gd" id="2_g4fyx"]
 [ext_resource type="Script" path="res://Home/finances.gd" id="3_qon11"]
 [ext_resource type="Script" path="res://Home/FilesCLI.gd" id="4_x257b"]
 
@@ -65,6 +66,7 @@ scale = Vector2(0.5, 0.5)
 layout_mode = 0
 offset_right = 192.0
 offset_bottom = 80.0
+script = ExtResource("2_g4fyx")
 
 [node name="Label" type="Label" parent="Header/Clock"]
 layout_mode = 0
@@ -208,7 +210,7 @@ offset_left = 160.0
 offset_top = 424.0
 offset_right = 296.0
 offset_bottom = 448.0
-text = "Amount Due: xxx"
+text = "Amount Due: $0"
 
 [node name="Pay" type="Button" parent="Finances"]
 layout_mode = 0

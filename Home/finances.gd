@@ -11,6 +11,8 @@ var DebtAmout: int
 var AmountDue : int
 var CurrentDebt: int
 
+var HomeScreen = get_parent()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	CurrentDebt = GlobalVar.Debt
@@ -23,22 +25,12 @@ func _ready() -> void:
 	PaidSecurity = false
 	PaidDebt = false
 	SetAvailable()
-	AmountDue = 0
 
 func SetAvailable():
 	if GlobalVar.Debt == 0:
-		$Pay.disabled = false
-		$Bills/Rent.disabled = false
-		$Bills/Food.disabled = false
-		$Bills/Meds.disabled = false
-		$Bills/Security.disabled = false
 		$Bills/Debt.visible = false
-	else:
+	elif GlobalVar.Money >= GlobalVar.Debt:
 		$Bills/Debt.visible = true
-		$Bills/Rent.disabled = true
-		$Bills/Food.disabled = true
-		$Bills/Meds.disabled = true
-		$Bills/Security.disabled = true
 
 func UpdateMoney():
 	$Money/Label.text = "Current Money: " + str(GlobalVar.Money)
@@ -73,16 +65,7 @@ func UpdateDue():
 	$AmountDue.text = "Amount Due: $" + str(AmountDue)
 	
 func SetPrices():
-	if GlobalVar.CurrentLevel == 0:
-		GlobalVar.Money = GlobalVar.StartMoney
-		GlobalVar.RentPrice = GlobalVar.StartRentPrice
-		GlobalVar.FoodPrice = GlobalVar.StartFoodPrice
-		GlobalVar.MedsPrice = GlobalVar.StartMedsPrice
-		GlobalVar.SecurityPrice = GlobalVar.StartSecurityPrice
-		GlobalVar.Health = 100
-		GlobalVar.Hunger = 100
-		GlobalVar.Security = 100
-	else:
+	if GlobalVar.CurrentLevel > 1:
 		GlobalVar.RentPrice += GlobalVar.RentIncrease
 		GlobalVar.FoodPrice += GlobalVar.FoodIncrease
 		GlobalVar.MedsPrice += GlobalVar.MedsIncrease
