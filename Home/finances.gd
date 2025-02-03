@@ -15,7 +15,6 @@ var HomeScreen = get_parent()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	CurrentDebt = GlobalVar.Debt
 	SetPrices()
 	UpdateMoney()
 	UpdateStats()
@@ -26,11 +25,24 @@ func _ready() -> void:
 	PaidDebt = false
 	SetAvailable()
 
-func SetAvailable():
+func SetAvailable(): #Other bills can only be paid when debt is 0 (Or some arbitray value)
 	if GlobalVar.Debt == 0:
 		$Bills/Debt.visible = false
-	elif GlobalVar.Money >= GlobalVar.Debt:
+		$Bills/Rent.disabled = false
+		$Bills/Food.disabled = false
+		$Bills/Meds.disabled = false
+		$Bills/Security.disabled = false
+
+	else:
 		$Bills/Debt.visible = true
+		$Bills/Rent.disabled = true
+		$Bills/Rent.button_pressed = false
+		$Bills/Food.disabled = true
+		$Bills/Food.button_pressed = false
+		$Bills/Meds.disabled = true
+		$Bills/Meds.button_pressed = false
+		$Bills/Security.disabled = true
+		$Bills/Security.button_pressed = false
 
 func UpdateMoney():
 	$Money/Label.text = "Current Money: " + str(GlobalVar.Money)
