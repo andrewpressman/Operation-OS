@@ -46,6 +46,8 @@ func SetAvailable(): #Other bills can only be paid when debt is 0 (Or some arbit
 
 func UpdateMoney():
 	$Money/Label.text = "Current Money: " + str(GlobalVar.Money)
+	if PaidRent && PaidFood && PaidMeds && PaidSecurity:
+		get_parent().EnableWork()
 
 func UpdateStats():
 	var Hunger
