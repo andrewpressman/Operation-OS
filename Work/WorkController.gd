@@ -56,7 +56,6 @@ func _process(delta):
 		elif GlobalVar.Tasks == 0:
 			$GoHome.visible = true
 			if ShiftComplete == false:
-				print("Test")
 				ShiftComplete = true
 				GlobalVar.CurrentObj = 5
 				SetObjective()

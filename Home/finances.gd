@@ -24,14 +24,24 @@ func _ready() -> void:
 	PaidSecurity = false
 	PaidDebt = false
 	SetAvailable()
+	
+	if GlobalVar.CurrentLevel == 0:
+		$Bills/Food.visible = false
+		$Bills/Meds.visible = false
+		$Bills/Security.visible = false
+		$Bills/Debt.visible = false
+		PaidFood = true
+		PaidMeds = true
+		PaidSecurity = true
 
 func SetAvailable(): #Other bills can only be paid when debt is 0 (Or some arbitray value)
 	if GlobalVar.Debt == 0:
-		$Bills/Debt.visible = false
-		$Bills/Rent.disabled = false
-		$Bills/Food.disabled = false
-		$Bills/Meds.disabled = false
-		$Bills/Security.disabled = false
+		if !PaidRent && !PaidFood && !PaidMeds && !PaidSecurity:
+			$Bills/Debt.visible = false
+			$Bills/Rent.disabled = false
+			$Bills/Food.disabled = false
+			$Bills/Meds.disabled = false
+			$Bills/Security.disabled = false
 
 	else:
 		$Bills/Debt.visible = true
@@ -46,7 +56,10 @@ func SetAvailable(): #Other bills can only be paid when debt is 0 (Or some arbit
 
 func UpdateMoney():
 	$Money/Label.text = "Current Money: " + str(GlobalVar.Money)
-	if PaidRent && PaidFood && PaidMeds && PaidSecurity:
+	if PaidRent:
+		get_parent().EnableWork()
+	elif GlobalVar.Money == 0:
+		GlobalVar.Debt += GlobalVar.RentPrice
 		get_parent().EnableWork()
 
 func UpdateStats():
@@ -95,7 +108,9 @@ func SetPrices():
 	else:
 		$Bills/Debt.text = "Debt: $" + str(GlobalVar.Money)
 	
-
+@export var HealthChange : int
+@export var HungerChange : int
+@export var SecurityChange : int
 func PayBills():
 	if AmountDue <= GlobalVar.Money:
 		GlobalVar.Money += -AmountDue
@@ -103,21 +118,25 @@ func PayBills():
 		GlobalVar.Money = 0
 		CurrentDebt = (GlobalVar.Money - AmountDue) * -1 + GlobalVar.Debt
 		GlobalVar.Debt = CurrentDebt
-
+		
+		
 	if PaidRent: 
 		$Bills/Rent.text = "Rent: PAID"
 		$Bills/Rent.disabled = true
 		$Bills/Rent.button_pressed = false
 	if PaidFood:
-		$Bills/Food.text = "Food: PAID" 
+		$Bills/Food.text = "Food: PAID"
+		GlobalVar.Hunger = GlobalVar.Hunger - (HungerChange * GlobalVar.CurrentLevel)
 		$Bills/Food.disabled = true
 		$Bills/Food.button_pressed = false
 	if PaidMeds:
 		$Bills/Meds.text = "Meds: PAID"
+		GlobalVar.Health = GlobalVar.Health + (HealthChange * GlobalVar.CurrentLevel)
 		$Bills/Meds.disabled = true
 		$Bills/Meds.button_pressed = false
 	if PaidSecurity:
 		$Bills/Security.text = "Security: PAID"
+		GlobalVar.Security = GlobalVar.Security - (SecurityChange * GlobalVar.CurrentLevel)
 		$Bills/Security.disabled = true
 		$Bills/Security.button_pressed = false
 	if PaidDebt:

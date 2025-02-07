@@ -1,5 +1,8 @@
 extends Node2D
 
+@export var HealthChange : int
+@export var HungerChange : int
+@export var SecurityChange : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -7,6 +10,13 @@ func _ready() -> void:
 	$Files.visible = false
 	$Taskbar/GoWork.disabled = true
 	$Taskbar/GoWork.text = "Unpaid Bills"
+	UpdateStatus()
+
+func UpdateStatus():
+	if GlobalVar.CurrentLevel > 0:
+		GlobalVar.Health = GlobalVar.Health - (HealthChange * GlobalVar.CurrentLevel)
+		GlobalVar.Hunger = GlobalVar.Hunger - (HungerChange * GlobalVar.CurrentLevel)
+		GlobalVar.Security = GlobalVar.Security - (SecurityChange * GlobalVar.CurrentLevel)
 	
 func EnableWork():
 	$Taskbar/GoWork.text = "Go to work"
