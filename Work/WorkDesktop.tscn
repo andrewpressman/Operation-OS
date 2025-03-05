@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7orqndgslsdv"]
+[gd_scene load_steps=5 format=3 uid="uid://c7orqndgslsdv"]
 
 [ext_resource type="Script" uid="uid://dhdrj42qeklt7" path="res://Work/WorkController.gd" id="1_efasj"]
 [ext_resource type="Script" uid="uid://bu5bal6bbm8dn" path="res://Work/clock.gd" id="2_3wvif"]
 [ext_resource type="Texture2D" uid="uid://c7ecxux7xtje8" path="res://Assets/Images/TempTorrN.jpg" id="2_i3hxq"]
+[ext_resource type="Script" uid="uid://ditn1fmyebwaw" path="res://Work/Bribe.gd" id="4_pnja2"]
 
 [node name="WorkScreen" type="Node2D"]
 script = ExtResource("1_efasj")
@@ -119,13 +120,6 @@ texture = ExtResource("2_i3hxq")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 15.0
 
-[node name="MissingText" type="Label" parent="."]
-offset_left = 896.0
-offset_top = 568.0
-offset_right = 1090.0
-offset_bottom = 591.0
-text = "This button does nothing"
-
 [node name="GoHome" type="Button" parent="."]
 visible = false
 offset_left = 8.0
@@ -134,9 +128,62 @@ offset_right = 120.0
 offset_bottom = 200.0
 text = "Go Home"
 
+[node name="Bribe" type="Panel" parent="."]
+offset_left = 888.0
+offset_top = 64.0
+offset_right = 1080.0
+offset_bottom = 192.0
+script = ExtResource("4_pnja2")
+
+[node name="Label" type="Label" parent="Bribe"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 32.0
+text = "Bribe available"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="Bribe"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 32.0
+offset_right = 88.0
+offset_bottom = 64.0
+text = "Value: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Risk" type="Label" parent="Bribe"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 32.0
+offset_right = 186.0
+offset_bottom = 64.0
+text = "Risk: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Accept" type="Button" parent="Bribe"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 72.0
+offset_right = 88.0
+offset_bottom = 120.0
+text = "Accept"
+
+[node name="Decline" type="Button" parent="Bribe"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 72.0
+offset_right = 186.0
+offset_bottom = 120.0
+text = "Decline"
+
 [connection signal="pressed" from="Taskbar/NumberPad" to="." method="DisplayNumpad"]
 [connection signal="pressed" from="Taskbar/FileManager" to="." method="DisplayFileManager"]
 [connection signal="pressed" from="Taskbar/Messenger" to="." method="DisplayMessages"]
 [connection signal="pressed" from="Taskbar/Requests" to="." method="DisplayRequest"]
 [connection signal="pressed" from="Taskbar/Buttons" to="." method="DisplayButtons"]
 [connection signal="pressed" from="GoHome" to="." method="GoHome"]
+[connection signal="pressed" from="Bribe/Accept" to="Bribe" method="AcceptBribe"]
+[connection signal="pressed" from="Bribe/Decline" to="Bribe" method="DeclineBribe"]
