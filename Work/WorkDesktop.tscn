@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c7orqndgslsdv"]
 
-[ext_resource type="Script" path="res://Work/WorkController.gd" id="1_efasj"]
-[ext_resource type="Script" path="res://Work/clock.gd" id="2_3wvif"]
+[ext_resource type="Script" uid="uid://dhdrj42qeklt7" path="res://Work/WorkController.gd" id="1_efasj"]
+[ext_resource type="Script" uid="uid://bu5bal6bbm8dn" path="res://Work/clock.gd" id="2_3wvif"]
 [ext_resource type="Texture2D" uid="uid://c7ecxux7xtje8" path="res://Assets/Images/TempTorrN.jpg" id="2_i3hxq"]
 
 [node name="WorkScreen" type="Node2D"]
@@ -118,22 +118,6 @@ texture = ExtResource("2_i3hxq")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 15.0
-
-[node name="TempWinner" type="Label" parent="."]
-visible = false
-offset_left = 368.0
-offset_top = 200.0
-offset_right = 800.0
-offset_bottom = 400.0
-text = "A winner is you"
-
-[node name="TempLoser" type="Label" parent="."]
-visible = false
-offset_left = 368.0
-offset_top = 200.0
-offset_right = 800.0
-offset_bottom = 400.0
-text = "A loser is you"
 
 [node name="MissingText" type="Label" parent="."]
 offset_left = 896.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b3ocxjuqehi5p"]
 
-[ext_resource type="Script" path="res://Tasks/MemoReview.gd" id="1_0nkbs"]
+[ext_resource type="Script" uid="uid://c7qhlnl0gidp7" path="res://Tasks/MemoReview.gd" id="1_0nkbs"]
 
 [node name="Requests" type="Window"]
 initial_position = 2

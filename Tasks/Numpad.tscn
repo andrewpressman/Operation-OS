@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d2shk4b3e116w"]
 
-[ext_resource type="Script" path="res://Tasks/Numpad.gd" id="1_kf71x"]
+[ext_resource type="Script" uid="uid://dwwul1673fc4e" path="res://Tasks/Numpad.gd" id="1_kf71x"]
 
 [node name="Window" type="Window"]
 initial_position = 2

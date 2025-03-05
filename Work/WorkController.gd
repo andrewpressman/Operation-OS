@@ -52,7 +52,7 @@ func _process(delta):
 		#TEMP: show fail and victory
 		if GlobalVar.Lives == 0:
 			#TODO: something?
-			$TempLoser.visible = true
+			pass
 		elif GlobalVar.Tasks == 0:
 			$GoHome.visible = true
 			if ShiftComplete == false:

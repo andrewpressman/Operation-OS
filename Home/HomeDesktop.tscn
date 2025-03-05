@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://b7ona7h1qsp11"]
 
-[ext_resource type="Script" path="res://Home/HomeController.gd" id="1_h8ttb"]
+[ext_resource type="Script" uid="uid://xfshrrfypgpw" path="res://Home/HomeController.gd" id="1_h8ttb"]
 [ext_resource type="Texture2D" uid="uid://c7ecxux7xtje8" path="res://Assets/Images/TempTorrN.jpg" id="2_83bdw"]
-[ext_resource type="Script" path="res://Work/clock.gd" id="2_g4fyx"]
-[ext_resource type="Script" path="res://Home/finances.gd" id="3_qon11"]
-[ext_resource type="Script" path="res://Home/FilesCLI.gd" id="4_x257b"]
+[ext_resource type="Script" uid="uid://bu5bal6bbm8dn" path="res://Work/clock.gd" id="2_g4fyx"]
+[ext_resource type="Script" uid="uid://wx6udpnlcvrg" path="res://Home/finances.gd" id="3_qon11"]
+[ext_resource type="Script" uid="uid://0yisn75o4osx" path="res://Home/FilesCLI.gd" id="4_x257b"]
 
 [node name="HomeScreen" type="Node2D"]
 script = ExtResource("1_h8ttb")

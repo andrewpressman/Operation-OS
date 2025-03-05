@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://b5wvidfv3nema"]
 
-[ext_resource type="Script" path="res://Tasks/Buttons.gd" id="1_y6534"]
+[ext_resource type="Script" uid="uid://2xxxsq35ea4d" path="res://Tasks/Buttons.gd" id="1_y6534"]
 [ext_resource type="StyleBox" uid="uid://d03i1mx53io2p" path="res://Assets/StyleBoxes/Buttons.tres" id="2_gfsxd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8r7pg"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dev5dbnhd2diw"]
 
-[ext_resource type="Script" path="res://Tasks/FileManager.gd" id="1_oo73u"]
+[ext_resource type="Script" uid="uid://ctwub6ej1nynm" path="res://Tasks/FileManager.gd" id="1_oo73u"]
 
 [node name="Panel" type="Window"]
 initial_position = 1
@@ -88,6 +88,7 @@ theme_override_font_sizes/font_size = 12
 selected = 0
 item_count = 1
 popup/item_0/text = "File Source"
+popup/item_0/id = 0
 
 [node name="Target" type="OptionButton" parent="."]
 offset_left = 584.0
@@ -98,6 +99,7 @@ theme_override_font_sizes/font_size = 12
 selected = 0
 item_count = 1
 popup/item_0/text = "File Target"
+popup/item_0/id = 0
 
 [connection signal="close_requested" from="." to="." method="Kill"]
 [connection signal="timeout" from="Timer" to="." method="TimeDelay"]
