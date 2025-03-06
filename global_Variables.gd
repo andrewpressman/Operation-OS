@@ -30,6 +30,11 @@ var Health : int # 0 -> 100
 var Hunger : int # 0 - 100 -> starving, hungry, irritated, fed, full
 var Security : int #0 - 100 -> Imminent Threat, In Danger, Low Risk, Safe
 
+#Bribes tracker
+var BribeValue : int
+var BribeRisk : int
+var BribeTaken : int
+
 #Intial Starting Values
 var StartMoney : int = 500
 var StartRentPrice : int = 100

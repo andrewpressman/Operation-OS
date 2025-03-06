@@ -32,7 +32,7 @@ func _ready():
 func Kill():
 	queue_free()
 
-func _process(delta):
+func _process(_delta):
 	if TargetDropdown.get_selected_id() != 0 && SourceDropdown.get_selected_id() != 0:
 		$Transfer.disabled = false
 	else:

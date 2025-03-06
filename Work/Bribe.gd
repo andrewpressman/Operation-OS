@@ -5,18 +5,25 @@ var Risk : int
 var Accept : bool
 
 func _ready() -> void:
-	SetBribeRisk()
 	SetBribeValue()
+	SetBribeRisk()
+
+func reset():
+	SetBribeValue()
+	SetBribeRisk()
 	
 func AcceptBribe():
 	Accept = true
-	print("accept")
-	#alter task
-
+	GlobalVar.BribeTaken = true
+	var SecurityHit = randi_range(0,Risk)
+	GlobalVar.Security = GlobalVar.Security - SecurityHit
+	get_parent().GetNewTask()
+	
+	
 func DeclineBribe():
 	Accept = false
-	print("decline")
-	#Close window
+	GlobalVar.BribeTaken = false
+	get_parent().hideBribe()
 
 func SetBribeValue():
 	var low : int
@@ -26,6 +33,7 @@ func SetBribeValue():
 	high = GlobalVar.Security * 2
 	
 	Value = randi_range(low, high)
+	GlobalVar.BribeValue = Value
 	$Value.text = "Value: " + str(Value) 
 	
 func SetBribeRisk():
@@ -36,5 +44,7 @@ func SetBribeRisk():
 	high = Value * 2
 	
 	Risk = randi_range(low, high)
+	@warning_ignore("integer_division")
 	Risk = Risk / 10
+	GlobalVar.BribeRisk = Value
 	$Risk.text = "Risk: " + str(Risk) 

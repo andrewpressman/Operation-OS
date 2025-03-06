@@ -30,7 +30,9 @@ func SetTarget():
 				TargetButton = GlobalObj.TargetButton
 			2:
 				#UpdateL1 and R1
+				@warning_ignore("narrowing_conversion")
 				TargetL1 = GlobalObj.TargetLeversL1
+				@warning_ignore("narrowing_conversion")
 				TargetR1 = GlobalObj.TargetLeversR1
 			3:
 				TargetSwitch = GlobalObj.TargetSwitch
@@ -101,7 +103,6 @@ func SetLevers(input : bool):
 func Confirm():
 	SetLevers(false)
 	SetSwitchBoard(false)
-	var CorrectSwitch : bool = false
 	var case = GlobalObj.TargetWindow
 	match case:
 		2:

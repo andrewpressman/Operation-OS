@@ -129,6 +129,7 @@ offset_bottom = 200.0
 text = "Go Home"
 
 [node name="Bribe" type="Panel" parent="."]
+visible = false
 offset_left = 888.0
 offset_top = 64.0
 offset_right = 1080.0
@@ -139,7 +140,7 @@ script = ExtResource("4_pnja2")
 layout_mode = 0
 offset_right = 192.0
 offset_bottom = 32.0
-text = "Bribe available"
+text = "Bribe Available"
 horizontal_alignment = 1
 vertical_alignment = 1
 

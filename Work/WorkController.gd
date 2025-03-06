@@ -41,16 +41,17 @@ func _ready():
 	GetNewTask()
 	
 
-func _process(delta):
+func _process(_delta):
 	if CurrentScore != GlobalVar.Score:
 		UpdateScore()
 		
-	if GlobalObj.ObjectiveComplete == true:
+	if GlobalObj.ObjectiveComplete:
 		GlobalObj.ObjectiveComplete = false
-		GlobalVar.Tasks = GlobalVar.Tasks - 1
+		if !GlobalVar.BribeTaken:
+			GlobalVar.Tasks = GlobalVar.Tasks - 1
 		
 		#TEMP: show fail and victory
-		if GlobalVar.Lives == 0:
+		if GlobalVar.Lives <= 0:
 			#TODO: something?
 			pass
 		elif GlobalVar.Tasks == 0:
@@ -61,6 +62,22 @@ func _process(delta):
 				SetObjective()
 		else:
 			GetNewTask()
+			GetBribe()
+
+func GetBribe():
+	var rand = randi_range(1,5)
+	if  rand == 1:
+		$Bribe.visible = true
+		GlobalVar.BribeTaken = false
+		$Bribe.reset()
+	else:
+		$Bribe.visible = false
+
+func AcceptBribe():
+	GetNewTask()
+
+func hideBribe():
+	$Bribe.visible = false
 
 #Go to home Desktop			
 func GoHome():
@@ -71,6 +88,9 @@ func CheckLives():
 	if GlobalObj.TaskFailed:
 		GlobalVar.Lives = GlobalVar.Lives - 1
 	else:
+		if GlobalVar.BribeTaken:
+			GlobalVar.Lives = GlobalVar.Lives - 1
+			GlobalVar.Money += GlobalVar.BribeValue
 		GlobalVar.Money += GlobalVar.Salary
 		
 #Gets a new objective
@@ -93,7 +113,8 @@ func GetNewTask():
 
 #Sets objective text
 func SetObjective():
-	var Objective : String = "Current Objective: "
+	var Objective : String
+	Objective = "Current Objective: "
 	match GlobalVar.CurrentObj:
 		1:
 			Objective = Objective + "Input number " + str(GlobalObj.NumberpadNum)
@@ -106,7 +127,11 @@ func SetObjective():
 		5:
 			Objective = Objective + "Shift Complete"
 	
+	if GlobalVar.BribeTaken && GlobalVar.CurrentObj != 5:
+		Objective = Objective + " : BRIBE TASK"
+	
 	Objective = Objective + "\n Tasks Left: " +  str(GlobalVar.Tasks)
+	
 	$Header/ObjectiveText.text = Objective
 
 #Updates score

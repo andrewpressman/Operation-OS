@@ -24,7 +24,6 @@ func GetRandomButton():
 	GlobalVar.CurrentObj = 2
 	ObjectiveComplete = false
 	TargetWindow = randi_range(1,3)
-	print(str(TargetWindow))
 	match TargetWindow:
 		1:
 			TargetButton = randi_range(1,4)
