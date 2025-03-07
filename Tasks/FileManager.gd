@@ -1,5 +1,5 @@
 extends Window
-#768x, 384y
+#668x, 284y
 
 
 var Next : bool

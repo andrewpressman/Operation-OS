@@ -9,6 +9,40 @@ func _ready():
 	TypeLockout = false
 	SetKey()
 
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("num0"):
+		ButtonZero()
+	
+	if Input.is_action_just_pressed("num1"):
+		ButtonOne()
+	
+	if Input.is_action_just_pressed("num2"):
+		ButtonTwo()
+	
+	if Input.is_action_just_pressed("num3"):
+		ButtonThree()
+	
+	if Input.is_action_just_pressed("num4"):
+		ButtonFour()
+	
+	if Input.is_action_just_pressed("num5"):
+		ButtonFive()
+	
+	if Input.is_action_just_pressed("num6"):
+		ButtonSix()
+	
+	if Input.is_action_just_pressed("num7"):
+		ButtonSeven()
+	
+	if Input.is_action_just_pressed("num8"):
+		ButtonEight()
+	
+	if Input.is_action_just_pressed("num9"):
+		ButtonNine()
+	if Input.is_action_just_pressed("ui_accept"):
+		GoButton()
+	
+
 func Clear():
 	WholeNumber = ""	
 	$Display/Label.text = WholeNumber
