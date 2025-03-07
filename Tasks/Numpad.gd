@@ -9,7 +9,7 @@ func _ready():
 	TypeLockout = false
 	SetKey()
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("num0"):
 		ButtonZero()
 	
@@ -39,6 +39,7 @@ func _input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("num9"):
 		ButtonNine()
+		
 	if Input.is_action_just_pressed("ui_accept"):
 		GoButton()
 	

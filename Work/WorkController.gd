@@ -14,6 +14,9 @@ var RequestIst : Node = null
 var Buttons = preload("res://Tasks/Buttons.tscn")
 var ButtonsIst: Node = null
 
+var Options = preload("res://Menu/Options.tscn")
+var OptionsIst: Node = null
+
 var CurrentScore : int = 0
 
 var ShiftComplete : bool
@@ -40,6 +43,11 @@ func _ready():
 		#Continue down for more levels
 	GetNewTask(false)
 	
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		if GlobalVar.optionsVisible == false:
+			DisplayOptions()
+			GlobalVar.optionsVisible = true
 
 func _process(_delta):
 	if CurrentScore != GlobalVar.Score:
@@ -135,13 +143,6 @@ func SetObjective():
 #Updates score
 func UpdateScore():
 	$Header/Score.text = "Money: " + str(GlobalVar.Money) + "\nFailures: " + str(GlobalVar.Lives)
-	
-#Button to open settings windo
-#TODO: add settings
-func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		#Show Options Window
-		print("escape")
 
 func DisplayNumpad():
 	if NumpadIst && is_instance_valid(NumpadIst):
@@ -179,6 +180,15 @@ func DisplayFileManager():
 		var t4 = FileManager.instantiate()
 		FileManagerIst = t4
 		add_child(t4)
+		
+func DisplayOptions():
+	if OptionsIst && is_instance_valid(OptionsIst):
+		OptionsIst.queue_free()
+		OptionsIst = null
+	else:
+		var t5 = Options.instantiate()
+		OptionsIst = t5
+		add_child(t5)
 
 func DisplayMessages():
 	$MissingText.visible = !$MissingText.visible

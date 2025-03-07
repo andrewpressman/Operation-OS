@@ -45,3 +45,5 @@ var StartDebt : int = 0
 
 #Current Level tracker
 var CurrentLevel : int = 0
+
+var optionsVisible = false

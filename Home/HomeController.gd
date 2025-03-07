@@ -4,6 +4,9 @@ extends Node2D
 @export var HungerChange : int
 @export var SecurityChange : int
 
+var Options = preload("res://Menu/Options.tscn")
+var OptionsIst: Node = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Finances.visible = false
@@ -11,6 +14,12 @@ func _ready() -> void:
 	$Taskbar/GoWork.disabled = true
 	$Taskbar/GoWork.text = "Unpaid Bills"
 	UpdateStatus()
+
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		if GlobalVar.optionsVisible == false:
+			DisplayOptions()
+			GlobalVar.optionsVisible = true
 
 func UpdateStatus():
 	if GlobalVar.CurrentLevel > 0:
@@ -31,3 +40,12 @@ func FinancesButton():
 	
 func FilesButton():
 	$Files.visible = !$Files.visible
+
+func DisplayOptions():
+	if OptionsIst && is_instance_valid(OptionsIst):
+		OptionsIst.queue_free()
+		OptionsIst = null
+	else:
+		var t5 = Options.instantiate()
+		OptionsIst = t5
+		add_child(t5)
