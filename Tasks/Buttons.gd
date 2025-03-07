@@ -54,7 +54,7 @@ func SetDisplay():
 			if TargetButton == 4: 
 				$Display/Label.text = "Press button Yellow"
 		2:
-			$Display/Label.text = "Set L1 to: " + str(GlobalObj.TargetLeversL1) + "& Set R1 to: " + str(GlobalObj.TargetLeversR1)
+			$Display/Label.text = "Set L1 to: " + str(int(GlobalObj.TargetLeversL1)) + "& Set R1 to: " + str(int(GlobalObj.TargetLeversR1))
 		3:
 			match GlobalObj.TargetSwitch:
 				0: $Display/Label.text = "Flip switch: Option A"

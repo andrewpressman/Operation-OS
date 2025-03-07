@@ -38,7 +38,7 @@ func _ready():
 			GlobalVar.Lives = 10
 			GlobalVar.Tasks = 20
 		#Continue down for more levels
-	GetNewTask()
+	GetNewTask(false)
 	
 
 func _process(_delta):
@@ -61,20 +61,16 @@ func _process(_delta):
 				GlobalVar.CurrentObj = 5
 				SetObjective()
 		else:
-			GetNewTask()
 			GetBribe()
+			GetNewTask(false)
 
 func GetBribe():
 	var rand = randi_range(1,5)
 	if  rand == 1:
 		$Bribe.visible = true
-		GlobalVar.BribeTaken = false
 		$Bribe.reset()
 	else:
 		$Bribe.visible = false
-
-func AcceptBribe():
-	GetNewTask()
 
 func hideBribe():
 	$Bribe.visible = false
@@ -89,13 +85,15 @@ func CheckLives():
 		GlobalVar.Lives = GlobalVar.Lives - 1
 	else:
 		if GlobalVar.BribeTaken:
-			GlobalVar.Lives = GlobalVar.Lives - 1
 			GlobalVar.Money += GlobalVar.BribeValue
+			GlobalVar.Lives = GlobalVar.Lives - 1
+			GlobalVar.BribeTaken = false
 		GlobalVar.Money += GlobalVar.Salary
 		
 #Gets a new objective
-func GetNewTask():
-	CheckLives()
+func GetNewTask(bribe : bool):
+	if !bribe: 
+		CheckLives()
 	#TODO: prevent repeat objectives???
 	var Obj = randi_range(1,4)
 	match Obj:

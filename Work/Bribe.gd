@@ -7,17 +7,23 @@ var Accept : bool
 func _ready() -> void:
 	SetBribeValue()
 	SetBribeRisk()
+	$Accept.disabled = false
+	$Decline.disabled = false
 
 func reset():
 	SetBribeValue()
 	SetBribeRisk()
+	$Accept.disabled = false
+	$Decline.disabled = false
 	
 func AcceptBribe():
 	Accept = true
+	$Accept.disabled = true
+	$Decline.disabled = true
 	GlobalVar.BribeTaken = true
 	var SecurityHit = randi_range(0,Risk)
 	GlobalVar.Security = GlobalVar.Security - SecurityHit
-	get_parent().GetNewTask()
+	get_parent().GetNewTask(true)
 	
 	
 func DeclineBribe():
