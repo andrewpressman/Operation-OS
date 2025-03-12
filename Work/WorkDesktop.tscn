@@ -1,9 +1,62 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7orqndgslsdv"]
+[gd_scene load_steps=10 format=3 uid="uid://c7orqndgslsdv"]
 
 [ext_resource type="Script" uid="uid://dhdrj42qeklt7" path="res://Work/WorkController.gd" id="1_efasj"]
 [ext_resource type="Script" uid="uid://bu5bal6bbm8dn" path="res://Work/clock.gd" id="2_3wvif"]
+[ext_resource type="Script" uid="uid://ouxedtqym3rp" path="res://Work/Animations.gd" id="2_d8cx6"]
 [ext_resource type="Texture2D" uid="uid://c7ecxux7xtje8" path="res://Assets/Images/TempTorrN.jpg" id="2_i3hxq"]
 [ext_resource type="Script" uid="uid://ditn1fmyebwaw" path="res://Work/Bribe.gd" id="4_pnja2"]
+
+[sub_resource type="Animation" id="Animation_7ml6k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-140, 192)]
+}
+
+[sub_resource type="Animation" id="Animation_b8fcm"]
+resource_name = "Slide_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-140, 192), Vector2(30, 192)]
+}
+
+[sub_resource type="Animation" id="Animation_5ocmi"]
+resource_name = "Slide_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(30, 192), Vector2(-140, 192)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cpjbh"]
+_data = {
+&"RESET": SubResource("Animation_7ml6k"),
+&"Slide_in": SubResource("Animation_b8fcm"),
+&"Slide_out": SubResource("Animation_5ocmi")
+}
 
 [node name="WorkScreen" type="Node2D"]
 script = ExtResource("1_efasj")
@@ -13,6 +66,33 @@ offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0.435294, 0.733333, 1)
 metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../stats")
+libraries = {
+&"": SubResource("AnimationLibrary_cpjbh")
+}
+script = ExtResource("2_d8cx6")
+
+[node name="stats" type="Panel" parent="."]
+offset_left = -140.0
+offset_top = 192.0
+offset_right = -12.0
+offset_bottom = 416.0
+
+[node name="Label" type="Label" parent="stats"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 120.0
+offset_bottom = 216.0
+text = "Health:
+
+Hunger:
+
+Security:
+
+Debt:"
 
 [node name="Taskbar" type="Panel" parent="."]
 offset_top = 600.0
