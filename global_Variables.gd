@@ -35,6 +35,9 @@ var BribeValue : int
 var BribeRisk : int
 var BribeTaken : int
 
+#ClockManagement
+var TimerFail : bool 
+
 #Intial Starting Values
 var StartMoney : int = 500
 var StartRentPrice : int = 100

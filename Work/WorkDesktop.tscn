@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://c7orqndgslsdv"]
+[gd_scene load_steps=12 format=3 uid="uid://c7orqndgslsdv"]
 
 [ext_resource type="Script" uid="uid://dhdrj42qeklt7" path="res://Work/WorkController.gd" id="1_efasj"]
 [ext_resource type="Script" uid="uid://bu5bal6bbm8dn" path="res://Work/clock.gd" id="2_3wvif"]
 [ext_resource type="Script" uid="uid://ouxedtqym3rp" path="res://Work/Animations.gd" id="2_d8cx6"]
 [ext_resource type="Texture2D" uid="uid://c7ecxux7xtje8" path="res://Assets/Images/TempTorrN.jpg" id="2_i3hxq"]
+[ext_resource type="Script" uid="uid://cnfqjoc5c4ipj" path="res://Work/statsDisplay.gd" id="3_7ml6k"]
 [ext_resource type="Script" uid="uid://ditn1fmyebwaw" path="res://Work/Bribe.gd" id="4_pnja2"]
+[ext_resource type="Script" uid="uid://bv0ygflgtevmh" path="res://Work/Timer.gd" id="7_b8fcm"]
 
 [sub_resource type="Animation" id="Animation_7ml6k"]
 length = 0.001
@@ -79,6 +81,7 @@ offset_left = -140.0
 offset_top = 192.0
 offset_right = -12.0
 offset_bottom = 416.0
+script = ExtResource("3_7ml6k")
 
 [node name="Label" type="Label" parent="stats"]
 layout_mode = 0
@@ -197,9 +200,6 @@ position = Vector2(64, 96)
 scale = Vector2(0.3, 0.26)
 texture = ExtResource("2_i3hxq")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 15.0
-
 [node name="GoHome" type="Button" parent="."]
 visible = false
 offset_left = 8.0
@@ -209,11 +209,10 @@ offset_bottom = 200.0
 text = "Go Home"
 
 [node name="Bribe" type="Panel" parent="."]
-visible = false
-offset_left = 888.0
-offset_top = 64.0
-offset_right = 1080.0
-offset_bottom = 192.0
+offset_left = 896.0
+offset_top = 448.0
+offset_right = 1088.0
+offset_bottom = 576.0
 script = ExtResource("4_pnja2")
 
 [node name="Label" type="Label" parent="Bribe"]
@@ -260,6 +259,25 @@ offset_right = 186.0
 offset_bottom = 120.0
 text = "Decline"
 
+[node name="Timer" type="Panel" parent="."]
+offset_left = 896.0
+offset_top = 64.0
+offset_right = 1088.0
+offset_bottom = 192.0
+script = ExtResource("7_b8fcm")
+
+[node name="Label" type="Label" parent="Timer"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 128.0
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Timer"]
+wait_time = 3.0
+autostart = true
+
 [connection signal="pressed" from="Taskbar/NumberPad" to="." method="DisplayNumpad"]
 [connection signal="pressed" from="Taskbar/FileManager" to="." method="DisplayFileManager"]
 [connection signal="pressed" from="Taskbar/Messenger" to="." method="DisplayMessages"]
@@ -268,3 +286,4 @@ text = "Decline"
 [connection signal="pressed" from="GoHome" to="." method="GoHome"]
 [connection signal="pressed" from="Bribe/Accept" to="Bribe" method="AcceptBribe"]
 [connection signal="pressed" from="Bribe/Decline" to="Bribe" method="DeclineBribe"]
+[connection signal="timeout" from="Timer/Timer" to="Timer" method="UpdateClock"]
