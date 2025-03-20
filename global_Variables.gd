@@ -37,6 +37,7 @@ var BribeTaken : int
 
 #ClockManagement
 var TimerFail : bool 
+var TimerLock : bool
 
 #Intial Starting Values
 var StartMoney : int = 500

@@ -16,7 +16,10 @@ func UpdateClock():
 	if mins <= 40:
 		mins += 10
 	else:
-		GlobalVar.TimerFail = true
+		if !GlobalVar.TimerLock:
+			GlobalVar.TimerFail = true
+		else:
+			GlobalVar.TimerLock = false
 		mins = 0
 		if hour < 12:
 			hour += 1

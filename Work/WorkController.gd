@@ -52,19 +52,12 @@ func _input(_event: InputEvent) -> void:
 func _process(_delta):
 	if CurrentScore != GlobalVar.Score:
 		UpdateScore()
-
-	if GlobalVar.TimerFail: #if timer runs out, deduct life and task thn reset objective
-			print("TimerFail")
-			GlobalVar.TimerFail = false
-			GlobalVar.Tasks = GlobalVar.Tasks - 1
-			GlobalVar.Lives = GlobalVar.Lives - 1
-			GetNewTask(true)
 		
 	if GlobalObj.ObjectiveComplete: #if objectivs is completed, reset objective tracker and assign new task
 		GlobalObj.ObjectiveComplete = false
+		GlobalVar.TimerLock = true
 		if !GlobalVar.BribeTaken: #if bribe was not taken deduct task
 			GlobalVar.Tasks = GlobalVar.Tasks - 1
-		
 		#TEMP: show fail and victory
 		if GlobalVar.Lives <= 0: #if player is out of lives... ???
 			#TODO: something?
@@ -78,6 +71,12 @@ func _process(_delta):
 		else: #if bribe was taken, randomize new bribe, reset task without deducting failures (its done elsewhere)
 			GetBribe()
 			GetNewTask(false)
+
+	if GlobalVar.TimerFail && !GlobalVar.TimerLock: #if timer runs out amd task is failed, deduct life and task thn reset objective
+		GlobalVar.TimerFail = false
+		GlobalVar.Tasks = GlobalVar.Tasks - 1
+		GlobalVar.Lives = GlobalVar.Lives - 1
+		GetNewTask(true)
 
 func GetBribe():
 	var rand = randi_range(1,5)
