@@ -17,6 +17,9 @@ var ButtonsIst: Node = null
 var Options = preload("res://Menu/Options.tscn")
 var OptionsIst: Node = null
 
+var PopupAd = preload("res://Work/popupAd.tscn")
+var PopupIst : Node = null
+
 var CurrentScore : int = 0
 
 var ShiftComplete : bool
@@ -77,6 +80,11 @@ func _process(_delta):
 		GlobalVar.Tasks = GlobalVar.Tasks - 1
 		GlobalVar.Lives = GlobalVar.Lives - 1
 		GetNewTask(true)
+
+func CheckAd():
+	var ShowPopup = randi_range(1,20)
+	if ShowPopup == 5:
+		DisplayPopup()
 
 func GetBribe():
 	var rand = randi_range(1,5)
@@ -195,6 +203,15 @@ func DisplayOptions():
 		var t5 = Options.instantiate()
 		OptionsIst = t5
 		add_child(t5)
+
+func DisplayPopup():
+	if PopupIst && is_instance_valid(PopupIst):
+		PopupIst.queue_free()
+		PopupIst = null
+	else:
+		var t6 = PopupAd.instantiate()
+		PopupIst = t6
+		add_child(t6)
 
 func DisplayMessages():
 	$MissingText.visible = !$MissingText.visible

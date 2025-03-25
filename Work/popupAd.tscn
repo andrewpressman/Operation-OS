@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://djqvn2k0bajbs"]
+
+[ext_resource type="Script" uid="uid://fy67ht8f02cu" path="res://Work/popup_ad.gd" id="1_tcsk7"]
+
+[node name="Panel" type="Window"]
+size = Vector2i(896, 512)
+unresizable = true
+script = ExtResource("1_tcsk7")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 896.0
+offset_bottom = 512.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 128.0
+offset_right = 832.0
+offset_bottom = 307.0
+text = "This work shift is sponsored by Raid Shadow Legends, use code DEEZNUTS for 500 free gems and 1 unique hero. Are you still reading this? time is running out and you gotta get back to tasks, unless i removed the timer in which case hi, hows it going? Enjoying the game? Remember to compliment the dev, he will never give you up, never let you down, never run aroud, and hurt you. Never gonna make you cry, never gonna tell a lie, never gonna say goodby, and hurt you. Okay you have to  have failed a task by now, wonder if this will effect your stats, i havent implement it yet. okay byeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[connection signal="close_requested" from="." to="." method="Kill"]
