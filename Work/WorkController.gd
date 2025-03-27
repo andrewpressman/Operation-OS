@@ -24,10 +24,13 @@ var CurrentScore : int = 0
 
 var ShiftComplete : bool
 
+var FirstTask : bool
+
 # Called when the node enters the scene tree for the first time.
 # Lives = amount of times the player can fail a task
 # Tasks = Number of tasks the player is given per shift
 func _ready():
+	FirstTask = true
 	$GoHome.visible = false
 	ShiftComplete = false
 	$Timer.StartTimer()
@@ -105,7 +108,9 @@ func CheckAd():
 		PopupChance = LowAdChance
 		
 	var ShowPopup = randi_range(1,PopupChance)
-	if ShowPopup == 1:
+	if FirstTask:
+		FirstTask = false
+	elif ShowPopup == 1:
 		DisplayPopup()
 
 func GetBribe():
