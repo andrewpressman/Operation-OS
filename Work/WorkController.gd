@@ -121,6 +121,9 @@ func hideBribe():
 
 #Go to home Desktop			
 func GoHome():
+	GlobalVar.Health = GlobalVar.Health - (10 + GlobalVar.CurrentLevel)
+	GlobalVar.Hunger = GlobalVar.Hunger - (10 + GlobalVar.CurrentLevel)
+	GlobalVar.Security = GlobalVar.Security - (10 + GlobalVar.CurrentLevel)
 	get_tree().change_scene_to_file("res://Home/HomeDesktop.tscn")
 
 #Check lives

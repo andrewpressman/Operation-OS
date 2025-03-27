@@ -23,24 +23,28 @@ func _ready() -> void:
 	PaidMeds = false
 	PaidSecurity = false
 	PaidDebt = false
+	$Bills/Food.disabled = true
+	$Bills/Meds.disabled = true
 	SetAvailable()
 	
 	if GlobalVar.CurrentLevel == 0:
 		$Bills/Food.visible = false
+		$Bills/FoodQuality.visible = false
 		$Bills/Meds.visible = false
+		$Bills/MedsQuality.visible = false
 		$Bills/Security.visible = false
+		$Bills/Security.disabled = true
 		$Bills/Debt.visible = false
 		PaidFood = true
 		PaidMeds = true
 		PaidSecurity = true
+
 
 func SetAvailable(): #Other bills can only be paid when debt is 0 (Or some arbitray value)
 	if GlobalVar.Debt == 0:
 		if !PaidRent && !PaidFood && !PaidMeds && !PaidSecurity:
 			$Bills/Debt.visible = false
 			$Bills/Rent.disabled = false
-			$Bills/Food.disabled = false
-			$Bills/Meds.disabled = false
 			$Bills/Security.disabled = false
 
 	else:
@@ -99,8 +103,6 @@ func SetPrices():
 		GlobalVar.SecurityPrice += GlobalVar.SecurityIncrease * GlobalVar.CurrentLevel
 
 	$Bills/Rent.text = "Rent: $" + str(GlobalVar.RentPrice) 
-	$Bills/Food.text = "Food: $" + str(GlobalVar.FoodPrice) 
-	$Bills/Meds.text = "Meds: $" + str(GlobalVar.MedsPrice)
 	$Bills/Security.text = "Security: $" + str(GlobalVar.SecurityPrice)
 	
 	if GlobalVar.Money > GlobalVar.Debt:
@@ -118,7 +120,18 @@ func PayBills():
 		GlobalVar.Money = 0
 		CurrentDebt = (GlobalVar.Money - AmountDue) * -1 + GlobalVar.Debt
 		GlobalVar.Debt = CurrentDebt
-		
+	
+	match $Bills/FoodQuality.get_selected_id():
+			1:
+				HungerChange = HungerChange / 2
+			3:
+				HungerChange = HungerChange * 2
+				
+	match $Bills/MedsQuality.get_selected_id():
+			1:
+				HealthChange = HealthChange / 2
+			3:
+				HealthChange = HealthChange * 2				
 		
 	if PaidRent: 
 		$Bills/Rent.text = "Rent: PAID"
@@ -126,17 +139,17 @@ func PayBills():
 		$Bills/Rent.button_pressed = false
 	if PaidFood:
 		$Bills/Food.text = "Food: PAID"
-		GlobalVar.Hunger = GlobalVar.Hunger - (HungerChange * GlobalVar.CurrentLevel)
+		GlobalVar.Hunger = GlobalVar.Hunger + (HungerChange)
 		$Bills/Food.disabled = true
 		$Bills/Food.button_pressed = false
 	if PaidMeds:
 		$Bills/Meds.text = "Meds: PAID"
-		GlobalVar.Health = GlobalVar.Health + (HealthChange * GlobalVar.CurrentLevel)
+		GlobalVar.Health = GlobalVar.Health + (HealthChange)
 		$Bills/Meds.disabled = true
 		$Bills/Meds.button_pressed = false
 	if PaidSecurity:
 		$Bills/Security.text = "Security: PAID"
-		GlobalVar.Security = GlobalVar.Security - (SecurityChange * GlobalVar.CurrentLevel)
+		GlobalVar.Security = GlobalVar.Security + (SecurityChange)
 		$Bills/Security.disabled = true
 		$Bills/Security.button_pressed = false
 	if PaidDebt:
@@ -161,23 +174,72 @@ func ToggleRent():
 	if PaidRent:
 		AmountDue += GlobalVar.RentPrice
 	else:
-		AmountDue += -GlobalVar.RentPrice
+		AmountDue -= GlobalVar.RentPrice
 	UpdateDue()
+
+func foodSelected(input):
+	$Bills/Food.disabled = false
+	match input:
+		1:
+			$Bills/Food.text = "Food: $" + str(GlobalVar.FoodPrice / 2) 
+		2:
+			$Bills/Food.text = "Food: $" + str(GlobalVar.FoodPrice) 
+		3:
+			$Bills/Food.text = "Food: $" + str(GlobalVar.FoodPrice * 2) 
+	
+func MedsSelected(input):
+	$Bills/Meds.disabled = false
+	match input:
+		1:
+			$Bills/Meds.text = "Meds: $" + str(GlobalVar.MedsPrice / 2) 
+		2:
+			$Bills/Meds.text = "Meds: $" + str(GlobalVar.MedsPrice) 
+		3:
+			$Bills/Meds.text = "Meds: $" + str(GlobalVar.MedsPrice * 2) 
 
 func ToggleFood():
 	PaidFood = !PaidFood
 	if PaidFood:
-		AmountDue += GlobalVar.FoodPrice
+		$Bills/FoodQuality.disabled = true
+		match $Bills/FoodQuality.get_selected_id():
+			1:
+				AmountDue += GlobalVar.FoodPrice / 2
+			2:
+				AmountDue += GlobalVar.FoodPrice
+			3:
+				AmountDue += GlobalVar.FoodPrice * 2
+
 	else:
-		AmountDue += -GlobalVar.FoodPrice
+		$Bills/FoodQuality.disabled = false
+		match $Bills/FoodQuality.get_selected_id():
+			1:
+				AmountDue -= GlobalVar.FoodPrice / 2
+			2:
+				AmountDue -= GlobalVar.FoodPrice
+			3:
+				AmountDue -= GlobalVar.FoodPrice * 2
 	UpdateDue()
 
 func ToggleMeds():
 	PaidMeds = !PaidMeds
 	if PaidMeds:
-		AmountDue += GlobalVar.MedsPrice
+		$Bills/MedsQuality.disabled = true
+		match $Bills/MedsQuality.get_selected_id():
+			1:
+				AmountDue += GlobalVar.MedsPrice / 2
+			2:
+				AmountDue += GlobalVar.MedsPrice
+			3:
+				AmountDue += GlobalVar.MedsPrice * 2
 	else:
-		AmountDue += -GlobalVar.MedsPrice
+		$Bills/MedsQuality.disabled = false
+		match $Bills/MedsQuality.get_selected_id():
+			1:
+				AmountDue -= GlobalVar.MedsPrice / 2
+			2:
+				AmountDue -= GlobalVar.MedsPrice
+			3:
+				AmountDue -= GlobalVar.MedsPrice * 2
 	UpdateDue()
 
 func ToggleSecurity():
@@ -185,7 +247,7 @@ func ToggleSecurity():
 	if PaidSecurity:
 		AmountDue += GlobalVar.SecurityPrice
 	else:
-		AmountDue += -GlobalVar.SecurityPrice
+		AmountDue -= GlobalVar.SecurityPrice
 	UpdateDue()
 
 func ToggleDebt():
