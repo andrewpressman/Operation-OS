@@ -81,9 +81,10 @@ func _process(_delta):
 		GlobalVar.Lives = GlobalVar.Lives - 1
 		GetNewTask(true)
 
+@export var PopupChance : int
 func CheckAd():
-	var ShowPopup = randi_range(1,20)
-	if ShowPopup == 5:
+	var ShowPopup = randi_range(1,PopupChance)
+	if ShowPopup == 1:
 		DisplayPopup()
 
 func GetBribe():
@@ -114,6 +115,7 @@ func CheckLives():
 		
 #Gets a new objective
 func GetNewTask(bribe : bool):
+	CheckAd()
 	if !bribe: 
 		CheckLives()
 	#TODO: prevent repeat objectives???
