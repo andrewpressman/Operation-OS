@@ -30,6 +30,7 @@ var ShiftComplete : bool
 func _ready():
 	$GoHome.visible = false
 	ShiftComplete = false
+	$Timer.StartTimer()
 	#Set inital values
 	match GlobalVar.CurrentLevel:
 		1: 
@@ -43,7 +44,11 @@ func _ready():
 		3:
 			GlobalVar.Lives = 10
 			GlobalVar.Tasks = 20
+		_:
+			GlobalVar.Lives = 10
+			GlobalVar.Tasks = 20
 		#Continue down for more levels
+	GlobalVar.Lives = 500
 	GetNewTask(false)
 	
 func _input(_event: InputEvent) -> void:
@@ -55,22 +60,28 @@ func _input(_event: InputEvent) -> void:
 func _process(_delta):
 	if CurrentScore != GlobalVar.Score:
 		UpdateScore()
-		
-	if GlobalObj.ObjectiveComplete: #if objectivs is completed, reset objective tracker and assign new task
+			#TEMP: show fail and victory
+	if GlobalVar.Lives <= 0: #if player is out of lives... ???
+			#TODO: something?
+			pass	
+	
+	if (GlobalVar.Tasks == 0 || GlobalVar.ForceShiftEnd) && !ShiftComplete: #if player has finished all tasks
+		if GlobalVar.ForceShiftEnd:
+			GlobalVar.Lives -= 1
+			UpdateScore()
+		$GoHome.visible = true
+		if ShiftComplete == false:
+			ShiftComplete = true
+			GlobalVar.CurrentObj = 5
+			SetObjective()
+	
+	if GlobalObj.ObjectiveComplete && !ShiftComplete: #if objectivs is completed or shift ends, reset objective tracker and assign new task
 		GlobalObj.ObjectiveComplete = false
 		GlobalVar.TimerLock = true
 		if !GlobalVar.BribeTaken: #if bribe was not taken deduct task
 			GlobalVar.Tasks = GlobalVar.Tasks - 1
-		#TEMP: show fail and victory
-		if GlobalVar.Lives <= 0: #if player is out of lives... ???
-			#TODO: something?
-			pass
-		elif GlobalVar.Tasks == 0: #if player has finished all tasks
-			$GoHome.visible = true
-			if ShiftComplete == false:
-				ShiftComplete = true
-				GlobalVar.CurrentObj = 5
-				SetObjective()
+			GetNewTask(true)
+
 		else: #if bribe was taken, randomize new bribe, reset task without deducting failures (its done elsewhere)
 			GetBribe()
 			GetNewTask(false)
@@ -81,8 +92,18 @@ func _process(_delta):
 		GlobalVar.Lives = GlobalVar.Lives - 1
 		GetNewTask(true)
 
-@export var PopupChance : int
+@export var LowAdChance : int
+@export var MedAdChance : int
+@export var HighAdChance : int
+var PopupChance : int
 func CheckAd():
+	if GlobalVar.Security <= 10:
+		PopupChance = HighAdChance
+	elif GlobalVar.Security <= 30:
+		PopupChance = MedAdChance
+	else:
+		PopupChance = LowAdChance
+		
 	var ShowPopup = randi_range(1,PopupChance)
 	if ShowPopup == 1:
 		DisplayPopup()

@@ -12,9 +12,6 @@ func _ready() -> void:
 	Hunger = GlobalVar.Hunger
 	UpdateStats()
 	
-	
-func _process(delta: float) -> void:
-	pass
 
 func UpdateStats():
 	var HungerStr : String

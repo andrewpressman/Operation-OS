@@ -4,6 +4,10 @@
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_2s6tg")
+SecurityIncrease = 50
+MedsIncrease = 50
+FoodIncrease = 50
+RentIncrease = 50
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1152.0

@@ -93,10 +93,10 @@ func UpdateDue():
 	
 func SetPrices():
 	if GlobalVar.CurrentLevel > 1:
-		GlobalVar.RentPrice += GlobalVar.RentIncrease
-		GlobalVar.FoodPrice += GlobalVar.FoodIncrease
-		GlobalVar.MedsPrice += GlobalVar.MedsIncrease
-		GlobalVar.SecurityPrice += GlobalVar.SecurityIncrease
+		GlobalVar.RentPrice += GlobalVar.RentIncrease * GlobalVar.CurrentLevel
+		GlobalVar.FoodPrice += GlobalVar.FoodIncrease * GlobalVar.CurrentLevel
+		GlobalVar.MedsPrice += GlobalVar.MedsIncrease * GlobalVar.CurrentLevel
+		GlobalVar.SecurityPrice += GlobalVar.SecurityIncrease * GlobalVar.CurrentLevel
 
 	$Bills/Rent.text = "Rent: $" + str(GlobalVar.RentPrice) 
 	$Bills/Food.text = "Food: $" + str(GlobalVar.FoodPrice) 

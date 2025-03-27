@@ -7,7 +7,7 @@ func _ready() -> void:
 	play("RESET")
 	
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 		if Input.is_action_pressed("ui_tab") && StatsVisible == false:	
 			play("Slide_in")
 			StatsVisible = true
