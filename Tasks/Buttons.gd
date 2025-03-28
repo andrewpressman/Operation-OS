@@ -54,7 +54,7 @@ func SetDisplay():
 			if TargetButton == 4: 
 				$Display/Label.text = "Press button Yellow"
 		2:
-			$Display/Label.text = "Set L1 to: " + str(int(GlobalObj.TargetLeversL1)) + "& Set R1 to: " + str(int(GlobalObj.TargetLeversR1))
+			$Display/Label.text = "Set L1 to: " + str(int(GlobalObj.TargetLeversL1)) + " & Set R1 to: " + str(int(GlobalObj.TargetLeversR1))
 		3:
 			match GlobalObj.TargetSwitch:
 				0: $Display/Label.text = "Flip switch: Option A"
@@ -63,6 +63,8 @@ func SetDisplay():
 				3: $Display/Label.text = "Flip switch: Option D"
 				4: $Display/Label.text = "Flip switch: Option E"
 				5: $Display/Label.text = "Flip switch: Option F"
+		4:
+			$Display/Label.text = "No assigned task"
 
 func SetSwitchBoard(input : bool):
 	if input:
@@ -124,12 +126,14 @@ func Verify(con : bool):
 		if GlobalVar.CurrentObj == 2 && !GlobalObj.ObjectiveComplete:
 			GlobalObj.TaskFailed = false
 			GlobalVar.Score += 1
+		GlobalObj.TargetWindow = 4
 		await get_tree().create_timer(2).timeout
 		Kill()
 	else:
 		GlobalObj.TaskFailed = true
 		$Display/Label.text = "FAILURE"
 		await get_tree().create_timer(1).timeout
+		GlobalObj.TargetWindow = 4
 		Kill()
 	
 	GlobalObj.ObjectiveComplete = true

@@ -52,3 +52,6 @@ var StartDebt : int = 0
 var CurrentLevel : int = 0
 
 var optionsVisible = false
+
+var ToggleAutoClose : bool
+#TODO: implement

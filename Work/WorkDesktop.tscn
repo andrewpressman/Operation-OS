@@ -175,16 +175,29 @@ Time: N/A"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ObjectiveText" type="Label" parent="Header"]
+[node name="ObjectiveText" type="RichTextLabel" parent="Header"]
 layout_mode = 0
-offset_left = 784.0
-offset_top = 8.0
-offset_right = 1536.0
-offset_bottom = 56.0
-theme_override_font_sizes/font_size = 20
+offset_left = 640.0
+offset_right = 1152.0
+offset_bottom = 80.0
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 25
+bbcode_enabled = true
 text = "Current Objetive:
-Tasks Left:
-"
+Something"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TasksRemaining" type="RichTextLabel" parent="Header"]
+layout_mode = 0
+offset_left = 1152.0
+offset_right = 1664.0
+offset_bottom = 80.0
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 25
+bbcode_enabled = true
+text = "Tasks Left:
+Number"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -197,6 +210,18 @@ offset_bottom = 56.0
 theme_override_font_sizes/font_size = 20
 text = "Money:
 Falures:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Line" type="RichTextLabel" parent="Header"]
+layout_mode = 0
+offset_left = 1024.0
+offset_right = 1280.0
+offset_bottom = 80.0
+theme_override_font_sizes/bold_font_size = 27
+bbcode_enabled = true
+text = "[b]|
+|[/b]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -284,6 +309,23 @@ vertical_alignment = 1
 [node name="Timer" type="Timer" parent="Timer"]
 wait_time = 4.0
 autostart = true
+
+[node name="ShiftComplete" type="Panel" parent="."]
+offset_left = 416.0
+offset_top = 192.0
+offset_right = 736.0
+offset_bottom = 448.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ShiftComplete"]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 256.0
+theme_override_font_sizes/bold_font_size = 35
+bbcode_enabled = true
+text = "[b][color=green]Shift Complete[/color][/b]
+Return home"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Taskbar/NumberPad" to="." method="DisplayNumpad"]
 [connection signal="pressed" from="Taskbar/FileManager" to="." method="DisplayFileManager"]

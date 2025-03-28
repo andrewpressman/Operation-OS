@@ -116,9 +116,9 @@ offset_top = 64.0
 offset_right = 1088.0
 offset_bottom = 576.0
 script = ExtResource("3_qon11")
-HealthChange = 5
-HungerChange = 5
-SecurityChange = 5
+HealthChange = 6
+HungerChange = 6
+SecurityChange = 6
 metadata/_edit_lock_ = true
 
 [node name="Money" type="Panel" parent="Finances"]

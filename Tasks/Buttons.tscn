@@ -179,6 +179,7 @@ offset_left = 8.0
 offset_top = 10.0
 offset_right = 249.0
 offset_bottom = 42.0
+text = "No task Assigned"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -27,6 +27,8 @@ func UpdateStatus():
 		GlobalVar.Hunger = GlobalVar.Hunger - (HungerChange * GlobalVar.CurrentLevel)
 		GlobalVar.Security = GlobalVar.Security - (SecurityChange * GlobalVar.CurrentLevel)
 	
+	$Finances.UpdateStats()
+	
 func EnableWork():
 	$Taskbar/GoWork.text = "Go to work"
 	$Taskbar/GoWork.disabled = false

@@ -14,11 +14,15 @@ var TargetDropdown : OptionButton
 var CurrSource : int
 var CurrTarget : int
 
+var CanTransfer : bool
+var Pressed : bool
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Pressed = false
 	SourceDropdown = $Source
 	TargetDropdown = $Target
-	
+	CanTransfer = false
 	$Message.visible = false
 	ResetProgress()
 	if GlobalVar.CurrentObj == 3:
@@ -35,8 +39,10 @@ func Kill():
 func _process(_delta):
 	if TargetDropdown.get_selected_id() != 0 && SourceDropdown.get_selected_id() != 0:
 		$Transfer.disabled = false
+		CanTransfer = true
 	else:
 		$Transfer.disabled = true
+		CanTransfer = false
 		
 	if TransferActive && Next && !Complete:
 		Next = false
@@ -62,8 +68,17 @@ func _process(_delta):
 				$Progress/Six.visible = true
 				Complete = true
 		Progress += 1
-	
+
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_pressed("ui_select") && CanTransfer && !Pressed:	
+		Pressed = true
+		ButtonDown()
+	elif Input.is_action_just_released("ui_select") && CanTransfer:
+		Pressed = false
+		ButtonUp()
+
 func ButtonDown():
+	print("down")
 	CurrSource = SourceDropdown.get_selected_id()
 	CurrTarget = TargetDropdown.get_selected_id()
 	TransferActive = true

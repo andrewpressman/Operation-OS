@@ -1,4 +1,5 @@
 extends Panel
+@warning_ignore("integer_division")
 
 var PaidRent: bool
 var PaidFood : bool
@@ -17,7 +18,6 @@ var HomeScreen = get_parent()
 func _ready() -> void:
 	SetPrices()
 	UpdateMoney()
-	UpdateStats()
 	PaidRent = false
 	PaidFood = false
 	PaidMeds = false
@@ -131,7 +131,7 @@ func PayBills():
 			1:
 				HealthChange = HealthChange / 2
 			3:
-				HealthChange = HealthChange * 2				
+				HealthChange = HealthChange * 2	
 		
 	if PaidRent: 
 		$Bills/Rent.text = "Rent: PAID"

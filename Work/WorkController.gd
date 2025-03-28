@@ -32,6 +32,7 @@ var FirstTask : bool
 func _ready():
 	FirstTask = true
 	$GoHome.visible = false
+	$ShiftComplete.visible = false
 	ShiftComplete = false
 	$Timer.StartTimer()
 	#Set inital values
@@ -49,9 +50,8 @@ func _ready():
 			GlobalVar.Tasks = 20
 		_:
 			GlobalVar.Lives = 10
-			GlobalVar.Tasks = 20
+			GlobalVar.Tasks = 25
 		#Continue down for more levels
-	GlobalVar.Lives = 500
 	GetNewTask(false)
 	
 func _input(_event: InputEvent) -> void:
@@ -141,14 +141,19 @@ func CheckLives():
 			GlobalVar.Lives = GlobalVar.Lives - 1
 			GlobalVar.BribeTaken = false
 		GlobalVar.Money += GlobalVar.Salary
-		
+
+var LastTask : int
 #Gets a new objective
 func GetNewTask(bribe : bool):
 	CheckAd()
 	if !bribe: 
 		CheckLives()
-	#TODO: prevent repeat objectives???
 	var Obj = randi_range(1,4)
+	
+	#Repeat Task prevention
+	while Obj == LastTask:
+		Obj = randi_range(1,4)
+	Obj = 3	
 	match Obj:
 		1:
 			GlobalObj.GetRandomNumber()
@@ -158,14 +163,14 @@ func GetNewTask(bribe : bool):
 			GlobalObj.GetFileTransfer()
 		4:
 			GlobalObj.GetMemoReview()
-	
+	LastTask = Obj
 	SetObjective()
 	UpdateScore()
 
 #Sets objective text
 func SetObjective():
 	var Objective : String
-	Objective = "Current Objective: "
+	Objective = "[b]Current Objective:  [/b]\n"
 	match GlobalVar.CurrentObj:
 		1:
 			Objective = Objective + "Input number " + str(GlobalObj.NumberpadNum)
@@ -177,13 +182,13 @@ func SetObjective():
 			Objective = Objective + "Review Memo"
 		5:
 			Objective = Objective + "Shift Complete"
+			$ShiftComplete.visible = true
 	
 	if GlobalVar.BribeTaken && GlobalVar.CurrentObj != 5:
 		Objective = Objective + " : BRIBE TASK"
 	
-	Objective = Objective + "\n Tasks Left: " +  str(GlobalVar.Tasks)
-	
 	$Header/ObjectiveText.text = Objective
+	$Header/TasksRemaining.text = "[b]Tasks Left: [/b]\n" +  str(GlobalVar.Tasks)
 
 #Updates score
 func UpdateScore():
