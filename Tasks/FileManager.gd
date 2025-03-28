@@ -78,7 +78,6 @@ func _input(_event: InputEvent) -> void:
 		ButtonUp()
 
 func ButtonDown():
-	print("down")
 	CurrSource = SourceDropdown.get_selected_id()
 	CurrTarget = TargetDropdown.get_selected_id()
 	TransferActive = true

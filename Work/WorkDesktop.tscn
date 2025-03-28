@@ -311,6 +311,7 @@ wait_time = 4.0
 autostart = true
 
 [node name="ShiftComplete" type="Panel" parent="."]
+visible = false
 offset_left = 416.0
 offset_top = 192.0
 offset_right = 736.0

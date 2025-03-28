@@ -129,6 +129,7 @@ func GoHome():
 	GlobalVar.Health = GlobalVar.Health - (10 + GlobalVar.CurrentLevel)
 	GlobalVar.Hunger = GlobalVar.Hunger - (10 + GlobalVar.CurrentLevel)
 	GlobalVar.Security = GlobalVar.Security - (10 + GlobalVar.CurrentLevel)
+	SaveLoad.Save()
 	get_tree().change_scene_to_file("res://Home/HomeDesktop.tscn")
 
 #Check lives
@@ -153,7 +154,7 @@ func GetNewTask(bribe : bool):
 	#Repeat Task prevention
 	while Obj == LastTask:
 		Obj = randi_range(1,4)
-	Obj = 3	
+		
 	match Obj:
 		1:
 			GlobalObj.GetRandomNumber()

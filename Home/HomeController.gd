@@ -14,6 +14,7 @@ func _ready() -> void:
 	$Taskbar/GoWork.disabled = true
 	$Taskbar/GoWork.text = "Unpaid Bills"
 	UpdateStatus()
+	SaveLoad.Save()
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -22,7 +23,7 @@ func _input(_event: InputEvent) -> void:
 			GlobalVar.optionsVisible = true
 
 func UpdateStatus():
-	if GlobalVar.CurrentLevel > 0:
+	if GlobalVar.CurrentLevel > 0 && SaveLoad.OpenFromSave:
 		GlobalVar.Health = GlobalVar.Health - (HealthChange * GlobalVar.CurrentLevel)
 		GlobalVar.Hunger = GlobalVar.Hunger - (HungerChange * GlobalVar.CurrentLevel)
 		GlobalVar.Security = GlobalVar.Security - (SecurityChange * GlobalVar.CurrentLevel)
@@ -35,6 +36,7 @@ func EnableWork():
 	
 func GoWork():
 	GlobalVar.CurrentLevel += 1
+	
 	get_tree().change_scene_to_file("res://Work/WorkDesktop.tscn")
 
 func FinancesButton():
