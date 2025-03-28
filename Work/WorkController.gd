@@ -30,6 +30,8 @@ var FirstTask : bool
 # Lives = amount of times the player can fail a task
 # Tasks = Number of tasks the player is given per shift
 func _ready():
+	SaveLoad.CurrentScreen = "WORK"
+	GlobalVar.optionsVisible = false
 	FirstTask = true
 	$GoHome.visible = false
 	$ShiftComplete.visible = false
@@ -54,12 +56,6 @@ func _ready():
 		#Continue down for more levels
 	GetNewTask(false)
 	
-func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_cancel"):
-		if GlobalVar.optionsVisible == false:
-			DisplayOptions()
-			GlobalVar.optionsVisible = true
-
 func _process(_delta):
 	if CurrentScore != GlobalVar.Score:
 		UpdateScore()
@@ -129,6 +125,7 @@ func GoHome():
 	GlobalVar.Health = GlobalVar.Health - (10 + GlobalVar.CurrentLevel)
 	GlobalVar.Hunger = GlobalVar.Hunger - (10 + GlobalVar.CurrentLevel)
 	GlobalVar.Security = GlobalVar.Security - (10 + GlobalVar.CurrentLevel)
+	SaveLoad.PaidBills = false
 	SaveLoad.Save()
 	get_tree().change_scene_to_file("res://Home/HomeDesktop.tscn")
 
@@ -231,15 +228,6 @@ func DisplayFileManager():
 		var t4 = FileManager.instantiate()
 		FileManagerIst = t4
 		add_child(t4)
-		
-func DisplayOptions():
-	if OptionsIst && is_instance_valid(OptionsIst):
-		OptionsIst.queue_free()
-		OptionsIst = null
-	else:
-		var t5 = Options.instantiate()
-		OptionsIst = t5
-		add_child(t5)
 
 func DisplayPopup():
 	if PopupIst && is_instance_valid(PopupIst):
@@ -252,3 +240,35 @@ func DisplayPopup():
 
 func DisplayMessages():
 	$MissingText.visible = !$MissingText.visible
+
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		if !GlobalVar.optionsVisible:
+			$PauseMenu.visible = true
+			GlobalVar.optionsVisible = true
+			PauseGame()
+		else:
+			ToggleOptions()
+
+func PauseGame():
+	$Timer/Timer.paused = true
+	$Taskbar/NumberPad.disabled = true
+	$Taskbar/FileManager.disabled = true
+	$Taskbar/Messenger.disabled = true
+	$Taskbar/Requests.disabled = true
+	$Taskbar/Buttons.disabled = true
+	$Bribe/Accept.disabled = true
+	$Bribe/Decline.disabled = true
+	
+
+func ToggleOptions():
+	$PauseMenu.visible = false
+	GlobalVar.optionsVisible = false
+	$Timer/Timer.paused = false
+	$Taskbar/NumberPad.disabled = false
+	$Taskbar/FileManager.disabled = false
+	$Taskbar/Messenger.disabled = false
+	$Taskbar/Requests.disabled = false
+	$Taskbar/Buttons.disabled = false
+	$Bribe/Accept.disabled = false
+	$Bribe/Decline.disabled = false

@@ -36,11 +36,12 @@ func UpdateClock():
 		else:
 			GlobalVar.TimerLock = false
 		mins = 0
-		if hour < 12:
+		if hour <= 11:
+			amPm = false
 			hour += 1
 		else:
 			hour = 1
-			amPm = false
+
 	if hour == 5 && !amPm:
 		GlobalVar.ForceShiftEnd = true
 		$Timer.stop()

@@ -33,4 +33,4 @@ func updateDate():
 		7:
 			Date = "5/4/2014"
 			
-	$Label.text = "Date: " + Date + "\nTime:  N/A"
+	$Label.text = "Date: " + Date

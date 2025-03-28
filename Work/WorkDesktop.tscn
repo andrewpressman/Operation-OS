@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://c7orqndgslsdv"]
+[gd_scene load_steps=13 format=3 uid="uid://c7orqndgslsdv"]
 
 [ext_resource type="Script" uid="uid://dhdrj42qeklt7" path="res://Work/WorkController.gd" id="1_efasj"]
 [ext_resource type="Script" uid="uid://bu5bal6bbm8dn" path="res://Work/clock.gd" id="2_3wvif"]
+[ext_resource type="PackedScene" uid="uid://bg77iwchwhc56" path="res://Menu/Options.tscn" id="2_5ocmi"]
 [ext_resource type="Script" uid="uid://ouxedtqym3rp" path="res://Work/Animations.gd" id="2_d8cx6"]
 [ext_resource type="Texture2D" uid="uid://c7ecxux7xtje8" path="res://Assets/Images/TempTorrN.jpg" id="2_i3hxq"]
 [ext_resource type="Script" uid="uid://cnfqjoc5c4ipj" path="res://Work/statsDisplay.gd" id="3_7ml6k"]
@@ -71,6 +72,9 @@ offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0.435294, 0.733333, 1)
 metadata/_edit_lock_ = true
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_5ocmi")]
+visible = false
 
 [node name="AdPopup" type="Timer" parent="."]
 
@@ -160,18 +164,16 @@ scale = Vector2(0.5, 0.5)
 
 [node name="Clock" type="Panel" parent="Header"]
 layout_mode = 0
-offset_right = 192.0
+offset_right = 640.0
 offset_bottom = 80.0
 script = ExtResource("2_3wvif")
 
 [node name="Label" type="Label" parent="Header/Clock"]
 layout_mode = 0
-offset_top = 8.0
-offset_right = 184.0
-offset_bottom = 67.0
-theme_override_font_sizes/font_size = 20
-text = "Date: today
-Time: N/A"
+offset_right = 256.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 25
+text = "Date: today"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -239,10 +241,10 @@ offset_bottom = 200.0
 text = "Go Home"
 
 [node name="Bribe" type="Panel" parent="."]
-offset_left = 896.0
-offset_top = 448.0
-offset_right = 1088.0
-offset_bottom = 576.0
+offset_left = 8.0
+offset_top = 464.0
+offset_right = 200.0
+offset_bottom = 592.0
 script = ExtResource("4_pnja2")
 
 [node name="Label" type="Label" parent="Bribe"]
@@ -290,18 +292,21 @@ offset_bottom = 120.0
 text = "Decline"
 
 [node name="Timer" type="Panel" parent="."]
-offset_left = 896.0
-offset_top = 64.0
-offset_right = 1088.0
-offset_bottom = 192.0
+offset_left = 208.0
+offset_top = -24.0
+offset_right = 248.0
+offset_bottom = -16.0
 script = ExtResource("7_b8fcm")
 MedSkipChance = 30
 HighSkipChance = 20
 
 [node name="Label" type="Label" parent="Timer"]
 layout_mode = 0
-offset_right = 192.0
-offset_bottom = 128.0
+offset_left = -80.0
+offset_top = 24.0
+offset_right = 112.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 20
 text = "00:00"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -4,6 +4,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SaveLoad.LoadGame()
+	SaveLoad.CurrentScreen = "MENU"
 
 @export var SecurityIncrease : int
 @export var MedsIncrease : int
@@ -11,6 +12,7 @@ func _ready() -> void:
 @export var RentIncrease : int
 
 func NewGame():
+	SaveLoad.PaidBills = false
 	GlobalVar.CurrentLevel = 0
 	GlobalVar.Money = GlobalVar.StartMoney
 	

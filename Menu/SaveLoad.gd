@@ -1,6 +1,9 @@
 extends Node
 
 var OpenFromSave : bool
+var PaidBills : bool
+
+var CurrentScreen : String
 
 func Save():
 	OpenFromSave = false
@@ -18,7 +21,8 @@ func Save():
 		"MedsPrice" : GlobalVar.MedsPrice,
 		"FoodPrice" : GlobalVar.FoodPrice,
 		"RentPrice" : GlobalVar.RentPrice,
-		"SecurityPrice" : GlobalVar.SecurityPrice
+		"SecurityPrice" : GlobalVar.SecurityPrice,
+		"PaidBills" : PaidBills,
 	}
 	var json_str = JSON.stringify(save_data)
 	save_game.store_line(json_str)
@@ -57,6 +61,8 @@ func LoadGame():
 		GlobalVar.RentPrice = save_data["RentPrice"]
 	if "SecurityPrice" in save_data:
 		GlobalVar.SecurityPrice = save_data["SecurityPrice"]
+	if "PaidBills" in save_data:
+		PaidBills = save_data["PaidBills"]
 		
 func ClearDir(): #Only for DEBUG purpoeses.
 	if not FileAccess.file_exists("user://savegame.save"):
