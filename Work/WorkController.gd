@@ -35,6 +35,7 @@ func _ready():
 	FirstTask = true
 	$GoHome.visible = false
 	$ShiftComplete.visible = false
+	$Bribe.visible = false
 	ShiftComplete = false
 	$Timer.StartTimer()
 	#Set inital values

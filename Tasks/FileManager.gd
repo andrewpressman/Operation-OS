@@ -96,8 +96,9 @@ func ButtonUp():
 		
 		GlobalObj.ObjectiveComplete = true
 		$Message.visible = true
-		await get_tree().create_timer(1).timeout
-		Kill()
+		if SaveLoad.AutoClose:
+			await get_tree().create_timer(1).timeout
+			Kill()
 	
 func ResetProgress():
 	Progress = 0

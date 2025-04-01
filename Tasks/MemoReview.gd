@@ -56,8 +56,9 @@ func Verify():
 		GlobalObj.TaskFailed = true
 	
 	GlobalObj.ObjectiveComplete = true
-	await get_tree().create_timer(.5).timeout
-	Kill()
+	if SaveLoad.AutoClose:
+		await get_tree().create_timer(.5).timeout
+		Kill()
 
 func UnlockButtons():
 	$Panel/Approve.disabled = false

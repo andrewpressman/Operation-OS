@@ -2,6 +2,7 @@ extends Node
 
 var OpenFromSave : bool
 var PaidBills
+var AutoClose : bool
 
 var CurrentScreen : String
 
@@ -9,7 +10,6 @@ func Save():
 	OpenFromSave = false
 	var save_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 	var save_data = {
-		#TODO: add options being saved
 		"Money" : GlobalVar.Money,
 		"Debt" : GlobalVar.Debt,
 		"Health" : GlobalVar.Health,
@@ -26,7 +26,7 @@ func Save():
 	}
 	var json_str = JSON.stringify(save_data)
 	save_game.store_line(json_str)
-	
+
 func LoadGame():
 	OpenFromSave = true
 	if not FileAccess.file_exists("user://savegame.save"):
@@ -63,6 +63,30 @@ func LoadGame():
 		GlobalVar.SecurityPrice = save_data["SecurityPrice"]
 	if "PaidBills" in save_data:
 		PaidBills = save_data["PaidBills"]
+	if "AutoClose" in save_data:
+		AutoClose = save_data["AutoClose"]
+	
+
+func SaveOptions():
+	var Settigns = FileAccess.open("user://Options.save", FileAccess.WRITE)
+	var options = {
+		"AutoClose" : AutoClose
+	}
+	var json_str = JSON.stringify(options)
+	Settigns.store_line(json_str)
+
+func LoadOptions():
+	if not FileAccess.file_exists("user://Options.save"):
+		return #no save game detected.
+
+	var Settings = FileAccess.open("user://Options.save", FileAccess.READ)
+	var json_str = Settings.get_as_text()
+	Settings.close()
+	
+	var options = JSON.parse_string(json_str)
+	if "AutoClose" in options:
+		AutoClose = options["AutoClose"]
+	
 		
 func ClearDir(): #Only for DEBUG purpoeses.
 	if not FileAccess.file_exists("user://savegame.save"):

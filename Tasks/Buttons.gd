@@ -127,14 +127,16 @@ func Verify(con : bool):
 			GlobalObj.TaskFailed = false
 			GlobalVar.Score += 1
 		GlobalObj.TargetWindow = 4
-		await get_tree().create_timer(2).timeout
-		Kill()
+		if SaveLoad.AutoClose:
+			await get_tree().create_timer(2).timeout
+			Kill()
 	else:
 		GlobalObj.TaskFailed = true
 		$Display/Label.text = "FAILURE"
 		await get_tree().create_timer(1).timeout
 		GlobalObj.TargetWindow = 4
-		Kill()
+		if SaveLoad.AutoClose:
+			Kill()
 	
 	GlobalObj.ObjectiveComplete = true
 
