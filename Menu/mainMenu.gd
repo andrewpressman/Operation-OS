@@ -12,7 +12,7 @@ func _ready() -> void:
 @export var RentIncrease : int
 
 func NewGame():
-	SaveLoad.PaidBills = false
+	SaveLoad.PaidBills = [0,0,0,0,0]
 	GlobalVar.CurrentLevel = 0
 	GlobalVar.Money = GlobalVar.StartMoney
 	

@@ -25,6 +25,7 @@ func _ready() -> void:
 	PaidDebt = false
 	$Bills/Food.disabled = true
 	$Bills/Meds.disabled = true
+	init()
 	SetAvailable()
 	
 	if GlobalVar.CurrentLevel == 0:
@@ -38,10 +39,9 @@ func _ready() -> void:
 		PaidFood = true
 		PaidMeds = true
 		PaidSecurity = true
-		if SaveLoad.PaidBills:
+		if SaveLoad.PaidBills[0] == 1:
 			$Bills/Rent.disabled = true
 			$Bills/Rent.button_pressed = false
-
 
 func SetAvailable(): #Other bills can only be paid when debt is 0 (Or some arbitray value)
 	if GlobalVar.Debt == 0:
@@ -59,26 +59,60 @@ func SetAvailable(): #Other bills can only be paid when debt is 0 (Or some arbit
 		$Bills/Meds.button_pressed = false
 		$Bills/Security.disabled = true
 		$Bills/Security.button_pressed = false
-	
-	if SaveLoad.PaidBills:
+
+
+func init():
+	if SaveLoad.PaidBills[0] == 1:
+		$Bills/Rent.text = "Rent: PAID"
 		$Bills/Rent.disabled = true
 		$Bills/Rent.button_pressed = false
+		PaidRent = true
+	else:
+		$Bills/Rent.disabled = false
+	
+	if SaveLoad.PaidBills[1] == 1:	
+		$Bills/Food.text = "Food: PAID"
 		$Bills/Food.disabled = true
 		$Bills/Food.button_pressed = false
+		$Bills/FoodQuality.disabled = true
+		PaidFood = true
+	else:
+		$Bills/FoodQuality.disabled = false
+	
+	if SaveLoad.PaidBills[2] == 1:
+		$Bills/Meds.text = "Meds: PAID"
 		$Bills/Meds.disabled = true
 		$Bills/Meds.button_pressed = false
+		$Bills/MedsQuality.disabled = true
+		PaidMeds = true
+	else:
+		$Bills/MedsQuality.disabled = false
+
+	if SaveLoad.PaidBills[3] == 1:
+		$Bills/Security.text = "Security: PAID"
 		$Bills/Security.disabled = true
 		$Bills/Security.button_pressed = false
-
+		PaidSecurity = true
+	else:
+		$Bills/Security.disabled = false
+			
+	if SaveLoad.PaidBills[4] == 1:
+		$Bills/Debt.text = "Debt: PAID"
+		$Bills/Debt.disabled = true
+		$Bills/Debt.button_pressed = false
+		PaidDebt = true
+	else:
+		$Bills/Debt.disabled = false
+		
+	if GlobalVar.Debt == 0:
+		$Bills/Debt.visible = false
+	else:
+		$Bills/Debt.visible = true
+	
 #Update Money amount and check if work can be attended (Only Rent needs to be paid to go to work)
 func UpdateMoney():
 	$Money/Label.text = "Current Money: " + str(GlobalVar.Money)
 	if PaidRent:
-		get_parent().EnableWork()
-		SaveLoad.PaidBills = true
-	elif GlobalVar.Money == 0:
-		GlobalVar.Debt += GlobalVar.RentPrice
-		SaveLoad.PaidBills = true
 		get_parent().EnableWork()
 
 func UpdateStats():
@@ -154,30 +188,35 @@ func PayBills():
 		$Bills/Rent.text = "Rent: PAID"
 		$Bills/Rent.disabled = true
 		$Bills/Rent.button_pressed = false
+		SaveLoad.PaidBills[0] = 1
 	
 	if PaidFood:
 		$Bills/Food.text = "Food: PAID"
 		GlobalVar.Hunger = GlobalVar.Hunger + (HungerChange)
 		$Bills/Food.disabled = true
 		$Bills/Food.button_pressed = false
+		SaveLoad.PaidBills[1] = 1
 	
 	if PaidMeds:
 		$Bills/Meds.text = "Meds: PAID"
 		GlobalVar.Health = GlobalVar.Health + (HealthChange)
 		$Bills/Meds.disabled = true
 		$Bills/Meds.button_pressed = false
+		SaveLoad.PaidBills[2] = 1
 		
 	if PaidSecurity:
 		$Bills/Security.text = "Security: PAID"
 		GlobalVar.Security = GlobalVar.Security + (SecurityChange)
 		$Bills/Security.disabled = true
 		$Bills/Security.button_pressed = false
+		SaveLoad.PaidBills[3] = 1
 		
 	if PaidDebt:
 		$Bills/Debt.text = "Debt: PAID"
 		$Bills/Debt.disabled = true
 		$Bills/Debt.button_pressed = false
 		GlobalVar.Debt = GlobalVar.Debt - DebtAmout
+		SaveLoad.PaidBills[4] = 1
 	
 	if AmountDue == 0:
 		$Pay.disabled = true

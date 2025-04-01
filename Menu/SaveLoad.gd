@@ -1,7 +1,7 @@
 extends Node
 
 var OpenFromSave : bool
-var PaidBills : bool
+var PaidBills
 
 var CurrentScreen : String
 

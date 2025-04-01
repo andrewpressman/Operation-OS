@@ -13,7 +13,7 @@ func _ready() -> void:
 	GlobalVar.optionsVisible = false
 	$Finances.visible = false
 	$Files.visible = false
-	if !SaveLoad.PaidBills:
+	if SaveLoad.PaidBills[0] == 0:
 		$Taskbar/GoWork.disabled = true
 		$Taskbar/GoWork.text = "Unpaid Bills"
 	UpdateStatus()
@@ -29,7 +29,6 @@ func UpdateStatus():
 	$Finances.UpdateStats()
 	
 func EnableWork():
-	SaveLoad.PaidBills = true
 	$Taskbar/GoWork.text = "Go to work"
 	$Taskbar/GoWork.disabled = false
 	
