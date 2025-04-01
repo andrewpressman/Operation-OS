@@ -111,7 +111,7 @@ func CheckAd():
 
 func GetBribe():
 	var rand = randi_range(1,5)
-	if  rand == 1:
+	if  rand == 1 && GlobalVar.CurrentLevel != 1:
 		$Bribe.visible = true
 		$Bribe.reset()
 	else:
@@ -151,7 +151,6 @@ func GetNewTask(bribe : bool):
 	#Repeat Task prevention
 	while Obj == LastTask:
 		Obj = randi_range(1,4)
-		
 	match Obj:
 		1:
 			GlobalObj.GetRandomNumber()

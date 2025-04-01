@@ -1,0 +1,4 @@
+Company: Blizzard\nSupervisor: Daddy Jeff Kaplan\nRisk: High\nDetails: Overwatch needs your help, send $10 via paypal to help stop Talon in their tracks
+Company: Nexus\nSupervisor: REDACTED\nDetails: Competetor Nexus LLC is requesting access to Top secret files we have on hand. Files can only be shared if all proprietary details are redacted
+Company: Amazon\nSupervisor: John Amazon\nDetails: Amazon wants something, they should probably get it, we dont want to piss off Bezos
+Company: Aperture Science\nSupervisor: Cave Johnson\nDetails: LEMONS!

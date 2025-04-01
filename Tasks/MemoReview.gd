@@ -5,8 +5,21 @@ var Step : int
 
 var PressedButton: int
 
+var Memos = []
+#Template
+#Company: \nSupervisor: \nDetails:
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#load Memo's from text file
+	var file = FileAccess.open("res://Assets/TextFiles/Memos.txt", FileAccess.READ)
+	var content = file.get_as_text()
+	while !file.eof_reached():
+		var line = file.get_line()
+		line = line.replace("\\n","\n")
+		Memos.append(line)
+	file.close()
+
 	ClearText()
 	LockButtons()
 	$Memo/Analyze.disabled = true
@@ -67,7 +80,8 @@ func OnDenyPressed():
 	Verify()
 	
 func ShowText():
-	$Memo/Body.text = "Company: Blizzard \nSupervisor: Daddy Jeff Kaplan\nRisk: High\nDetails:Overwatch needs your help, send $10 via paypal to help stop Talon in their tracks"
+	var rand = randi_range(0, 3)
+	$Memo/Body.text = Memos[rand]
 	
 func ClearText():
 	$Memo/Body.text = "Company: N/A \nSupervisor: N/A\nRisk: N/A\nDetails:N/A"

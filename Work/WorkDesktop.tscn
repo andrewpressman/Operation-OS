@@ -241,9 +241,9 @@ offset_bottom = 200.0
 text = "Go Home"
 
 [node name="Bribe" type="Panel" parent="."]
-offset_left = 8.0
+offset_left = 480.0
 offset_top = 464.0
-offset_right = 200.0
+offset_right = 672.0
 offset_bottom = 592.0
 script = ExtResource("4_pnja2")
 

@@ -37,6 +37,14 @@ offset_right = 384.0
 offset_bottom = 448.0
 text = "Purge save file"
 
+[node name="Quit" type="Button" parent="."]
+offset_left = 64.0
+offset_top = 512.0
+offset_right = 192.0
+offset_bottom = 576.0
+text = "Quit"
+
 [connection signal="pressed" from="Button" to="." method="NewGame"]
 [connection signal="pressed" from="Continue" to="." method="Continue"]
 [connection signal="pressed" from="Clear" to="." method="PurgeSave"]
+[connection signal="pressed" from="Quit" to="." method="Quit"]

@@ -38,3 +38,6 @@ func Continue():
 
 func PurgeSave():
 	SaveLoad.ClearDir()
+
+func Quit():
+	get_tree().quit()
