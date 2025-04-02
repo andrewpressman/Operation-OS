@@ -1,6 +1,5 @@
 extends Panel
-@warning_ignore("integer_division")
-
+@warning_ignore_start("integer_division")
 var PaidRent : bool
 var PaidFood : bool
 var PaidMeds : bool
@@ -181,8 +180,6 @@ func PayBills():
 				HealthChange = HealthChange / 2
 			3:
 				HealthChange = HealthChange * 2	
-	
-	var PaidAll = 0
 		
 	if PaidRent: 
 		$Bills/Rent.text = "Rent: PAID"
@@ -326,3 +323,5 @@ func ToggleDebt():
 		else:
 			AmountDue -= GlobalVar.Money
 	UpdateDue()
+
+@warning_ignore_restore("integer_division")

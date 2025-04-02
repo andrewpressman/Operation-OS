@@ -3,9 +3,9 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	SaveLoad.CurrentScreen = "MENU"
 	SaveLoad.LoadGame()
 	SaveLoad.LoadOptions()
-	SaveLoad.CurrentScreen = "MENU"
 
 @export var SecurityIncrease : int
 @export var MedsIncrease : int

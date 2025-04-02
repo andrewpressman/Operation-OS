@@ -10,12 +10,12 @@ var OptionsIst: Node = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SaveLoad.CurrentScreen = "HOME"
-	GlobalVar.optionsVisible = false
-	$Finances.visible = false
-	$Files.visible = false
 	if SaveLoad.PaidBills[0] == 0:
 		$Taskbar/GoWork.disabled = true
 		$Taskbar/GoWork.text = "Unpaid Bills"
+	GlobalVar.optionsVisible = false
+	$Finances.visible = false
+	$Files.visible = false
 	UpdateStatus()
 	SaveLoad.Save()
 

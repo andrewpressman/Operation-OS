@@ -96,9 +96,16 @@ func ButtonUp():
 		
 		GlobalObj.ObjectiveComplete = true
 		$Message.visible = true
+		await get_tree().create_timer(1).timeout
 		if SaveLoad.AutoClose:
-			await get_tree().create_timer(1).timeout
 			Kill()
+		else:
+			CanTransfer = false
+			ResetProgress()
+			TargetDropdown.select(0)
+			SourceDropdown.select(0)
+			$Message.visible = false
+			
 	
 func ResetProgress():
 	Progress = 0
@@ -112,12 +119,10 @@ func ResetProgress():
 	
 func TimeDelay():
 		Next = true
-
+#Add items from array to dropdown
 func SetDropdown():
-	SourceDropdown.add_item("Corporate", 1)
-	SourceDropdown.add_item("Personal", 2)
-	SourceDropdown.add_item("Competetor", 3)
-	TargetDropdown.add_item("Corporate", 1)
-	TargetDropdown.add_item("Personal", 2)
-	TargetDropdown.add_item("Competetor", 3)
+	for item in GlobalObj.SourceOptions:
+		SourceDropdown.add_item(item, GlobalObj.SourceOptions.find(item) + 1)
 	
+	for item in GlobalObj.TargetOptions:
+		TargetDropdown.add_item(item, GlobalObj.TargetOptions.find(item) + 1)

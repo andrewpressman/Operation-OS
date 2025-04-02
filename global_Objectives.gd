@@ -35,6 +35,8 @@ func GetRandomButton():
 		3:
 			TargetSwitch = randi_range(0,5)
 
+var SourceOptions = ["Blackmail", "Finances", "Memos", "Taxes", "Records"]
+var TargetOptions = ["Supervisor", "Personal", "Executive", "Trash"]
 
 var FileTransfered : bool
 var FileSource : int
@@ -45,27 +47,11 @@ func GetFileTransfer():
 	GlobalVar.CurrentObj = 3
 	ObjectiveComplete = false
 	#TODO: make more complex
-	FileSource = randi_range(1,3)
-	FileTarget = randi_range(1,3)
-	SetFileText()
-	
-#TEMP
-func SetFileText():
-	match FileSource:
-		1:
-			FileSourceText = "Corporate"
 		2:
-			FileSourceText = "Personal"
-		3:
-			FileSourceText = "Competetor"
-	match FileTarget:
-		1:
-			FileTargetText = "Corporate"
-		2:
-			FileTargetText = "Personal"
-		3:
-			FileTargetText = "Competetor"
-
+	FileSource = randi_range(1,SourceOptions.size())
+	FileTarget = randi_range(1,TargetOptions.size())
+	FileSourceText = SourceOptions.get(FileSource - 1)
+	FileTargetText = TargetOptions.get(FileTarget - 1)
 	
 
 var MemoVerdict: bool

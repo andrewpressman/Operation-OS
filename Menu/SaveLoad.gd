@@ -4,7 +4,7 @@ var OpenFromSave : bool
 var PaidBills
 var AutoClose : bool
 
-var CurrentScreen : String
+var CurrentScreen
 
 func Save():
 	OpenFromSave = false
@@ -62,10 +62,7 @@ func LoadGame():
 	if "SecurityPrice" in save_data:
 		GlobalVar.SecurityPrice = save_data["SecurityPrice"]
 	if "PaidBills" in save_data:
-		PaidBills = save_data["PaidBills"]
-	if "AutoClose" in save_data:
-		AutoClose = save_data["AutoClose"]
-	
+		PaidBills = save_data["PaidBills"]	
 
 func SaveOptions():
 	var Settigns = FileAccess.open("user://Options.save", FileAccess.WRITE)
@@ -92,5 +89,11 @@ func ClearDir(): #Only for DEBUG purpoeses.
 	if not FileAccess.file_exists("user://savegame.save"):
 		return #no save game detected.
 	var file_to_remove = "user://savegame.save"
+	OS.move_to_trash(ProjectSettings.globalize_path(file_to_remove))
+
+func ClearOptDir():	
+	if not FileAccess.file_exists("user://Options.savee"):
+		return #no save game detected.
+	var file_to_remove = "user://Options.savee"
 	OS.move_to_trash(ProjectSettings.globalize_path(file_to_remove))
 	

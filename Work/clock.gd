@@ -9,7 +9,6 @@ func _ready() -> void:
 	CurrTime = StartTime
 	updateDate()
 
-
 func UpdateClock():
 	pass
 	

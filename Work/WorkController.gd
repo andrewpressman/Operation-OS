@@ -35,6 +35,7 @@ func _ready():
 	FirstTask = true
 	$GoHome.visible = false
 	$ShiftComplete.visible = false
+	$ShiftComplete/RichTextLabel.text = "[b][color=green]Shift Complete[/color][/b]\nReturn home"
 	$Bribe.visible = false
 	ShiftComplete = false
 	$Timer.StartTimer()
@@ -62,8 +63,9 @@ func _process(_delta):
 		UpdateScore()
 			#TEMP: show fail and victory
 	if GlobalVar.Lives <= 0: #if player is out of lives... ???
-			#TODO: something?
-			pass	
+		GlobalVar.ForceShiftEnd = true
+		$ShiftComplete/RichTextLabel.text = "[b][color=red]Shift Failed[/color][/b]\nReturn home"
+		#Give player fine
 	
 	if (GlobalVar.Tasks == 0 || GlobalVar.ForceShiftEnd) && !ShiftComplete: #if player has finished all tasks
 		if GlobalVar.ForceShiftEnd:
@@ -80,11 +82,11 @@ func _process(_delta):
 		GlobalVar.TimerLock = true
 		if !GlobalVar.BribeTaken: #if bribe was not taken deduct task
 			GlobalVar.Tasks = GlobalVar.Tasks - 1
-			GetNewTask(true)
+			GetNewTask(false)
 
 		else: #if bribe was taken, randomize new bribe, reset task without deducting failures (its done elsewhere)
 			GetBribe()
-			GetNewTask(false)
+			GetNewTask(true)
 
 	if GlobalVar.TimerFail && !GlobalVar.TimerLock: #if timer runs out amd task is failed, deduct life and task thn reset objective
 		GlobalVar.TimerFail = false
@@ -126,7 +128,7 @@ func GoHome():
 	GlobalVar.Health = GlobalVar.Health - (10 + GlobalVar.CurrentLevel)
 	GlobalVar.Hunger = GlobalVar.Hunger - (10 + GlobalVar.CurrentLevel)
 	GlobalVar.Security = GlobalVar.Security - (10 + GlobalVar.CurrentLevel)
-	SaveLoad.PaidBills = false
+	SaveLoad.PaidBills = [0,0,0,0,0]
 	SaveLoad.Save()
 	get_tree().change_scene_to_file("res://Home/HomeDesktop.tscn")
 
@@ -152,6 +154,7 @@ func GetNewTask(bribe : bool):
 	#Repeat Task prevention
 	while Obj == LastTask:
 		Obj = randi_range(1,4)
+	
 	match Obj:
 		1:
 			GlobalObj.GetRandomNumber()
@@ -190,7 +193,12 @@ func SetObjective():
 
 #Updates score
 func UpdateScore():
-	$Header/Score.text = "Money: " + str(GlobalVar.Money) + "\nFailures: " + str(GlobalVar.Lives)
+	var message = "Money: " + str(GlobalVar.Money)
+	if GlobalVar.Lives > 0:
+		message += "\nFailures: " + str(GlobalVar.Lives)
+	else:
+		message += "\nFailures: Shift Failed"
+	$Header/Score.text = message
 
 func DisplayNumpad():
 	if NumpadIst && is_instance_valid(NumpadIst):

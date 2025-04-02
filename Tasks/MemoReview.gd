@@ -13,7 +13,6 @@ var Memos = []
 func _ready():
 	#load Memo's from text file
 	var file = FileAccess.open("res://Assets/TextFiles/Memos.txt", FileAccess.READ)
-	var content = file.get_as_text()
 	while !file.eof_reached():
 		var line = file.get_line()
 		line = line.replace("\\n","\n")
