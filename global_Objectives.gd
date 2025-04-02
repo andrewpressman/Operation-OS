@@ -47,7 +47,6 @@ func GetFileTransfer():
 	GlobalVar.CurrentObj = 3
 	ObjectiveComplete = false
 	#TODO: make more complex
-		2:
 	FileSource = randi_range(1,SourceOptions.size())
 	FileTarget = randi_range(1,TargetOptions.size())
 	FileSourceText = SourceOptions.get(FileSource - 1)

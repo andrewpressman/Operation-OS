@@ -17,10 +17,6 @@ func _ready() -> void:
 	GlobalVar.TimerFail = false
 	GlobalVar.ForceShiftEnd = false
 	SetTime()
-	
-func StartTimer():
-	pass
-	#$Timer.start()
 
 func UpdateClock():
 	TimeSkip()

@@ -9,9 +9,7 @@ func _ready() -> void:
 	CurrTime = StartTime
 	updateDate()
 
-func UpdateClock():
-	pass
-	
+
 func updateDate():
 	var Date : String
 	match GlobalVar.CurrentLevel:
