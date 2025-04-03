@@ -13,25 +13,8 @@ func _ready() -> void:
 @export var RentIncrease : int
 
 func NewGame():
-	SaveLoad.PaidBills = [0,0,0,0,0]
-	GlobalVar.CurrentLevel = 0
-	GlobalVar.Money = GlobalVar.StartMoney
-	
-	GlobalVar.RentPrice = GlobalVar.StartRentPrice
-	GlobalVar.RentIncrease = RentIncrease
-	
-	GlobalVar.FoodPrice = GlobalVar.StartFoodPrice
-	GlobalVar.FoodIncrease = FoodIncrease
-	
-	GlobalVar.MedsPrice = GlobalVar.StartMedsPrice
-	GlobalVar.MedsIncrease = MedsIncrease
-	
-	GlobalVar.SecurityPrice = GlobalVar.StartSecurityPrice
-	GlobalVar.SecurityIncrease = SecurityIncrease
-	
-	GlobalVar.Health = 100
-	GlobalVar.Hunger = 100
-	GlobalVar.Security = 100
+	#TODO: consider asking if player wants to delete unlocked secerts?
+	GlobalVar.Reset()
 	get_tree().change_scene_to_file("res://Home/HomeDesktop.tscn")
 
 func Continue():

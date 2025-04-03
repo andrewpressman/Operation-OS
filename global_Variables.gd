@@ -6,10 +6,11 @@ var CurrentObj : int
 
 var Lives : int #numebr of times the player can fail a task
 var Tasks : int #Number of tasks the player is given
+var ShiftFails : int #number of times the player can fail a shift
 
 #Home variables
 var Money: int = 0
-var Salary: int = 50
+var Salary: int = 25
 #TODO: add salary increase modifier
 
 var RentPrice: int
@@ -47,8 +48,49 @@ var StartFoodPrice : int = 100
 var StartMedsPrice : int = 100
 var StartSecurityPrice : int = 100
 var StartDebt : int = 0
+var MaxDebt : int = 2000
+
+#Starting price increases
+var StartRentRate : int = 50
+var StartFoodRate : int = 50
+var StartMedsRate : int = 50
+var StartSecurityRate : int = 50
+
+#StartingStats
+var StartHealth : int = 100
+var StartHunger : int = 100
+var StartSecurity : int = 100
 
 #Current Level tracker
 var CurrentLevel : int = 0
 
+var GameOverReason : int
+#1: health = 0 (dead)
+#2: Security = 0 (repossed)
+#3: Too many failed shifts (fired)
+
 var optionsVisible = false
+
+func Reset():
+	SaveLoad.PaidBills = [0,0,0,0,0]
+	CurrentLevel = 0
+	Money = StartMoney
+	
+	RentPrice = StartRentPrice
+	RentIncrease = StartRentRate
+	
+	FoodPrice = StartFoodPrice
+	FoodIncrease = StartFoodRate
+	
+	MedsPrice = StartMedsPrice
+	MedsIncrease = StartMedsRate
+	
+	SecurityPrice = StartSecurityPrice
+	SecurityIncrease = StartSecurityRate
+	
+	Health = StartHealth
+	Hunger = StartHunger
+	Security = StartSecurity
+	Debt = StartDebt
+	
+	ShiftFails = 0

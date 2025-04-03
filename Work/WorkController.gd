@@ -38,7 +38,7 @@ func _ready():
 	$ShiftComplete/RichTextLabel.text = "[b][color=green]Shift Complete[/color][/b]\nReturn home"
 	$Bribe.visible = false
 	ShiftComplete = false
-	$Timer.StartTimer()
+
 	#Set inital values
 	match GlobalVar.CurrentLevel:
 		1: 
@@ -54,17 +54,23 @@ func _ready():
 			GlobalVar.Tasks = 20
 		_:
 			GlobalVar.Lives = 10
-			GlobalVar.Tasks = 25
+			GlobalVar.Tasks = 20 + GlobalVar.CurrentLevel
 		#Continue down for more levels
 	GetNewTask(false)
+
+#DEBUG Function, remove before launch
+func SkipTask():
+	GlobalObj.ObjectiveComplete = true
+	GlobalObj.TaskFailed = false
 	
 func _process(_delta):
 	if CurrentScore != GlobalVar.Score:
 		UpdateScore()
 			#TEMP: show fail and victory
-	if GlobalVar.Lives <= 0: #if player is out of lives... ???
+	if GlobalVar.Lives == 0: #if player is out of lives... ???
+		ShiftFailed()
+		GlobalVar.Lives = -1
 		GlobalVar.ForceShiftEnd = true
-		$ShiftComplete/RichTextLabel.text = "[b][color=red]Shift Failed[/color][/b]\nReturn home"
 		#Give player fine
 	
 	if (GlobalVar.Tasks == 0 || GlobalVar.ForceShiftEnd) && !ShiftComplete: #if player has finished all tasks
@@ -89,10 +95,15 @@ func _process(_delta):
 			GetNewTask(true)
 
 	if GlobalVar.TimerFail && !GlobalVar.TimerLock: #if timer runs out amd task is failed, deduct life and task thn reset objective
+		print("9")
 		GlobalVar.TimerFail = false
 		GlobalVar.Tasks = GlobalVar.Tasks - 1
 		GlobalVar.Lives = GlobalVar.Lives - 1
 		GetNewTask(true)
+
+func ShiftFailed():
+	GlobalVar.ShiftFails += 1
+	$ShiftComplete/RichTextLabel.text = "[b][color=red]Shift Failed \n(" + str(GlobalVar.ShiftFails) +  " / 3) remaining [/color][/b]\nReturn home"
 
 @export var LowAdChance : int
 @export var MedAdChance : int
@@ -107,6 +118,7 @@ func CheckAd():
 		PopupChance = LowAdChance
 		
 	var ShowPopup = randi_range(1,PopupChance)
+	ShowPopup = 0
 	if FirstTask:
 		FirstTask = false
 	elif ShowPopup == 1:
@@ -123,14 +135,39 @@ func GetBribe():
 func hideBribe():
 	$Bribe.visible = false
 
-#Go to home Desktop			
+#Update stat figures and go to home Desktop			
 func GoHome():
-	GlobalVar.Health = GlobalVar.Health - (10 + GlobalVar.CurrentLevel)
-	GlobalVar.Hunger = GlobalVar.Hunger - (10 + GlobalVar.CurrentLevel)
+	#Health always goes down
+	GlobalVar.Health = GlobalVar.Health - (20 + GlobalVar.CurrentLevel)
+	
+	#If hunger can go down, decreaes hunger, otherwise decrease health
+	if GlobalVar.Hunger > (GlobalVar.Hunger - (20 + GlobalVar.CurrentLevel)):
+		GlobalVar.Hunger = GlobalVar.Hunger - (20 + GlobalVar.CurrentLevel)
+	else:
+		GlobalVar.Health = GlobalVar.Health - (20 + GlobalVar.CurrentLevel)
+	
+	#if Debt is high, Decrease Security extra 
 	GlobalVar.Security = GlobalVar.Security - (10 + GlobalVar.CurrentLevel)
+	if GlobalVar.Debt > 1500:
+		GlobalVar.Security = GlobalVar.Security - (25 + GlobalVar.CurrentLevel)
+	if GlobalVar.Debt > 1000:
+		GlobalVar.Security = GlobalVar.Security - (20 + GlobalVar.CurrentLevel)
+	if GlobalVar.Debt > 500:
+		GlobalVar.Security = GlobalVar.Security - (15 + GlobalVar.CurrentLevel)
+		
 	SaveLoad.PaidBills = [0,0,0,0,0]
 	SaveLoad.Save()
-	get_tree().change_scene_to_file("res://Home/HomeDesktop.tscn")
+	if GlobalVar.Health <= 0:
+		GlobalVar.GameOverReason = 1
+		get_tree().change_scene_to_file("res://Game Over/GameOver.tscn")
+	elif GlobalVar.Security == 0:
+		GlobalVar.GameOverReason = 2
+		get_tree().change_scene_to_file("res://Game Over/GameOver.tscn")
+	elif GlobalVar.ShiftFails == 3:
+		GlobalVar.GameOverReason = 3
+		get_tree().change_scene_to_file("res://Game Over/GameOver.tscn")
+	else:
+		get_tree().change_scene_to_file("res://Home/HomeDesktop.tscn")
 
 #Check lives
 func CheckLives():
@@ -247,7 +284,7 @@ func DisplayPopup():
 		add_child(t6)
 
 func DisplayMessages():
-	$MissingText.visible = !$MissingText.visible
+	pass
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):

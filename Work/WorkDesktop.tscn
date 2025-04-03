@@ -335,7 +335,7 @@ vertical_alignment = 1
 
 [connection signal="pressed" from="Taskbar/NumberPad" to="." method="DisplayNumpad"]
 [connection signal="pressed" from="Taskbar/FileManager" to="." method="DisplayFileManager"]
-[connection signal="pressed" from="Taskbar/Messenger" to="." method="DisplayMessages"]
+[connection signal="pressed" from="Taskbar/Messenger" to="." method="SkipTask"]
 [connection signal="pressed" from="Taskbar/Requests" to="." method="DisplayRequest"]
 [connection signal="pressed" from="Taskbar/Buttons" to="." method="DisplayButtons"]
 [connection signal="pressed" from="GoHome" to="." method="GoHome"]

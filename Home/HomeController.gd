@@ -1,15 +1,12 @@
 extends Node2D
 
-@export var HealthChange : int
-@export var HungerChange : int
-@export var SecurityChange : int
-
 var Options = preload("res://Menu/Options.tscn")
 var OptionsIst: Node = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SaveLoad.CurrentScreen = "HOME"
+	$Finances/Pay.disabled = true
 	if SaveLoad.PaidBills[0] == 0:
 		$Taskbar/GoWork.disabled = true
 		$Taskbar/GoWork.text = "Unpaid Bills"
@@ -19,13 +16,7 @@ func _ready() -> void:
 	UpdateStatus()
 	SaveLoad.Save()
 
-
 func UpdateStatus():
-	if GlobalVar.CurrentLevel > 0 && SaveLoad.OpenFromSave:
-		GlobalVar.Health = GlobalVar.Health - (HealthChange * GlobalVar.CurrentLevel)
-		GlobalVar.Hunger = GlobalVar.Hunger - (HungerChange * GlobalVar.CurrentLevel)
-		GlobalVar.Security = GlobalVar.Security - (SecurityChange * GlobalVar.CurrentLevel)
-	
 	$Finances.UpdateStats()
 	
 func EnableWork():

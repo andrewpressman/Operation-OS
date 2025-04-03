@@ -141,9 +141,16 @@ func UpdateStats():
 						 Debt: \n" + str(GlobalVar.Debt)
 
 func UpdateDue():
+	if AmountDue == 0:
+		$Pay.disabled = true
+	else:
+		$Pay.disabled = false
 	$AmountDue.text = "Amount Due: $" + str(AmountDue)
 	
 func SetPrices():
+	print(str(GlobalVar.CurrentLevel))
+	print(str(GlobalVar.Hunger))
+	print(str(GlobalVar.Security))
 	if GlobalVar.CurrentLevel > 1:
 		GlobalVar.RentPrice += GlobalVar.RentIncrease * GlobalVar.CurrentLevel
 		GlobalVar.FoodPrice += GlobalVar.FoodIncrease * GlobalVar.CurrentLevel
@@ -161,6 +168,7 @@ func SetPrices():
 @export var HealthChange : int
 @export var HungerChange : int
 @export var SecurityChange : int
+
 func PayBills():
 	if AmountDue <= GlobalVar.Money:
 		GlobalVar.Money += -AmountDue
@@ -168,6 +176,9 @@ func PayBills():
 		GlobalVar.Money = 0
 		CurrentDebt = (GlobalVar.Money - AmountDue) * -1 + GlobalVar.Debt
 		GlobalVar.Debt = CurrentDebt
+		if GlobalVar.Debt >= GlobalVar.MaxDebt:
+			GlobalVar.GameOverReason = 4
+			get_tree().change_scene_to_file("res://Game Over/GameOver.tscn")
 	
 	match $Bills/FoodQuality.get_selected_id():
 			1:

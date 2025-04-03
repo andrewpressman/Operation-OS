@@ -1,0 +1,64 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpjqo8nf1v6dg"]
+
+[ext_resource type="Script" uid="uid://cowbdh2kpuks6" path="res://Game Over/game_over.gd" id="1_nkfid"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_nkfid")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.197937, 0.197937, 0.197937, 1)
+metadata/_edit_lock_ = true
+
+[node name="GameOver" type="RichTextLabel" parent="."]
+offset_left = 128.0
+offset_top = 64.0
+offset_right = 1024.0
+offset_bottom = 192.0
+theme_override_font_sizes/bold_font_size = 60
+bbcode_enabled = true
+text = "[b][color=green]Game Over[/color][/b]
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Reason" type="RichTextLabel" parent="."]
+offset_left = 128.0
+offset_top = 192.0
+offset_right = 1024.0
+offset_bottom = 320.0
+theme_override_font_sizes/normal_font_size = 35
+bbcode_enabled = true
+text = "Skill issue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Stats" type="RichTextLabel" parent="."]
+offset_left = 64.0
+offset_top = 320.0
+offset_right = 1088.0
+offset_bottom = 512.0
+theme_override_font_sizes/normal_font_size = 35
+theme_override_font_sizes/bold_font_size = 40
+bbcode_enabled = true
+text = "Stats:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewGame" type="Button" parent="."]
+offset_left = 256.0
+offset_top = 512.0
+offset_right = 448.0
+offset_bottom = 576.0
+text = "New Game"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 704.0
+offset_top = 512.0
+offset_right = 896.0
+offset_bottom = 576.0
+text = "Quit"
+
+[connection signal="pressed" from="NewGame" to="." method="NewGame"]
+[connection signal="pressed" from="Quit" to="." method="Quit"]

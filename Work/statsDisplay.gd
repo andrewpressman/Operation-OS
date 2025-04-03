@@ -16,11 +16,11 @@ func _ready() -> void:
 func UpdateStats():
 	var HungerStr : String
 	var SecurityStr : String
-	if Hunger < 10:
+	if Hunger < 15:
 		HungerStr  = "Starving"
-	elif Hunger < 30:
+	elif Hunger < 40:
 		HungerStr = "Irritated"
-	elif Hunger < 60:
+	elif Hunger < 80:
 		HungerStr = "Fed"
 	else:
 		HungerStr = "Full"
