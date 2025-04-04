@@ -31,4 +31,6 @@ func Menu():
 	if SaveLoad.CurrentScreen == "WORK":
 		GlobalVar.CurrentLevel -= 1
 	SaveLoad.Save()
+	#Tiny delay to prevent error: _push_unhandled_input_internal: Condition "!is_inside_tree()" is true.
+	await get_tree().create_timer(.001).timeout 
 	get_tree().change_scene_to_file("res://Menu/MainMenu.tscn")
