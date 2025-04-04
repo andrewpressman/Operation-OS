@@ -40,6 +40,7 @@ offset_right = 600.0
 offset_bottom = 128.0
 
 [node name="Slider" type="HSlider" parent="PlayPanel"]
+layout_mode = 0
 offset_left = 76.0
 offset_top = 42.0
 offset_right = 492.0

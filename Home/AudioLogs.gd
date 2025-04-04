@@ -34,7 +34,8 @@ func _ready() -> void:
 func LoadAudioFile(file : int):
 	match file:
 		1:
-			Player.stream = load("res://Assets/AudioFiles/442792__lena_orsa__epic-cinematic-music-lets-go-to-zanzibar.mp3")
+			pass
+			#Player.stream = load("AudioFileGoeshere")
 			#Load subtitles
 	
 func _process(delta: float):
