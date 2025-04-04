@@ -1,34 +1,71 @@
-[gd_scene format=3 uid="uid://sdmf6jm34hov"]
+[gd_scene load_steps=2 format=3 uid="uid://sdmf6jm34hov"]
+
+[ext_resource type="Script" uid="uid://csoeiecob1eh8" path="res://Home/AudioLogs.gd" id="1_o5d30"]
 
 [node name="Window" type="Window"]
+audio_listener_enable_2d = true
 initial_position = 1
 size = Vector2i(600, 300)
+script = ExtResource("1_o5d30")
+
+[node name="Player" type="AudioStreamPlayer2D" parent="."]
 
 [node name="Subtitles" type="Panel" parent="."]
 offset_top = 136.0
 offset_right = 600.0
 offset_bottom = 300.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Subtitles"]
+[node name="Timer" type="Timer" parent="Subtitles"]
+
+[node name="Text" type="RichTextLabel" parent="Subtitles"]
 layout_mode = 0
-offset_left = 8.0
+offset_left = 4.0
 offset_top = 16.0
-offset_right = 592.0
+offset_right = 588.0
 offset_bottom = 160.0
-text = "Subtitles go here"
+text = "This is sample text line 1
+This is sample text line 2
+This is sample text line 3
+This is sample text line 4
+This is sample text line 5
+This is sample text line 6
+This is sample text line 7
+This is sample text line 8"
+scroll_following = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player" type="Panel" parent="."]
+[node name="PlayPanel" type="Panel" parent="."]
 offset_right = 600.0
 offset_bottom = 128.0
 
-[node name="Label" type="Label" parent="Player"]
+[node name="Slider" type="HSlider" parent="PlayPanel"]
+offset_left = 76.0
+offset_top = 42.0
+offset_right = 492.0
+offset_bottom = 106.0
+editable = false
+scrollable = false
+
+[node name="Button" type="Button" parent="PlayPanel"]
 layout_mode = 0
-offset_left = 96.0
-offset_top = 32.0
-offset_right = 512.0
-offset_bottom = 112.0
-text = "Audio player controls go here"
+offset_left = 36.0
+offset_top = 58.0
+offset_right = 68.0
+offset_bottom = 90.0
+text = "⏵︎"
+
+[node name="Timestamp" type="RichTextLabel" parent="PlayPanel"]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 50.0
+offset_right = 580.0
+offset_bottom = 98.0
+text = "00:00"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="close_requested" from="." to="." method="kill"]
+[connection signal="timeout" from="Subtitles/Timer" to="." method="ScrollSubtitles"]
+[connection signal="value_changed" from="PlayPanel/Slider" to="." method="onSliderChnged"]
+[connection signal="pressed" from="PlayPanel/Button" to="." method="PlayPauseButtonPressed"]

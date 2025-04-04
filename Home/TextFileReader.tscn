@@ -1,8 +1,11 @@
-[gd_scene format=3 uid="uid://dct1qi1wph2ss"]
+[gd_scene load_steps=2 format=3 uid="uid://dct1qi1wph2ss"]
+
+[ext_resource type="Script" uid="uid://bxglusvt7cp32" path="res://Home/DocumentReader.gd" id="1_t1gri"]
 
 [node name="Window" type="Window"]
 initial_position = 1
 size = Vector2i(550, 550)
+script = ExtResource("1_t1gri")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 550.0
