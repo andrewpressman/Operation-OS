@@ -19,9 +19,13 @@ func Save():
 		"Salary" : GlobalVar.Salary,
 		"CurrLevel" : GlobalVar.CurrentLevel,
 		"MedsPrice" : GlobalVar.MedsPrice,
+		"MedsRate" : GlobalVar.MedsIncrease,
 		"FoodPrice" : GlobalVar.FoodPrice,
+		"FoodRate" : GlobalVar.FoodIncrease,
 		"RentPrice" : GlobalVar.RentPrice,
+		"RentRate" : GlobalVar.RentIncrease,
 		"SecurityPrice" : GlobalVar.SecurityPrice,
+		"SecurityRate" : GlobalVar.SecurityIncrease,
 		"PaidBills" : PaidBills,
 	}
 	var json_str = JSON.stringify(save_data)

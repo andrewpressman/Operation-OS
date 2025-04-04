@@ -125,7 +125,6 @@ func Verify(con : bool):
 		$Display/Label.text = "SUCESS"
 		if GlobalVar.CurrentObj == 2 && !GlobalObj.ObjectiveComplete:
 			GlobalObj.TaskFailed = false
-			GlobalVar.Score += 1
 		GlobalObj.TargetWindow = 4
 		if SaveLoad.AutoClose:
 			await get_tree().create_timer(2).timeout

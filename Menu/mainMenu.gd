@@ -7,11 +7,6 @@ func _ready() -> void:
 	SaveLoad.LoadGame()
 	SaveLoad.LoadOptions()
 
-@export var SecurityIncrease : int
-@export var MedsIncrease : int
-@export var FoodIncrease : int
-@export var RentIncrease : int
-
 func NewGame():
 	#TODO: consider asking if player wants to delete unlocked secerts?
 	GlobalVar.Reset()

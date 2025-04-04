@@ -20,8 +20,6 @@ var OptionsIst: Node = null
 var PopupAd = preload("res://Work/popupAd.tscn")
 var PopupIst : Node = null
 
-var CurrentScore : int = 0
-
 var ShiftComplete : bool
 
 var FirstTask : bool
@@ -42,7 +40,6 @@ func _ready():
 	#Set inital values
 	match GlobalVar.CurrentLevel:
 		1: 
-			GlobalVar.Score = 0
 			GlobalVar.Lives = 5
 			GlobalVar.Tasks = 10
 			#add value to make rewards dynamic
@@ -64,9 +61,7 @@ func SkipTask():
 	GlobalObj.TaskFailed = false
 	
 func _process(_delta):
-	if CurrentScore != GlobalVar.Score:
-		UpdateScore()
-			#TEMP: show fail and victory
+		#TEMP: show fail and victory
 	if GlobalVar.Lives == 0: #if player is out of lives... ???
 		ShiftFailed()
 		GlobalVar.Lives = -1
@@ -95,7 +90,6 @@ func _process(_delta):
 			GetNewTask(true)
 
 	if GlobalVar.TimerFail && !GlobalVar.TimerLock: #if timer runs out amd task is failed, deduct life and task thn reset objective
-		print("9")
 		GlobalVar.TimerFail = false
 		GlobalVar.Tasks = GlobalVar.Tasks - 1
 		GlobalVar.Lives = GlobalVar.Lives - 1
@@ -228,7 +222,7 @@ func SetObjective():
 	$Header/ObjectiveText.text = Objective
 	$Header/TasksRemaining.text = "[b]Tasks Left: [/b]\n" +  str(GlobalVar.Tasks)
 
-#Updates score
+#Updates money header
 func UpdateScore():
 	var message = "Money: " + str(GlobalVar.Money)
 	if GlobalVar.Lives > 0:

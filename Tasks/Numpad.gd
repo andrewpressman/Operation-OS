@@ -70,7 +70,6 @@ func Match(type : bool):
 	if type:
 		$Display/Label.text = "SUCESS"
 		if GlobalVar.CurrentObj == 1 && !GlobalObj.ObjectiveComplete:
-			GlobalVar.Score += 1
 			GlobalObj.TaskFailed = false
 		if SaveLoad.AutoClose:
 			await get_tree().create_timer(1).timeout

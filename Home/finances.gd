@@ -114,32 +114,6 @@ func UpdateMoney():
 	if PaidRent:
 		get_parent().EnableWork()
 
-func UpdateStats():
-	var Hunger
-	var Security
-	if GlobalVar.Hunger < 10:
-		Hunger  = "Starving"
-	elif GlobalVar.Hunger < 30:
-		Hunger = "Irritated"
-	elif GlobalVar.Hunger < 60:
-		Hunger = "Fed"
-	else:
-		Hunger = "Full"
-	
-	if GlobalVar.Security < 20:
-		Security  = "High Risk"
-	elif GlobalVar.Security < 30:
-		Security = "Med Risk"
-	elif GlobalVar.Security < 80:
-		Security = "Low Risk"
-	else:
-		Security = "Safe"
-	
-	$Stats/Label.text = "Health: \n" + str(GlobalVar.Health) + "\n
-						 Hunger: \n" + Hunger + "\n
-						 Security: \n" + Security + "\n
-						 Debt: \n" + str(GlobalVar.Debt)
-
 func UpdateDue():
 	if AmountDue == 0:
 		$Pay.disabled = true
@@ -148,14 +122,11 @@ func UpdateDue():
 	$AmountDue.text = "Amount Due: $" + str(AmountDue)
 	
 func SetPrices():
-	print(str(GlobalVar.CurrentLevel))
-	print(str(GlobalVar.Hunger))
-	print(str(GlobalVar.Security))
 	if GlobalVar.CurrentLevel > 1:
-		GlobalVar.RentPrice += GlobalVar.RentIncrease * GlobalVar.CurrentLevel
-		GlobalVar.FoodPrice += GlobalVar.FoodIncrease * GlobalVar.CurrentLevel
-		GlobalVar.MedsPrice += GlobalVar.MedsIncrease * GlobalVar.CurrentLevel
-		GlobalVar.SecurityPrice += GlobalVar.SecurityIncrease * GlobalVar.CurrentLevel
+		GlobalVar.RentPrice = GlobalVar.RentPrice + (GlobalVar.RentIncrease * GlobalVar.CurrentLevel)
+		GlobalVar.FoodPrice = GlobalVar.FoodPrice + (GlobalVar.FoodIncrease * GlobalVar.CurrentLevel)
+		GlobalVar.MedsPrice = GlobalVar.MedsPrice + (GlobalVar.MedsIncrease * GlobalVar.CurrentLevel)
+		GlobalVar.SecurityPrice = GlobalVar.SecurityPrice + (GlobalVar.SecurityIncrease * GlobalVar.CurrentLevel)
 
 	$Bills/Rent.text = "Rent: $" + str(GlobalVar.RentPrice) 
 	$Bills/Security.text = "Security: $" + str(GlobalVar.SecurityPrice)
@@ -233,7 +204,7 @@ func PayBills():
 	
 	
 	UpdateMoney()
-	UpdateStats()
+	get_parent().UpdateStats()
 	AmountDue = 0
 	UpdateDue()
 	SetAvailable()

@@ -13,11 +13,8 @@ func _ready() -> void:
 	GlobalVar.optionsVisible = false
 	$Finances.visible = false
 	$Files.visible = false
-	UpdateStatus()
+	UpdateStats()
 	SaveLoad.Save()
-
-func UpdateStatus():
-	$Finances.UpdateStats()
 	
 func EnableWork():
 	$Taskbar/GoWork.text = "Go to work"
@@ -46,3 +43,27 @@ func _input(_event: InputEvent) -> void:
 func ToggleOptions():
 	$PauseMenu.visible = false
 	GlobalVar.optionsVisible = false	
+
+func UpdateStats():
+	var HungerStr = "Hunger: "
+	var SecurityStr = "Security: "
+	var Space = "     |     "
+	if GlobalVar.Hunger < 15:
+		HungerStr  += "Starving"
+	elif GlobalVar.Hunger < 40:
+		HungerStr += "Irritated"
+	elif GlobalVar.Hunger < 80:
+		HungerStr += "Fed"
+	else:
+		HungerStr += "Full"
+	
+	if GlobalVar.Security < 20:
+		SecurityStr  += "High Risk"
+	elif GlobalVar.Security < 30:
+		SecurityStr += "Med Risk"
+	elif GlobalVar.Security < 80:
+		SecurityStr += "Low Risk"
+	else:
+		SecurityStr += "Safe"
+	
+	$Stats/Text.text = "Money: " + str(GlobalVar.Money) + Space + "Health: " + str(GlobalVar.Health) + Space + HungerStr + Space + SecurityStr + Space + "Debt: " + str(GlobalVar.Debt)

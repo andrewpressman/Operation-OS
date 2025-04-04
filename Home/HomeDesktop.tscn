@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7ona7h1qsp11"]
+[gd_scene load_steps=8 format=3 uid="uid://b7ona7h1qsp11"]
 
 [ext_resource type="Script" uid="uid://xfshrrfypgpw" path="res://Home/HomeController.gd" id="1_h8ttb"]
 [ext_resource type="Texture2D" uid="uid://c7ecxux7xtje8" path="res://Assets/Images/TempTorrN.jpg" id="2_83bdw"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bg77iwchwhc56" path="res://Menu/Options.tscn" id="2_ouabc"]
 [ext_resource type="Script" uid="uid://wx6udpnlcvrg" path="res://Home/finances.gd" id="3_qon11"]
 [ext_resource type="Script" uid="uid://0yisn75o4osx" path="res://Home/FilesCLI.gd" id="4_x257b"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ouabc"]
 
 [node name="HomeScreen" type="Node2D"]
 script = ExtResource("1_h8ttb")
@@ -16,8 +18,43 @@ offset_bottom = 648.0
 color = Color(2.64719e-07, 0.511858, 0.191942, 1)
 metadata/_edit_lock_ = true
 
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(38.5153, 71.4592)
+rotation = 3.14159
+scale = Vector2(0.172577, 0.137296)
+texture = ExtResource("2_83bdw")
+
 [node name="PauseMenu" parent="." instance=ExtResource("2_ouabc")]
 visible = false
+
+[node name="DEBUG BUTTON" type="Button" parent="."]
+visible = false
+offset_left = 40.0
+offset_top = 416.0
+offset_right = 128.0
+offset_bottom = 464.0
+text = "DEBUG"
+
+[node name="ChatWindow" type="Panel" parent="."]
+visible = false
+offset_left = 8.0
+offset_top = 108.0
+offset_right = 184.0
+offset_bottom = 336.0
+
+[node name="Sprite2D" type="Sprite2D" parent="ChatWindow"]
+position = Vector2(88, 68)
+scale = Vector2(140.125, 101.125)
+texture = SubResource("PlaceholderTexture2D_ouabc")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ChatWindow"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 119.0
+offset_right = 158.0
+offset_bottom = 215.0
+theme_override_font_sizes/normal_font_size = 12
+text = "This is a bunch of dialouge text that will show up when a character is talking to the player"
 
 [node name="Taskbar" type="Panel" parent="."]
 offset_top = 600.0
@@ -68,103 +105,65 @@ scale = Vector2(0.5, 0.5)
 
 [node name="Clock" type="Panel" parent="Header"]
 layout_mode = 0
-offset_right = 192.0
+offset_right = 256.0
 offset_bottom = 80.0
 script = ExtResource("2_g4fyx")
 
 [node name="Label" type="Label" parent="Header/Clock"]
 layout_mode = 0
-offset_top = 8.0
-offset_right = 184.0
-offset_bottom = 67.0
-theme_override_font_sizes/font_size = 20
-text = "Date: today
-Time: N/A"
+offset_right = 256.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 25
+text = "Date: today"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ObjectiveText" type="Label" parent="Header"]
+[node name="Stats" type="Panel" parent="."]
+offset_left = 320.0
+offset_right = 1088.0
+offset_bottom = 40.0
+
+[node name="Text" type="Label" parent="Stats"]
 layout_mode = 0
-offset_left = 784.0
-offset_top = 8.0
-offset_right = 1536.0
-offset_bottom = 56.0
-theme_override_font_sizes/font_size = 20
-text = "Current Objetive:"
+offset_right = 768.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 17
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Score" type="Label" parent="Header"]
-layout_mode = 0
-offset_left = 2000.0
-offset_top = 8.0
-offset_right = 2160.0
-offset_bottom = 56.0
-theme_override_font_sizes/font_size = 20
-text = "Score:"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Logo" type="Sprite2D" parent="."]
-position = Vector2(38.5153, 71.4592)
-rotation = 3.14159
-scale = Vector2(0.172577, 0.137296)
-texture = ExtResource("2_83bdw")
 
 [node name="Finances" type="Panel" parent="."]
-offset_left = 512.0
+offset_left = 784.0
 offset_top = 64.0
-offset_right = 1088.0
-offset_bottom = 576.0
+offset_right = 1120.0
+offset_bottom = 456.0
 script = ExtResource("3_qon11")
 HealthChange = 6
 HungerChange = 6
 SecurityChange = 6
-metadata/_edit_lock_ = true
 
 [node name="Money" type="Panel" parent="Finances"]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 192.0
-offset_bottom = 64.0
+offset_left = 64.0
+offset_top = 8.0
+offset_right = 256.0
+offset_bottom = 56.0
 
 [node name="Label" type="Label" parent="Finances/Money"]
 layout_mode = 0
-offset_right = 176.0
-offset_bottom = 48.0
+offset_left = 8.0
+offset_top = 10.0
+offset_right = 184.0
+offset_bottom = 34.0
 text = "Current Money: XXX"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Stats" type="Panel" parent="Finances"]
-layout_mode = 0
-offset_left = 448.0
-offset_top = 16.0
-offset_right = 560.0
-offset_bottom = 280.0
-
-[node name="Label" type="Label" parent="Finances/Stats"]
-layout_mode = 0
-offset_top = 16.0
-offset_right = 112.0
-offset_bottom = 256.0
-theme_override_font_sizes/font_size = 13
-text = "Health: XX
-
-Hunger: XX
-
-Security: XX
-
-Debt: XX"
-horizontal_alignment = 1
-
 [node name="Bills" type="Panel" parent="Finances"]
 layout_mode = 0
-offset_left = 32.0
-offset_top = 128.0
-offset_right = 384.0
-offset_bottom = 384.0
+offset_left = 16.0
+offset_top = 64.0
+offset_right = 320.0
+offset_bottom = 320.0
 
 [node name="Rent" type="CheckBox" parent="Finances/Bills"]
 layout_mode = 0
@@ -257,42 +256,31 @@ text = "Possible Fines go here"
 
 [node name="AmountDue" type="Label" parent="Finances"]
 layout_mode = 0
-offset_left = 160.0
-offset_top = 424.0
-offset_right = 296.0
-offset_bottom = 448.0
+offset_left = 25.0
+offset_top = 328.0
+offset_right = 185.0
+offset_bottom = 368.0
 text = "Amount Due: $0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Pay" type="Button" parent="Finances"]
 layout_mode = 0
-offset_left = 416.0
-offset_top = 424.0
-offset_right = 544.0
-offset_bottom = 488.0
+offset_left = 185.0
+offset_top = 328.0
+offset_right = 313.0
+offset_bottom = 368.0
 text = "Pay bills"
 
 [node name="Files" type="Panel" parent="."]
-offset_left = 80.0
+visible = false
+offset_left = 192.0
 offset_top = 64.0
-offset_right = 448.0
+offset_right = 768.0
 offset_bottom = 576.0
 script = ExtResource("4_x257b")
 
-[node name="Label" type="Label" parent="Files"]
-layout_mode = 0
-offset_left = 48.0
-offset_top = 64.0
-offset_right = 304.0
-offset_bottom = 440.0
-text = "Locked and unlocked file list goes here
-
-Buttons open a window with given file
-
-Audio files, Text files, images"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
+[connection signal="pressed" from="DEBUG BUTTON" to="." method="UpdateStats"]
 [connection signal="pressed" from="Taskbar/UnlockedFiles" to="." method="FilesButton"]
 [connection signal="pressed" from="Taskbar/Finances" to="." method="FinancesButton"]
 [connection signal="pressed" from="Taskbar/GoWork" to="." method="GoWork"]
