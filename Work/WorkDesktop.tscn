@@ -77,6 +77,23 @@ metadata/_edit_lock_ = true
 [node name="PauseMenu" parent="." instance=ExtResource("2_5ocmi")]
 visible = false
 
+[node name="FileUnlocked" type="Panel" parent="."]
+visible = false
+offset_left = 8.0
+offset_top = 152.0
+offset_right = 116.0
+offset_bottom = 200.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="FileUnlocked"]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 104.0
+offset_bottom = 48.0
+bbcode_enabled = true
+text = "New File Unlocked"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="AdPopup" type="Timer" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -240,6 +257,7 @@ offset_top = 152.0
 offset_right = 120.0
 offset_bottom = 200.0
 text = "Go Home"
+metadata/_edit_group_ = true
 
 [node name="Bribe" type="Panel" parent="."]
 offset_left = 480.0

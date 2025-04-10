@@ -3,6 +3,7 @@ extends Node
 #Work variables
 var Score : int
 var CurrentObj : int
+var NewLevel : bool
 
 var Lives : int #numebr of times the player can fail a task
 var Tasks : int #Number of tasks the player is given
@@ -48,7 +49,7 @@ var StartFoodPrice : int = 100
 var StartMedsPrice : int = 100
 var StartSecurityPrice : int = 100
 var StartDebt : int = 0
-var MaxDebt : int = 2000
+var MaxDebt : int = 5000
 
 #Starting price increases
 var StartRentRate : int = 50

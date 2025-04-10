@@ -47,7 +47,9 @@ func ToggleOptions():
 func UpdateStats():
 	var HungerStr = "Hunger: "
 	var SecurityStr = "Security: "
+	var HealthStr = "Health: "
 	var Space = "     |     "
+	
 	if GlobalVar.Hunger < 15:
 		HungerStr  += "Starving"
 	elif GlobalVar.Hunger < 40:
@@ -66,4 +68,13 @@ func UpdateStats():
 	else:
 		SecurityStr += "Safe"
 	
-	$Stats/Text.text = "Money: " + str(GlobalVar.Money) + Space + "Health: " + str(GlobalVar.Health) + Space + HungerStr + Space + SecurityStr + Space + "Debt: " + str(GlobalVar.Debt)
+	if GlobalVar.Health < 25:
+		HealthStr  += "Poor"
+	elif GlobalVar.Health < 50:
+		HealthStr += "Okay"
+	elif GlobalVar.Health < 80:
+		HealthStr += "Good"
+	else:
+		HealthStr += "Perfect"
+	
+	$Stats/Text.text = "Money: " + str(GlobalVar.Money) + Space + HealthStr + Space + HungerStr + Space + SecurityStr + Space + "Debt: " + str(GlobalVar.Debt)

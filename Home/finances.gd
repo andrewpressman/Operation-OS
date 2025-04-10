@@ -44,18 +44,20 @@ func _ready() -> void:
 
 func SetAvailable(): #Other bills can only be paid when debt is 0 (Or some arbitray value)
 	if GlobalVar.Debt == 0:
-		if !PaidRent && !PaidFood && !PaidMeds && !PaidSecurity:
+		if !PaidDebt:
 			$Bills/Debt.visible = false
+		if !PaidRent:
 			$Bills/Rent.disabled = false
+		if !PaidFood:
+			$Bills/FoodQuality.disabled = false
+		if !PaidMeds:
+			$Bills/MedsQuality.disabled = false
+		if !PaidSecurity:
 			$Bills/Security.disabled = false
 	else:
 		$Bills/Debt.visible = true
-		$Bills/Rent.disabled = true
-		$Bills/Rent.button_pressed = false
-		$Bills/Food.disabled = true
-		$Bills/Food.button_pressed = false
-		$Bills/Meds.disabled = true
-		$Bills/Meds.button_pressed = false
+		$Bills/FoodQuality.disabled = true
+		$Bills/MedsQuality.disabled = true
 		$Bills/Security.disabled = true
 		$Bills/Security.button_pressed = false
 
@@ -122,11 +124,12 @@ func UpdateDue():
 	$AmountDue.text = "Amount Due: $" + str(AmountDue)
 	
 func SetPrices():
-	if GlobalVar.CurrentLevel > 1:
+	if GlobalVar.CurrentLevel > 1 && GlobalVar.NewLevel:
 		GlobalVar.RentPrice = GlobalVar.RentPrice + (GlobalVar.RentIncrease * GlobalVar.CurrentLevel)
 		GlobalVar.FoodPrice = GlobalVar.FoodPrice + (GlobalVar.FoodIncrease * GlobalVar.CurrentLevel)
 		GlobalVar.MedsPrice = GlobalVar.MedsPrice + (GlobalVar.MedsIncrease * GlobalVar.CurrentLevel)
 		GlobalVar.SecurityPrice = GlobalVar.SecurityPrice + (GlobalVar.SecurityIncrease * GlobalVar.CurrentLevel)
+		GlobalVar.NewLevel = false
 
 	$Bills/Rent.text = "Rent: $" + str(GlobalVar.RentPrice) 
 	$Bills/Security.text = "Security: $" + str(GlobalVar.SecurityPrice)
@@ -144,8 +147,8 @@ func PayBills():
 	if AmountDue <= GlobalVar.Money:
 		GlobalVar.Money += -AmountDue
 	else:
-		GlobalVar.Money = 0
 		CurrentDebt = (GlobalVar.Money - AmountDue) * -1 + GlobalVar.Debt
+		GlobalVar.Money = 0
 		GlobalVar.Debt = CurrentDebt
 		if GlobalVar.Debt >= GlobalVar.MaxDebt:
 			GlobalVar.GameOverReason = 4
@@ -202,7 +205,6 @@ func PayBills():
 	else:
 		$Pay.disabled = false	
 	
-	
 	UpdateMoney()
 	get_parent().UpdateStats()
 	AmountDue = 0
@@ -236,6 +238,16 @@ func MedsSelected(input):
 			$Bills/Meds.text = "Meds: $" + str(GlobalVar.MedsPrice) 
 		3:
 			$Bills/Meds.text = "Meds: $" + str(GlobalVar.MedsPrice * 2) 
+
+func EnableFood(value : bool):
+	if value:
+		$Bills/FoodQuality.disabled = true
+		$Bills/Food.disabled = true
+		#$Bills/Food.button_pressed = false
+	else:
+		$Bills/FoodQuality.disabled = false
+		$Bills/Food.disabled = false
+		#$Bills/Food.button_pressed = false
 
 func ToggleFood():
 	PaidFood = !PaidFood

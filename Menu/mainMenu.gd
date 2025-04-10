@@ -13,6 +13,7 @@ func NewGame():
 	get_tree().change_scene_to_file("res://Home/HomeDesktop.tscn")
 
 func Continue():
+	GlobalVar.NewLevel = false
 	get_tree().change_scene_to_file("res://Home/HomeDesktop.tscn")
 
 func PurgeSave():

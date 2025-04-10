@@ -36,6 +36,7 @@ func _ready():
 	$ShiftComplete/RichTextLabel.text = "[b][color=green]Shift Complete[/color][/b]\nReturn home"
 	$Bribe.visible = false
 	ShiftComplete = false
+	$FileUnlocked.visible = false
 
 	#Set inital values
 	match GlobalVar.CurrentLevel:
@@ -131,6 +132,7 @@ func hideBribe():
 
 #Update stat figures and go to home Desktop			
 func GoHome():
+	GlobalVar.NewLevel = true
 	#Health always goes down
 	GlobalVar.Health = GlobalVar.Health - (20 + GlobalVar.CurrentLevel)
 	
@@ -311,3 +313,8 @@ func ToggleOptions():
 	$Taskbar/Buttons.disabled = false
 	$Bribe/Accept.disabled = false
 	$Bribe/Decline.disabled = false
+
+func FileUnlocked():
+	$FileUnlocked.visible = true
+	await get_tree().create_timer(4).timeout
+	$FileUnlocked.visible = false

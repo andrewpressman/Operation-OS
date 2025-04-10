@@ -59,12 +59,20 @@ func LoadGame():
 		GlobalVar.CurrentLevel = save_data["CurrLevel"]
 	if "MedsPrice" in save_data:
 		GlobalVar.MedsPrice = save_data["MedsPrice"]
+	if "MedsRate" in save_data:
+		GlobalVar.MedsIncrease = save_data["MedsRate"]
 	if "FoodPrice" in save_data:
 		GlobalVar.FoodPrice = save_data["FoodPrice"]
+	if "FoodRate" in save_data:
+		GlobalVar.FoodIncrease = save_data["FoodRate"]
 	if "RentPrice" in save_data:
 		GlobalVar.RentPrice = save_data["RentPrice"]
+	if "RentRate" in save_data:
+		GlobalVar.RentIncrease = save_data["RentRate"]
 	if "SecurityPrice" in save_data:
 		GlobalVar.SecurityPrice = save_data["SecurityPrice"]
+	if "SecurityRate" in save_data:
+		GlobalVar.SecurityIncrease = save_data["SecurityRate"]
 	if "PaidBills" in save_data:
 		PaidBills = save_data["PaidBills"]	
 

@@ -16,6 +16,7 @@ func _ready() -> void:
 func UpdateStats():
 	var HungerStr : String
 	var SecurityStr : String
+	var HealthStr : String
 	if Hunger < 15:
 		HungerStr  = "Starving"
 	elif Hunger < 40:
@@ -33,8 +34,17 @@ func UpdateStats():
 		SecurityStr = "Low Risk"
 	else:
 		SecurityStr = "Safe"
+			
+	if GlobalVar.Health < 25:
+		HealthStr  += "Poor"
+	elif GlobalVar.Health < 50:
+		HealthStr += "Okay"
+	elif GlobalVar.Health < 80:
+		HealthStr += "Good"
+	else:
+		HealthStr += "Perfect"
 	
-	$Label.text = "Health: \n" + str(Health) + "\n
+	$Label.text = "Health: \n" + HealthStr + "\n
 						 Hunger: \n" + HungerStr + "\n
 						 Security: \n" + SecurityStr + "\n
 						 Debt: \n" + str(Debt)
