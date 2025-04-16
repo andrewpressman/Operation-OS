@@ -8,9 +8,9 @@ func _ready() -> void:
 	SaveLoad.LoadOptions()
 
 func NewGame():
-	#TODO: consider asking if player wants to delete unlocked secerts?
+	#TODO: consider asking if player wants to delete unlocked secerts? / Confirm reset to level 0
 	GlobalVar.Reset()
-	get_tree().change_scene_to_file("res://Home/HomeDesktop.tscn")
+	get_tree().change_scene_to_file("res://Menu/NewGameStart.tscn")
 
 func Continue():
 	GlobalVar.NewLevel = false

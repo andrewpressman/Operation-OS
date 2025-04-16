@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://5uvsr8qib7ne"]
+
+[ext_resource type="Script" uid="uid://c4un8ujvgp6gy" path="res://Menu/NewGameIntro.gd" id="1_kujss"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_kujss")
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.154876, 0.154876, 0.154876, 1)
+metadata/_edit_lock_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 1152.0
+offset_bottom = 136.0
+theme_override_font_sizes/bold_font_size = 65
+bbcode_enabled = true
+text = "[b]Congratulations![/b]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 64.0
+offset_top = 128.0
+offset_right = 1088.0
+offset_bottom = 576.0
+bbcode_enabled = true
+text = "Your search is finally over, and you have been selected into the COMPANY family as an offical  [b]TASK PERFORMANCE SPECIALIST[/b]. 
+Please take the appropriate amount of time to celebrate.
+...
+Thank you for celebrating.
+...
+This is a highly sought after position within our family, and you will be serving a vial role in moving us towards the future. How? Dont worry about it.
+The important thing is your new job! As part of our family, we have provided you with this full software suite that will not only help you perform your work, but also we have taken the liberty of linking with your bank and providing you with the ability to take care of all your bills and expenses directy through us!
+This program will handle anything and everything you will need to fullfill your duties as [b]TASK PERFORMANCE SPECIALIST[/b]. Any activity outisde of your assigned tasks will result in immediate termination and a fine of 1,000,000,000,000,000 dollars.
+
+Just kidding.
+
+but seriously, stay on task, we are watchiong. 
+
+Accept below to begin your journey."
+
+[node name="Button" type="Button" parent="."]
+offset_left = 448.0
+offset_top = 576.0
+offset_right = 768.0
+offset_bottom = 632.0
+text = "Accept"
+
+[connection signal="pressed" from="Button" to="." method="Start"]
