@@ -36,11 +36,11 @@ func UpdateStats():
 		SecurityStr = "Safe"
 			
 	if GlobalVar.Health < 25:
-		HealthStr  += "Poor"
+		HealthStr = "Poor"
 	elif GlobalVar.Health < 50:
-		HealthStr += "Okay"
+		HealthStr = "Okay"
 	elif GlobalVar.Health < 80:
-		HealthStr += "Good"
+		HealthStr = "Good"
 	else:
 		HealthStr += "Perfect"
 	

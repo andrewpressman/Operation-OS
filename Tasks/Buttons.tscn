@@ -375,6 +375,23 @@ offset_right = 156.0
 offset_bottom = 359.0
 text = "Option F"
 
+[node name="Remaining" type="Panel" parent="."]
+offset_left = 32.0
+offset_top = 8.0
+offset_right = 224.0
+offset_bottom = 58.0
+
+[node name="Text" type="RichTextLabel" parent="Remaining"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 10.0
+offset_right = 184.0
+offset_bottom = 42.0
+bbcode_enabled = true
+text = "REMAINING: X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="close_requested" from="." to="." method="Kill"]
 [connection signal="pressed" from="Confirm" to="." method="Confirm"]
 [connection signal="pressed" from="Buttons/Yellow" to="." method="YellowButton"]

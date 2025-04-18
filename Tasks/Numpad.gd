@@ -61,7 +61,7 @@ func SetKey():
 		KeyNumber = "null"
 	
 func UpdateNumber():
-	if WholeNumber.length() < 6:
+	if WholeNumber.length() < KeyNumber.length() + 1:
 		$Display/Label.text = WholeNumber
 	#TODO: logic to check for secret codes if I want them
 	
@@ -85,7 +85,7 @@ func Match(type : bool):
 	Clear()
 
 func GoButton():
-	var CompareString = WholeNumber.substr(0,5)
+	var CompareString = WholeNumber.substr(0,KeyNumber.length())
 	if CompareString == KeyNumber:
 		Match(true) #Add logic for success
 	else:

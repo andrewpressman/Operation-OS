@@ -9,8 +9,17 @@ var TargetR1 : int
 var TargetSwitch : int
 var TargetSwitchValue : int
 
+var NumTasks
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	NumTasks = GlobalVar.CurrentLevel + 1
+	$Remaining/Text.text = "REMAINING: " + str(NumTasks)
+	GetNewTask()
+
+func GetNewTask():
+	$Remaining/Text.text = "REMAINING: " + str(NumTasks)
+	$Confirm.disabled = false
 	SetTarget()
 	SetDisplay()
 	SetLevers(true)
@@ -19,6 +28,15 @@ func _ready():
 #close the window
 func Kill():
 	queue_free()
+
+var IsListening : bool
+func _process(delta):
+	if GlobalObj.TargetWindow == 4:
+		IsListening = true
+	if IsListening:
+		if GlobalObj.TargetWindow != 4:
+			IsListening = false
+			_ready()
 
 #Gets which button needs to be pressed
 func SetTarget():
@@ -122,22 +140,33 @@ func Confirm():
 
 func Verify(con : bool):
 	if con:
-		$Display/Label.text = "SUCESS"
+		$Display/Label.text = "SUCCESS"
 		if GlobalVar.CurrentObj == 2 && !GlobalObj.ObjectiveComplete:
-			GlobalObj.TaskFailed = false
-		GlobalObj.TargetWindow = 4
-		if SaveLoad.AutoClose:
-			await get_tree().create_timer(2).timeout
-			Kill()
+			if NumTasks > 1:
+				NumTasks -= 1
+				GlobalObj.GetRandomButton()
+				GetNewTask()
+			else:
+				$Remaining/Text.text = "REMAINING: 0"
+				GlobalObj.TaskFailed = false
+				GlobalObj.TargetWindow = 4
+				GlobalObj.ObjectiveComplete = true
+				if SaveLoad.AutoClose:
+					await get_tree().create_timer(2).timeout
+					Kill()
+				else:
+					SetDisplay()
 	else:
 		GlobalObj.TaskFailed = true
 		$Display/Label.text = "FAILURE"
+		GlobalObj.ObjectiveComplete = true
 		await get_tree().create_timer(1).timeout
 		GlobalObj.TargetWindow = 4
 		if SaveLoad.AutoClose:
 			Kill()
+		else:
+			SetDisplay()
 	
-	GlobalObj.ObjectiveComplete = true
 
 #Sends a success when correct button is complete, fail when incorrect
 #TODO: shift to sequence?

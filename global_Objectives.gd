@@ -5,11 +5,14 @@ var TaskFailed : bool
 
 var NumberpadNum : int
 func GetRandomNumber():
+	#Longer numbers for later levels
 	GlobalVar.CurrentObj = 1
 	ObjectiveComplete = false
-	var random_number = randi() % 90000 + 10000
+	#Cap at 12 digits
+	var minV = pow(10, GlobalVar.CurrentLevel + 1)
+	var maxV = pow(10, GlobalVar.CurrentLevel + 2) - 1
+	var random_number = randi_range(minV, maxV)
 	NumberpadNum = random_number
-
 
 var TargetWindow: int
 var TargetButton : int
@@ -21,6 +24,7 @@ var TargetSwitch : int
 var SwitchBoard = [0,0,0,0,0,0]
 
 func GetRandomButton():
+	#More steps in later levels
 	GlobalVar.CurrentObj = 2
 	ObjectiveComplete = false
 	TargetWindow = randi_range(1,3)

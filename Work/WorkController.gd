@@ -187,7 +187,7 @@ func GetNewTask(bribe : bool):
 	#Repeat Task prevention
 	while Obj == LastTask:
 		Obj = randi_range(1,4)
-	
+	#Obj = 2 #DEBUG CODE
 	match Obj:
 		1:
 			GlobalObj.GetRandomNumber()
