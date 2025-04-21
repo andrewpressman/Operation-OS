@@ -1,0 +1,101 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhgnmu7lj6eh4"]
+
+[ext_resource type="Script" uid="uid://c6mcc4won4fru" path="res://Work/Shop.gd" id="1_0iwdr"]
+[ext_resource type="ButtonGroup" uid="uid://4lojvif78jd" path="res://Work/ShopButtons.tres" id="2_ctu5i"]
+
+[node name="Shop" type="Window"]
+initial_position = 1
+size = Vector2i(380, 450)
+script = ExtResource("1_0iwdr")
+ShopButtons = ExtResource("2_ctu5i")
+
+[node name="Header" type="RichTextLabel" parent="."]
+offset_left = 14.0
+offset_top = -3.0
+offset_right = 358.0
+offset_bottom = 69.0
+theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/bold_font_size = 25
+bbcode_enabled = true
+text = "[b]SHOP[/b]
+Select an item to view its properties"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = 6.0
+offset_top = 61.0
+offset_right = 374.0
+offset_bottom = 229.0
+theme_override_constants/h_separation = 45
+theme_override_constants/v_separation = 0
+columns = 2
+
+[node name="ButtonUpgrade" type="CheckBox" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+button_group = ExtResource("2_ctu5i")
+text = "Button Upgrade"
+
+[node name="NumpadUpgrade" type="CheckBox" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+button_group = ExtResource("2_ctu5i")
+text = "Numpad Upgrade"
+
+[node name="TransferUpgrade" type="CheckBox" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+button_group = ExtResource("2_ctu5i")
+text = "Transfer Speed"
+
+[node name="SalaryUpgrade" type="CheckBox" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+button_group = ExtResource("2_ctu5i")
+text = "Salary Upgrade"
+
+[node name="ExtraTasks" type="CheckBox" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+button_group = ExtResource("2_ctu5i")
+text = "Extra Tasks"
+
+[node name="ExtendShift" type="CheckBox" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+button_group = ExtResource("2_ctu5i")
+text = "Overtime"
+
+[node name="Buy" type="Button" parent="."]
+offset_left = 126.0
+offset_top = 397.0
+offset_right = 254.0
+offset_bottom = 437.0
+text = "Buy"
+
+[node name="Descrption" type="RichTextLabel" parent="."]
+offset_left = 14.0
+offset_top = 221.0
+offset_right = 358.0
+offset_bottom = 285.0
+bbcode_enabled = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 126.0
+offset_top = 349.0
+offset_right = 254.0
+offset_bottom = 389.0
+text = "Price: $00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Buy" to="." method="Pay"]

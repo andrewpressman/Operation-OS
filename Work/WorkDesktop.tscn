@@ -257,7 +257,6 @@ offset_top = 152.0
 offset_right = 120.0
 offset_bottom = 200.0
 text = "Go Home"
-metadata/_edit_group_ = true
 
 [node name="Bribe" type="Panel" parent="."]
 offset_left = 480.0

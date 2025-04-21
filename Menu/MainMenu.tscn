@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dc0lunqd24036"]
+[gd_scene load_steps=4 format=3 uid="uid://dc0lunqd24036"]
 
 [ext_resource type="Script" uid="uid://cabn5f0f6ffng" path="res://Menu/mainMenu.gd" id="1_2s6tg"]
+[ext_resource type="PackedScene" uid="uid://dhgnmu7lj6eh4" path="res://Work/Shop.tscn" id="2_swd6r"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_swd6r"]
+resource_name = "ShopButtons"
+allow_unpress = true
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_2s6tg")
@@ -40,6 +45,9 @@ offset_top = 512.0
 offset_right = 192.0
 offset_bottom = 576.0
 text = "Quit"
+
+[node name="Shop" parent="." instance=ExtResource("2_swd6r")]
+ShopButtons = SubResource("ButtonGroup_swd6r")
 
 [connection signal="pressed" from="Button" to="." method="NewGame"]
 [connection signal="pressed" from="Continue" to="." method="Continue"]
