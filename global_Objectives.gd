@@ -8,9 +8,20 @@ func GetRandomNumber():
 	#Longer numbers for later levels
 	GlobalVar.CurrentObj = 1
 	ObjectiveComplete = false
+	var numLength = GlobalVar.CurrentLevel + 2
 	#Cap at 12 digits
-	var minV = pow(10, GlobalVar.CurrentLevel + 1)
-	var maxV = pow(10, GlobalVar.CurrentLevel + 2) - 1
+	
+	#Shop Value math (default to 4 digits if shop level is greater than num length)
+	if numLength - ShopVar.NumpadLevel > 1:
+		numLength -= ShopVar.NumpadLevel
+	else:
+		numLength = 3
+	
+	if numLength > 12:
+		numLength = 12
+			
+	var minV = pow(10, numLength)
+	var maxV = pow(10, numLength + 1) - 1
 	var random_number = randi_range(minV, maxV)
 	NumberpadNum = random_number
 

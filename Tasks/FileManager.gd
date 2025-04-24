@@ -31,6 +31,8 @@ func _ready():
 		Next = false
 	Complete = false
 	
+	#Redcude timer by shop value
+	$Timer.wait_time = 1.5 - (.25  * (ShopVar.TransferLevel - 1))
 	SetDropdown()
 
 func Kill():

@@ -175,6 +175,15 @@ offset_bottom = 40.0
 theme_override_font_sizes/font_size = 12
 text = "Button"
 
+[node name="Shop" type="Button" parent="Taskbar"]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 8.0
+offset_right = 640.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 12
+text = "Shop"
+
 [node name="Header" type="Panel" parent="."]
 offset_right = 2304.0
 offset_bottom = 80.0
@@ -356,6 +365,7 @@ vertical_alignment = 1
 [connection signal="pressed" from="Taskbar/Messenger" to="." method="SkipTask"]
 [connection signal="pressed" from="Taskbar/Requests" to="." method="DisplayRequest"]
 [connection signal="pressed" from="Taskbar/Buttons" to="." method="DisplayButtons"]
+[connection signal="pressed" from="Taskbar/Shop" to="." method="DisplayShop"]
 [connection signal="pressed" from="GoHome" to="." method="GoHome"]
 [connection signal="pressed" from="Bribe/Accept" to="Bribe" method="AcceptBribe"]
 [connection signal="pressed" from="Bribe/Decline" to="Bribe" method="DeclineBribe"]

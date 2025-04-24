@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 GlobalObj="*res://global_Objectives.gd"
 GlobalVar="*res://global_Variables.gd"
 SaveLoad="*res://Menu/SaveLoad.gd"
+ShopVar="*res://shop_Variables.gd"
 
 [display]
 

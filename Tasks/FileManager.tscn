@@ -8,6 +8,7 @@ size = Vector2i(638, 244)
 script = ExtResource("1_oo73u")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
 
 [node name="Transfer" type="Button" parent="."]
 offset_left = 231.0

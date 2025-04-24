@@ -20,6 +20,9 @@ var OptionsIst: Node = null
 var PopupAd = preload("res://Work/popupAd.tscn")
 var PopupIst : Node = null
 
+var Shop = (preload("res://Work/Shop.tscn"))
+var ShopIst : Node = null
+
 var ShiftComplete : bool
 
 var FirstTask : bool
@@ -37,6 +40,7 @@ func _ready():
 	$Bribe.visible = false
 	ShiftComplete = false
 	$FileUnlocked.visible = false
+	ShopVar.OpenShop()
 
 	#Set inital values
 	match GlobalVar.CurrentLevel:
@@ -54,6 +58,10 @@ func _ready():
 			GlobalVar.Lives = 10
 			GlobalVar.Tasks = 20 + GlobalVar.CurrentLevel
 		#Continue down for more levels
+	
+	#Increase number of tasks based on shop level
+	GlobalVar.Tasks += (ShopVar.ExtraTasks - 1)
+	
 	GetNewTask(false)
 
 #DEBUG Function, remove before launch
@@ -175,6 +183,10 @@ func CheckLives():
 			GlobalVar.Lives = GlobalVar.Lives - 1
 			GlobalVar.BribeTaken = false
 		GlobalVar.Money += GlobalVar.Salary
+		
+		#Shop Salary boost
+		if ShopVar.SalaryLevel > 1:
+			GlobalVar.Money += ShopVar.SalaryBoost * ShopVar.SalaryLevel
 
 var LastTask : int
 #Gets a new objective
@@ -278,6 +290,15 @@ func DisplayPopup():
 		var t6 = PopupAd.instantiate()
 		PopupIst = t6
 		add_child(t6)
+
+func DisplayShop():
+	if ShopIst && is_instance_valid(ShopIst):
+		ShopIst.queue_free()
+		ShopIst = null
+	else:
+		var t7 = Shop.instantiate()
+		ShopIst = t7
+		add_child(t7)
 
 func DisplayMessages():
 	pass

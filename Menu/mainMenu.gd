@@ -6,10 +6,10 @@ func _ready() -> void:
 	SaveLoad.CurrentScreen = "MENU"
 	SaveLoad.LoadGame()
 	SaveLoad.LoadOptions()
-
 func NewGame():
 	#TODO: consider asking if player wants to delete unlocked secerts? / Confirm reset to level 0
 	GlobalVar.Reset()
+	ShopVar.Reset()
 	get_tree().change_scene_to_file("res://Menu/NewGameStart.tscn")
 
 func Continue():

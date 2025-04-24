@@ -14,6 +14,9 @@ var NumTasks
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	NumTasks = GlobalVar.CurrentLevel + 1
+	
+	#reduce tasks by shop value
+	NumTasks -= ShopVar.ButtonLevel - 1
 	$Remaining/Text.text = "REMAINING: " + str(NumTasks)
 	GetNewTask()
 

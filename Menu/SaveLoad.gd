@@ -27,6 +27,12 @@ func Save():
 		"SecurityPrice" : GlobalVar.SecurityPrice,
 		"SecurityRate" : GlobalVar.SecurityIncrease,
 		"PaidBills" : PaidBills,
+		"ButtonLevel" : ShopVar.ButtonLevel,
+		"NumpadLevel" : ShopVar.NumpadLevel,
+		"TransferLevel" : ShopVar.TransferLevel,
+		"SalaryLevel" : ShopVar.SalaryLevel,
+		"ExtraTasks" : ShopVar.ExtraTasks,
+		"OvertimeBought" : ShopVar.OverTimeBought
 	}
 	var json_str = JSON.stringify(save_data)
 	save_game.store_line(json_str)
@@ -74,7 +80,19 @@ func LoadGame():
 	if "SecurityRate" in save_data:
 		GlobalVar.SecurityIncrease = save_data["SecurityRate"]
 	if "PaidBills" in save_data:
-		PaidBills = save_data["PaidBills"]	
+		PaidBills = save_data["PaidBills"]
+	if "ButtonLevel" in save_data:
+		ShopVar.ButtonLevel = save_data["ButtonLevel"]
+	if "NumpadLevel" in save_data:
+		ShopVar.NumpadLevel = save_data["NumpadLevel"]
+	if "TransferLevel" in save_data:
+		ShopVar.TransferLevel = save_data["TransferLevel"]
+	if "SalaryLevel" in save_data:
+		ShopVar.SalaryLevel = save_data["SalaryLevel"]
+	if "ExtraTasks"	 in save_data:
+		ShopVar.ExtraTasks = save_data["ExtraTasks"]
+	if "OvertimeBought" in save_data:
+		ShopVar.OverTimeBought = save_data["OvertimeBought"]
 
 func SaveOptions():
 	var Settigns = FileAccess.open("user://Options.save", FileAccess.WRITE)

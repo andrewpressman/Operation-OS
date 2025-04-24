@@ -10,13 +10,20 @@ var amPm : bool #am = true, pm = false
 
 var SkipChance
 
+var ShiftEnd
+
 func _ready() -> void:
 	mins = 0
 	hour = 9
 	amPm = true
 	GlobalVar.TimerFail = false
 	GlobalVar.ForceShiftEnd = false
+	if ShopVar.OverTimeBought:
+		ShiftEnd = 7
+	else:
+		ShiftEnd = 5
 	SetTime()
+	
 
 func UpdateClock():
 	TimeSkip()
@@ -38,7 +45,7 @@ func UpdateClock():
 		else:
 			hour = 1
 
-	if hour == 5 && !amPm:
+	if hour == ShiftEnd && !amPm:
 		GlobalVar.ForceShiftEnd = true
 		$Timer.stop()
 	
