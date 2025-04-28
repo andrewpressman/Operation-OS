@@ -35,6 +35,7 @@ func _ready():
 	GlobalVar.optionsVisible = false
 	FirstTask = true
 	$GoHome.visible = false
+	$Taskbar/Shop.disabled = false
 	$ShiftComplete.visible = false
 	$ShiftComplete/RichTextLabel.text = "[b][color=green]Shift Complete[/color][/b]\nReturn home"
 	$Bribe.visible = false
@@ -82,6 +83,10 @@ func _process(_delta):
 			GlobalVar.Lives -= 1
 			UpdateScore()
 		$GoHome.visible = true
+		$Taskbar/Shop.disabled = true
+		if ShopIst && is_instance_valid(ShopIst):
+			ShopIst.queue_free()
+			ShopIst = null
 		if ShiftComplete == false:
 			ShiftComplete = true
 			GlobalVar.CurrentObj = 5
@@ -221,7 +226,7 @@ func SetObjective():
 		1:
 			Objective = Objective + "Input number " + str(GlobalObj.NumberpadNum)
 		2:
-			Objective = Objective + "Do button Panel"
+			Objective = Objective + "Perform Control Panel operations"
 		3:
 			Objective = Objective + "Transfer Files from: " + GlobalObj.FileSourceText + " to " + GlobalObj.FileTargetText
 		4:

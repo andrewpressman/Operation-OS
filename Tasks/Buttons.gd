@@ -67,13 +67,13 @@ func SetDisplay():
 	match GlobalObj.TargetWindow:
 		1:
 			if TargetButton == 1: 
-				$Display/Label.text = "Press button Red"
+				$Display/Label.text = "Press button: Red"
 			if TargetButton == 2: 
-				$Display/Label.text = "Press button Blue"
+				$Display/Label.text = "Press button: Blue"
 			if TargetButton == 3: 
-				$Display/Label.text = "Press button Green"
+				$Display/Label.text = "Press button: Green"
 			if TargetButton == 4: 
-				$Display/Label.text = "Press button Yellow"
+				$Display/Label.text = "Press button: Yellow"
 		2:
 			$Display/Label.text = "Set L1 to: " + str(int(GlobalObj.TargetLeversL1)) + " & Set R1 to: " + str(int(GlobalObj.TargetLeversR1))
 		3:

@@ -30,46 +30,63 @@ func _process(delta) -> void:
 			CheckAfford(0)
 
 func CheckOpen():
-	if ShopVar.ButtonBought:
+	if ShopVar.ButtonBought || ShopVar.ButtonLevel >= 4:
 		$ShopGrid/ButtonUpgrade.disabled = true
 	else:
 		$ShopGrid/ButtonUpgrade.disabled = false
-	if ShopVar.NumpadBought:
+	
+	if ShopVar.NumpadBought || ShopVar.NumpadLevel >= 4:
 		$ShopGrid/NumpadUpgrade.disabled = true
 	else:
 		$ShopGrid/NumpadUpgrade.disabled = false
+	
 	if ShopVar.TransferBought || ShopVar.TransferLevel >= 4:
 		$ShopGrid/TransferUpgrade.disabled = true
 	else:
 		$ShopGrid/TransferUpgrade.disabled = false
-	if ShopVar.SalaryBought:
+	
+	if ShopVar.SalaryBought || ShopVar.SalaryLevel >= 10:
 		$ShopGrid/SalaryUpgrade.disabled = true
 	else:
 		$ShopGrid/SalaryUpgrade.disabled = false
-	if ShopVar.TasksBought:
+	
+	if ShopVar.TasksBought || ShopVar.ExtraTasks >= 10:
 		$ShopGrid/ExtraTasks.disabled = true
 	else:
 		$ShopGrid/ExtraTasks.disabled = false
+	
 	if !ShopVar.OverTimeBought:
 		$ShopGrid/ExtendShift.disabled = false
 	else:
 		$ShopGrid/ExtendShift.disabled = true
 
 func SetLevels():
-	$ShopGrid/ButtonUpgrade.text = "Button Upgrade (" + str(ShopVar.ButtonLevel) + ")"
+	$ShopGrid/ButtonUpgrade.text = "Control Panel Upgrade (" + str(ShopVar.ButtonLevel) + ")"
+	if ShopVar.ButtonLevel >= 4:
+		$ShopGrid/ButtonUpgrade.text = "Control Panel Upgrade (MAX)"
+	
 	$ShopGrid/NumpadUpgrade.text = "Smaller Number (" + str(ShopVar.NumpadLevel) + ")"
+	if ShopVar.NumpadLevel >= 4:
+		$ShopGrid/NumpadUpgrade.text = "Smaller Number (MAX)"
+		
 	$ShopGrid/TransferUpgrade.text = "Transfer Speed (" + str(ShopVar.TransferLevel) + ")"
-	$ShopGrid/SalaryUpgrade.text = "Salary Upgrade (" + str(ShopVar.SalaryLevel) + ")"
-	$ShopGrid/ExtraTasks.text = "Extra Tasks (" + str(ShopVar.ExtraTasks) + ")"
 	if ShopVar.TransferLevel >= 4:
 		$ShopGrid/TransferUpgrade.text = "Transfer Speed (MAX)"
+		
+	$ShopGrid/SalaryUpgrade.text = "Salary Upgrade (" + str(ShopVar.SalaryLevel) + ")"
+	if ShopVar.SalaryLevel >= 10:
+		$ShopGrid/SalaryUpgrade.text = "Salary Upgrade (MAX)"
+		
+	$ShopGrid/ExtraTasks.text = "Extra Tasks (" + str(ShopVar.ExtraTasks) + ")"
+	if ShopVar.ExtraTasks >= 10:
+		$ShopGrid/ButtonUpgrade.text = "Extra Tasks (" + str(ShopVar.ExtraTasks) + ") - MAX"
 
 	
 
 func ButtonSelected():
 	match SelectedButton.name:
 		"ButtonUpgrade":
-			$Descrption.text = "Reduce the number of inputs on buttons window"
+			$Descrption.text = "Reduce the number of inputs on control panel"
 			ShopItem = 1
 			CheckAfford(ShopVar.ButtonPrice * ShopVar.ButtonLevel)
 		"NumpadUpgrade":
@@ -108,26 +125,33 @@ func Pay():
 	match ShopItem:
 		1:
 			ShopVar.ButtonLevel += 1
+			ShopVar.ButtonBought = true
 			$ShopGrid/ButtonUpgrade.disabled = true
 			$ShopGrid/ButtonUpgrade.button_pressed = false
 		2:
 			ShopVar.NumpadLevel += 1
+			ShopVar.NumpadBought = true
 			$ShopGrid/NumpadUpgrade.disabled = true
 			$ShopGrid/NumpadUpgrade.button_pressed = false
 		3:
 			ShopVar.TransferLevel += 1
+			ShopVar.TransferBought = true
 			$ShopGrid/TransferUpgrade.disabled = true
 			$ShopGrid/TransferUpgrade.button_pressed = false
 		4:
 			ShopVar.SalaryLevel += 1
+			ShopVar.SalaryBought = true
 			$ShopGrid/SalaryUpgrade.disabled = true
 			$ShopGrid/SalaryUpgrade.button_pressed = false
 		5:
 			ShopVar.ExtraTasks += 1
+			ShopVar.TasksBought = true
 			$ShopGrid/ExtraTasks.disabled = true
 			$ShopGrid/ExtraTasks.button_pressed = false
 		6:
 			ShopVar.OverTimeBought = true
 			$ShopGrid/ExtendShift.disabled = true
 			$ShopGrid/ExtendShift.button_pressed = false
+
+	SetLevels()
 	
