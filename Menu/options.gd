@@ -2,8 +2,8 @@ extends Window
 
 func _ready():
 	if SaveLoad.AutoClose:
-		$Options/AutoClose.button_pressed = true
-		$Options/AutoClose.text = "ON"
+		$Options/GridContainer/AutoClose.button_pressed = true
+		$Options/GridContainer/AutoClose.text = "ON"
 
 #close the window
 func Kill():
@@ -20,11 +20,11 @@ func _input(_event: InputEvent) -> void:
 
 func ToggleAutoClose(toggle):
 	if toggle:
-		$Options/AutoClose.text = "ON"
+		$Options/GridContainer/AutoClose.text = "ON"
 		SaveLoad.AutoClose = true
 	else:
 		SaveLoad.AutoClose = false
-		$Options/AutoClose.text = "OFF"
+		$Options/GridContainer/AutoClose.text = "OFF"
 	SaveLoad.SaveOptions()
 
 func Menu():

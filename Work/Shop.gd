@@ -16,6 +16,10 @@ func _ready() -> void:
 	SetLevels()
 	var LastSelected = ShopButtons.get_pressed_button()
 
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_parent().OpenOptions()
+		
 func kill():
 	queue_free()
 

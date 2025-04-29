@@ -35,6 +35,8 @@ func _ready():
 	$Timer.wait_time = 1.5 - (.25  * (ShopVar.TransferLevel - 1))
 	SetDropdown()
 
+
+
 func Kill():
 	queue_free()
 
@@ -78,6 +80,9 @@ func _input(_event: InputEvent) -> void:
 	elif Input.is_action_just_released("ui_select") && CanTransfer:
 		Pressed = false
 		ButtonUp()
+	
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_parent().OpenOptions()
 
 func ButtonDown():
 	CurrSource = SourceDropdown.get_selected_id()

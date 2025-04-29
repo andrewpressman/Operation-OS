@@ -310,12 +310,15 @@ func DisplayMessages():
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
-		if !GlobalVar.optionsVisible:
-			$PauseMenu.visible = true
-			GlobalVar.optionsVisible = true
-			PauseGame()
-		else:
-			ToggleOptions()
+		OpenOptions()
+		
+func OpenOptions():
+	if !GlobalVar.optionsVisible:
+		$PauseMenu.visible = true
+		GlobalVar.optionsVisible = true
+		PauseGame()
+	else:
+		ToggleOptions()
 
 func PauseGame():
 	$Timer/Timer.paused = true
@@ -326,6 +329,7 @@ func PauseGame():
 	$Taskbar/Buttons.disabled = true
 	$Bribe/Accept.disabled = true
 	$Bribe/Decline.disabled = true
+	$Taskbar/Shop.disabled = true
 	
 
 func ToggleOptions():
@@ -339,6 +343,7 @@ func ToggleOptions():
 	$Taskbar/Buttons.disabled = false
 	$Bribe/Accept.disabled = false
 	$Bribe/Decline.disabled = false
+	$Taskbar/Shop.disabled = false
 
 func FileUnlocked():
 	$FileUnlocked.visible = true

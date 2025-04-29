@@ -46,6 +46,8 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_text_backspace"):
 		Clear()
 	
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_parent().OpenOptions()
 
 func Clear():
 	WholeNumber = ""	

@@ -20,6 +20,10 @@ func _ready():
 	$Remaining/Text.text = "REMAINING: " + str(NumTasks)
 	GetNewTask()
 
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_parent().OpenOptions()
+
 func GetNewTask():
 	$Remaining/Text.text = "REMAINING: " + str(NumTasks)
 	$Confirm.disabled = false

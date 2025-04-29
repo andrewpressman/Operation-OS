@@ -5,7 +5,9 @@
 [node name="Window" type="Window"]
 initial_position = 1
 size = Vector2i(700, 500)
+exclusive = true
 unresizable = true
+borderless = true
 always_on_top = true
 script = ExtResource("1_4vanb")
 
@@ -21,7 +23,7 @@ offset_right = 444.0
 offset_bottom = 492.0
 text = "Main Menu"
 
-[node name="Label" type="Label" parent="."]
+[node name="GamePaused" type="Label" parent="."]
 offset_left = 254.0
 offset_top = 22.0
 offset_right = 444.0

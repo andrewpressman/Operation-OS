@@ -30,6 +30,10 @@ func _ready():
 	else:
 		Step = -1
 
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_parent().OpenOptions()
+
 func Kill():
 	queue_free()
 
