@@ -8,7 +8,8 @@ func _ready():
 		
 	$Options/VideoOptions/DisplayMode.select(SaveLoad.WindowMode)
 
-
+#1152x
+#5680y
 #close the window
 func Kill():
 	get_parent().ToggleOptions()
