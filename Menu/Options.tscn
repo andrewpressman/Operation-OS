@@ -8,7 +8,6 @@ size = Vector2i(700, 500)
 exclusive = true
 unresizable = true
 borderless = true
-always_on_top = true
 script = ExtResource("1_4vanb")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -27,7 +26,7 @@ text = "Main Menu"
 offset_left = 254.0
 offset_top = 22.0
 offset_right = 444.0
-offset_bottom = 76.0
+offset_bottom = 70.0
 theme_override_font_sizes/font_size = 25
 text = "Game Paused"
 horizontal_alignment = 1
@@ -39,18 +38,19 @@ offset_top = 70.0
 offset_right = 662.0
 offset_bottom = 406.0
 
-[node name="GridContainer" type="GridContainer" parent="Options"]
+[node name="GameOptions" type="GridContainer" parent="Options"]
+visible = false
 layout_mode = 0
 offset_left = 56.0
 offset_top = 48.0
 offset_right = 568.0
 offset_bottom = 304.0
 
-[node name="AutoClose" type="CheckButton" parent="Options/GridContainer"]
+[node name="AutoClose" type="CheckButton" parent="Options/GameOptions"]
 layout_mode = 2
 text = "OFF"
 
-[node name="Label" type="Label" parent="Options/GridContainer/AutoClose"]
+[node name="Label" type="Label" parent="Options/GameOptions/AutoClose"]
 layout_mode = 0
 offset_left = 88.0
 offset_right = 388.0
@@ -58,6 +58,63 @@ offset_bottom = 32.0
 text = "Auto Close task window on completion"
 vertical_alignment = 1
 
+[node name="SoundOptions" type="GridContainer" parent="Options"]
+visible = false
+layout_mode = 0
+offset_left = 56.0
+offset_top = 48.0
+offset_right = 568.0
+offset_bottom = 304.0
+
+[node name="VideoOptions" type="GridContainer" parent="Options"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 48.0
+offset_right = 568.0
+offset_bottom = 304.0
+
+[node name="DisplayMode" type="OptionButton" parent="Options/VideoOptions"]
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "FullScreen"
+popup/item_0/id = 0
+popup/item_1/text = "Widowed"
+popup/item_1/id = 1
+
+[node name="Label" type="Label" parent="Options/VideoOptions/DisplayMode"]
+layout_mode = 0
+offset_left = 128.0
+offset_right = 240.0
+offset_bottom = 31.0
+text = "Widowed Mode"
+vertical_alignment = 1
+
+[node name="Tabs" type="GridContainer" parent="Options"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 8.0
+offset_right = 592.0
+offset_bottom = 40.0
+theme_override_constants/h_separation = 20
+columns = 5
+
+[node name="Game" type="Button" parent="Options/Tabs"]
+layout_mode = 2
+text = "Game"
+
+[node name="Sound" type="Button" parent="Options/Tabs"]
+layout_mode = 2
+text = "Sound"
+
+[node name="Video" type="Button" parent="Options/Tabs"]
+layout_mode = 2
+text = "Video"
+
 [connection signal="close_requested" from="." to="." method="Kill"]
 [connection signal="pressed" from="Button" to="." method="Menu"]
-[connection signal="toggled" from="Options/GridContainer/AutoClose" to="." method="ToggleAutoClose"]
+[connection signal="toggled" from="Options/GameOptions/AutoClose" to="." method="ToggleAutoClose"]
+[connection signal="item_selected" from="Options/VideoOptions/DisplayMode" to="." method="OnDisplayModeSelected"]
+[connection signal="pressed" from="Options/Tabs/Game" to="." method="GameOP"]
+[connection signal="pressed" from="Options/Tabs/Sound" to="." method="SoundOP"]
+[connection signal="pressed" from="Options/Tabs/Video" to="." method="VidOP"]

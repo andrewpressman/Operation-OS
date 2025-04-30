@@ -6,6 +6,7 @@ func _ready() -> void:
 	SaveLoad.CurrentScreen = "MENU"
 	SaveLoad.LoadGame()
 	SaveLoad.LoadOptions()
+	
 func NewGame():
 	#TODO: consider asking if player wants to delete unlocked secerts? / Confirm reset to level 0
 	GlobalVar.Reset()

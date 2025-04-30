@@ -1,9 +1,13 @@
 extends Window
 
 func _ready():
+	GameOP()
 	if SaveLoad.AutoClose:
-		$Options/GridContainer/AutoClose.button_pressed = true
-		$Options/GridContainer/AutoClose.text = "ON"
+		$Options/GameOptions/AutoClose.button_pressed = true
+		$Options/GameOptions/AutoClose.text = "ON"
+		
+	$Options/VideoOptions/DisplayMode.select(SaveLoad.WindowMode)
+
 
 #close the window
 func Kill():
@@ -20,17 +24,42 @@ func _input(_event: InputEvent) -> void:
 
 func ToggleAutoClose(toggle):
 	if toggle:
-		$Options/GridContainer/AutoClose.text = "ON"
+		$Options/GameOptions/AutoClose.text = "ON"
 		SaveLoad.AutoClose = true
 	else:
 		SaveLoad.AutoClose = false
-		$Options/GridContainer/AutoClose.text = "OFF"
-	SaveLoad.SaveOptions()
+		$Options/GameOptions/AutoClose.text = "OFF"
 
 func Menu():
 	if SaveLoad.CurrentScreen == "WORK":
 		GlobalVar.CurrentLevel -= 1
 	SaveLoad.Save()
+	SaveLoad.SaveOptions()
 	#Tiny delay to prevent error: _push_unhandled_input_internal: Condition "!is_inside_tree()" is true.
 	await get_tree().create_timer(.001).timeout 
 	get_tree().change_scene_to_file("res://Menu/MainMenu.tscn")
+
+func OnDisplayModeSelected(index):
+	print(str(index))
+	SaveLoad.WindowMode = index
+	match index:
+		0: #FullScreen
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		1: #Windowed
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+
+func GameOP():
+	$Options/GameOptions.visible = true
+	$Options/SoundOptions.visible = false
+	$Options/VideoOptions.visible = false
+
+func SoundOP():
+	$Options/GameOptions.visible = false
+	$Options/SoundOptions.visible = true
+	$Options/VideoOptions.visible = false
+
+func VidOP():
+	$Options/GameOptions.visible = false
+	$Options/SoundOptions.visible = false
+	$Options/VideoOptions.visible = true

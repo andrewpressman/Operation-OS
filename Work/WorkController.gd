@@ -344,6 +344,7 @@ func ToggleOptions():
 	$Bribe/Accept.disabled = false
 	$Bribe/Decline.disabled = false
 	$Taskbar/Shop.disabled = false
+	SaveLoad.SaveOptions()
 
 func FileUnlocked():
 	$FileUnlocked.visible = true

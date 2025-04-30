@@ -2,7 +2,10 @@ extends Node
 
 var OpenFromSave : bool
 var PaidBills
+
+#Options menu settings
 var AutoClose : bool
+var WindowMode : int
 
 var CurrentScreen
 
@@ -97,7 +100,8 @@ func LoadGame():
 func SaveOptions():
 	var Settigns = FileAccess.open("user://Options.save", FileAccess.WRITE)
 	var options = {
-		"AutoClose" : AutoClose
+		"AutoClose" : AutoClose,
+		"WindowMode" : WindowMode
 	}
 	var json_str = JSON.stringify(options)
 	Settigns.store_line(json_str)
@@ -113,7 +117,14 @@ func LoadOptions():
 	var options = JSON.parse_string(json_str)
 	if "AutoClose" in options:
 		AutoClose = options["AutoClose"]
+	if "WindowMode" in options:
+		WindowMode = options["WindowMode"]
 	
+	match WindowMode:
+		0: #FullScreen
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		1: #Windowed
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		
 func ClearDir(): #Only for DEBUG purpoeses.
 	if not FileAccess.file_exists("user://savegame.save"):

@@ -42,7 +42,8 @@ func _input(_event: InputEvent) -> void:
 
 func ToggleOptions():
 	$PauseMenu.visible = false
-	GlobalVar.optionsVisible = false	
+	GlobalVar.optionsVisible = false
+	SaveLoad.SaveOptions()	
 
 func UpdateStats():
 	var HungerStr = "Hunger: "
