@@ -8,6 +8,7 @@ var NewLevel : bool
 var Lives : int #numebr of times the player can fail a task
 var Tasks : int #Number of tasks the player is given
 var ShiftFails : int #number of times the player can fail a shift
+var LastAd : int #Makes sure the game doesnt repeat the same popup ad
 
 #Home variables
 var Money: int = 0

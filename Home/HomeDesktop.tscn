@@ -58,7 +58,7 @@ theme_override_font_sizes/normal_font_size = 12
 text = "This is a bunch of dialouge text that will show up when a character is talking to the player"
 
 [node name="Taskbar" type="Panel" parent="."]
-offset_top = 600.0
+offset_top = 608.0
 offset_right = 1152.0
 offset_bottom = 648.0
 
@@ -66,8 +66,8 @@ offset_bottom = 648.0
 layout_mode = 0
 offset_left = 64.0
 offset_top = 8.0
-offset_right = 128.0
-offset_bottom = 40.0
+offset_right = 144.0
+offset_bottom = 33.0
 theme_override_font_sizes/font_size = 12
 text = "Files"
 
@@ -75,11 +75,21 @@ text = "Files"
 layout_mode = 0
 offset_left = 192.0
 offset_top = 8.0
-offset_right = 256.0
-offset_bottom = 40.0
+offset_right = 272.0
+offset_bottom = 33.0
 rotation = 0.00132338
 theme_override_font_sizes/font_size = 12
 text = "Finances"
+
+[node name="GoWork" type="Button" parent="Taskbar"]
+layout_mode = 0
+offset_left = 897.0
+offset_top = 8.0
+offset_right = 1088.0
+offset_bottom = 33.0
+rotation = 0.00132338
+theme_override_font_sizes/font_size = 12
+text = "Go to work"
 
 [node name="Messenger" type="Button" parent="Taskbar"]
 visible = false
@@ -90,14 +100,6 @@ offset_right = 1024.0
 offset_bottom = 40.0
 theme_override_font_sizes/font_size = 12
 text = "MSG"
-
-[node name="GoWork" type="Button" parent="Taskbar"]
-layout_mode = 0
-offset_left = 896.0
-offset_top = 8.0
-offset_right = 1088.0
-offset_bottom = 40.0
-text = "Go to work"
 
 [node name="Header" type="Panel" parent="."]
 offset_right = 2304.0

@@ -11,17 +11,88 @@ always_on_top = true
 script = ExtResource("1_tcsk7")
 Countdown = 5
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Ad1" type="Panel" parent="."]
 offset_right = 896.0
 offset_bottom = 512.0
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="Label" type="Label" parent="Ad1"]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 128.0
 offset_right = 832.0
 offset_bottom = 307.0
 text = "This work shift is sponsored by Raid Shadow Legends, use code DEEZNUTS for 500 free gems and 1 unique hero. Are you still reading this? time is running out and you gotta get back to tasks, unless i removed the timer in which case hi, hows it going? Enjoying the game? Remember to compliment the dev, he will never give you up, never let you down, never run aroud, and hurt you. Never gonna make you cry, never gonna tell a lie, never gonna say goodby, and hurt you. Okay you have to  have failed a task by now, wonder if this will effect your stats, i havent implement it yet. okay byeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Ad2" type="Panel" parent="."]
+visible = false
+offset_right = 896.0
+offset_bottom = 512.0
+
+[node name="Label" type="Label" parent="Ad2"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 128.0
+offset_right = 832.0
+offset_bottom = 307.0
+text = "Free unlimited money! Click here:"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="Ad2"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 252.0
+offset_right = 576.0
+offset_bottom = 316.0
+
+[node name="Ad3" type="Panel" parent="."]
+visible = false
+offset_right = 896.0
+offset_bottom = 512.0
+
+[node name="Label" type="Label" parent="Ad3"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 128.0
+offset_right = 832.0
+offset_bottom = 307.0
+text = "Did you ever hear the tragedy of Darth Plagueis The Wise? I thought not. It’s not a story the Jedi would tell you. It’s a Sith legend. Darth Plagueis was a Dark Lord of the Sith, so powerful and so wise he could use the Force to influence the midichlorians to create life… He had such a knowledge of the dark side that he could even keep the ones he cared about from dying. The dark side of the Force is a pathway to many abilities some consider to be unnatural. He became so powerful… the only thing he was afraid of was losing his power, which eventually, of course, he did. Unfortunately, he taught his apprentice everything he knew, then his apprentice killed him in his sleep. Ironic. He could save others from death, but not himself."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Ad4" type="Panel" parent="."]
+visible = false
+offset_right = 896.0
+offset_bottom = 512.0
+
+[node name="Label" type="Label" parent="Ad4"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 128.0
+offset_right = 832.0
+offset_bottom = 307.0
+text = "Look, i only have so many ideas and these are all placeholders anyways, have you tried clicking on things? they dont do anything yet, but maybe one day there wil be secrets"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Ad5" type="Panel" parent="."]
+visible = false
+offset_right = 896.0
+offset_bottom = 512.0
+
+[node name="Label" type="Label" parent="Ad5"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 128.0
+offset_right = 832.0
+offset_bottom = 307.0
+text = "Ad5, dawn of the fifth ad"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

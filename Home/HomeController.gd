@@ -36,13 +36,18 @@ func _input(_event: InputEvent) -> void:
 		if !GlobalVar.optionsVisible:
 			$PauseMenu.visible = true
 			GlobalVar.optionsVisible = true
+			$Taskbar/Finances.disabled = true
+			$Taskbar/UnlockedFiles.disabled = true
+			$Taskbar/GoWork.disabled = true
 		else:
-			$PauseMenu.visible = false
-			GlobalVar.optionsVisible = false
+			ToggleOptions()
 
 func ToggleOptions():
 	$PauseMenu.visible = false
 	GlobalVar.optionsVisible = false
+	$Taskbar/Finances.disabled = false
+	$Taskbar/UnlockedFiles.disabled = false
+	$Taskbar/GoWork.disabled = false
 	SaveLoad.SaveOptions()	
 
 func UpdateStats():

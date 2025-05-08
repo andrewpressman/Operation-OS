@@ -20,11 +20,18 @@ offset_bottom = 540.0
 color = Color(0.305882, 0.0862745, 0.619608, 1)
 
 [node name="Button" type="Button" parent="."]
-offset_left = 502.0
+offset_left = 720.0
 offset_top = 462.0
-offset_right = 684.0
+offset_right = 902.0
 offset_bottom = 532.0
 text = "Main Menu"
+
+[node name="Resume" type="Button" parent="."]
+offset_left = 280.0
+offset_top = 462.0
+offset_right = 462.0
+offset_bottom = 532.0
+text = "Resume"
 
 [node name="GamePaused" type="Label" parent="."]
 offset_left = 494.0
@@ -117,6 +124,7 @@ text = "Video"
 
 [connection signal="close_requested" from="." to="." method="Kill"]
 [connection signal="pressed" from="Button" to="." method="Menu"]
+[connection signal="pressed" from="Resume" to="." method="Kill"]
 [connection signal="toggled" from="Options/GameOptions/AutoClose" to="." method="ToggleAutoClose"]
 [connection signal="item_selected" from="Options/VideoOptions/DisplayMode" to="." method="OnDisplayModeSelected"]
 [connection signal="pressed" from="Options/Tabs/Game" to="." method="GameOP"]
