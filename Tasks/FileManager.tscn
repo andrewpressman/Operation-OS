@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ctwub6ej1nynm" path="res://Tasks/FileManager.gd" id="1_oo73u"]
 
 [node name="Panel" type="Window"]
+title = "File Transfer Manager"
 initial_position = 1
 size = Vector2i(638, 244)
 script = ExtResource("1_oo73u")

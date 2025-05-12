@@ -4,6 +4,7 @@
 [ext_resource type="ButtonGroup" uid="uid://4lojvif78jd" path="res://Work/ShopButtons.tres" id="2_ctu5i"]
 
 [node name="Shop" type="Window"]
+title = "Shop"
 initial_position = 1
 size = Vector2i(380, 450)
 script = ExtResource("1_0iwdr")

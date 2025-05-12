@@ -108,6 +108,7 @@ corner_radius_bottom_right = 60
 corner_radius_bottom_left = 60
 
 [node name="Window" type="Window"]
+title = "Control Panel"
 initial_position = 1
 size = Vector2i(768, 448)
 unresizable = true

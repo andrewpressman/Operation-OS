@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c7qhlnl0gidp7" path="res://Tasks/MemoReview.gd" id="1_0nkbs"]
 
 [node name="Requests" type="Window"]
+title = "Memo Review"
 initial_position = 2
 size = Vector2i(448, 512)
 script = ExtResource("1_0nkbs")
