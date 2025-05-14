@@ -38,7 +38,6 @@ func _ready():
 	$Taskbar/Shop.disabled = false
 	$ShiftComplete.visible = false
 	$ShiftComplete/RichTextLabel.text = "[b][color=green]Shift Complete[/color][/b]\nReturn home"
-	$Bribe.visible = false
 	ShiftComplete = false
 	$FileUnlocked.visible = false
 	ShopVar.OpenShop()
@@ -95,12 +94,12 @@ func _process(_delta):
 	if GlobalObj.ObjectiveComplete && !ShiftComplete: #if objectivs is completed or shift ends, reset objective tracker and assign new task
 		GlobalObj.ObjectiveComplete = false
 		GlobalVar.TimerLock = true
+		GetBribe()
 		if !GlobalVar.BribeTaken: #if bribe was not taken deduct task
 			GlobalVar.Tasks = GlobalVar.Tasks - 1
 			GetNewTask(false)
 
 		else: #if bribe was taken, randomize new bribe, reset task without deducting failures (its done elsewhere)
-			GetBribe()
 			GetNewTask(true)
 
 	if GlobalVar.TimerFail && !GlobalVar.TimerLock: #if timer runs out amd task is failed, deduct life and task thn reset objective
@@ -133,15 +132,13 @@ func CheckAd():
 		DisplayPopup()
 
 func GetBribe():
-	var rand = randi_range(1,5)
+	var rand = randi_range(1,7)
 	if  rand == 1 && GlobalVar.CurrentLevel != 1:
-		$Bribe.visible = true
+		$Animations/BribeShow.ToggleBribe()
 		$Bribe.reset()
-	else:
-		$Bribe.visible = false
 
 func hideBribe():
-	$Bribe.visible = false
+	$Animations/BribeShow.ToggleBribe()
 
 #Update stat figures and go to home Desktop			
 func GoHome():

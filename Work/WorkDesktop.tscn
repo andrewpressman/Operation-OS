@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c7orqndgslsdv"]
+[gd_scene load_steps=17 format=3 uid="uid://c7orqndgslsdv"]
 
 [ext_resource type="Script" uid="uid://dhdrj42qeklt7" path="res://Work/WorkController.gd" id="1_efasj"]
 [ext_resource type="Script" uid="uid://bu5bal6bbm8dn" path="res://Work/clock.gd" id="2_3wvif"]
@@ -8,6 +8,95 @@
 [ext_resource type="Script" uid="uid://cnfqjoc5c4ipj" path="res://Work/statsDisplay.gd" id="3_7ml6k"]
 [ext_resource type="Script" uid="uid://ditn1fmyebwaw" path="res://Work/Bribe.gd" id="4_pnja2"]
 [ext_resource type="Script" uid="uid://bv0ygflgtevmh" path="res://Work/Timer.gd" id="7_b8fcm"]
+
+[sub_resource type="Animation" id="Animation_cpjbh"]
+resource_name = "BribeShow"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(480, 664), Vector2(480, 464)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.5, 0.733333, 1, 1.26667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.122, 0.122), Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5njnm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(480, 664)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.907, 0.907)]
+}
+
+[sub_resource type="Animation" id="Animation_5ocmi"]
+resource_name = "BribeHide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(480, 464), Vector2(480, 664)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.0333333, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.1, 0.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1lri8"]
+_data = {
+&"BribeHide": SubResource("Animation_5ocmi"),
+&"BribeShow": SubResource("Animation_cpjbh"),
+&"RESET": SubResource("Animation_5njnm")
+}
 
 [sub_resource type="Animation" id="Animation_7ml6k"]
 length = 0.001
@@ -33,13 +122,13 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.233333),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-140, 192), Vector2(30, 192)]
+"values": [Vector2(-140, 192), Vector2(15, 192)]
 }
 
-[sub_resource type="Animation" id="Animation_5ocmi"]
+[sub_resource type="Animation" id="Animation_1lri8"]
 resource_name = "Slide_out"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -48,17 +137,17 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.266667),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(30, 192), Vector2(-140, 192)]
+"values": [Vector2(15, 192), Vector2(-140, 192)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cpjbh"]
 _data = {
 &"RESET": SubResource("Animation_7ml6k"),
 &"Slide_in": SubResource("Animation_b8fcm"),
-&"Slide_out": SubResource("Animation_5ocmi")
+&"Slide_out": SubResource("Animation_1lri8")
 }
 
 [node name="WorkScreen" type="Node2D"]
@@ -96,12 +185,23 @@ vertical_alignment = 1
 
 [node name="AdPopup" type="Timer" parent="."]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../stats")
+[node name="Animations" type="Node" parent="."]
+
+[node name="BribeShow" type="AnimationPlayer" parent="Animations"]
+root_node = NodePath("../../Bribe")
+libraries = {
+&"": SubResource("AnimationLibrary_1lri8")
+}
+script = ExtResource("2_d8cx6")
+Target = "Bribe"
+
+[node name="StatsSlider" type="AnimationPlayer" parent="Animations"]
+root_node = NodePath("../../stats")
 libraries = {
 &"": SubResource("AnimationLibrary_cpjbh")
 }
 script = ExtResource("2_d8cx6")
+Target = "Stats"
 
 [node name="stats" type="Panel" parent="."]
 offset_left = -140.0
@@ -269,9 +369,13 @@ text = "Go Home"
 
 [node name="Bribe" type="Panel" parent="."]
 offset_left = 480.0
-offset_top = 464.0
+offset_top = 664.0
 offset_right = 672.0
-offset_bottom = 592.0
+offset_bottom = 792.0
+scale = Vector2(0.907, 0.907)
+pivot_offset = Vector2(96, 65)
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("4_pnja2")
 
 [node name="Label" type="Label" parent="Bribe"]
