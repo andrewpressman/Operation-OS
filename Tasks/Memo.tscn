@@ -1,12 +1,69 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3ocxjuqehi5p"]
+[gd_scene load_steps=6 format=3 uid="uid://b3ocxjuqehi5p"]
 
 [ext_resource type="Script" uid="uid://c7qhlnl0gidp7" path="res://Tasks/MemoReview.gd" id="1_0nkbs"]
+
+[sub_resource type="Animation" id="Animation_obb74"]
+resource_name = "WindowShow"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(0, 0), Vector2i(448, 512)]
+}
+
+[sub_resource type="Animation" id="Animation_rhiyx"]
+resource_name = "WindowHide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(448, 512), Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7wkuo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(448, 512)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w0hir"]
+_data = {
+&"RESET": SubResource("Animation_7wkuo"),
+&"WindowHide": SubResource("Animation_rhiyx"),
+&"WindowShow": SubResource("Animation_obb74")
+}
 
 [node name="Requests" type="Window"]
 title = "Memo Review"
 initial_position = 2
 size = Vector2i(448, 512)
 script = ExtResource("1_0nkbs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_w0hir")
+}
 
 [node name="Panel" type="Panel" parent="."]
 offset_left = 8.0

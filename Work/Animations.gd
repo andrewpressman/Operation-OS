@@ -4,15 +4,12 @@ extends AnimationPlayer
 
 var StatsVisible: bool
 var BribeVisible: bool
-var ShopVisible: bool
 
 func _ready() -> void:
 	if Target == "Stats":
 		StatsVisible = false
-	if Target == "Bribe":
+	elif Target == "Bribe":
 		BribeVisible = false
-	if Target == "Shop":
-		ShopVisible = false
 
 func _input(_event: InputEvent) -> void:
 	if Target == "Stats":	
@@ -31,6 +28,3 @@ func ToggleBribe():
 		else:
 			play("BribeHide")
 			BribeVisible = false
-
-func ToggleShop():
-	pass

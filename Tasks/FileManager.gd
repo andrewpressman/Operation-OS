@@ -19,6 +19,7 @@ var Pressed : bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$AnimationPlayer.play("WindowShow")
 	Pressed = false
 	SourceDropdown = $Source
 	TargetDropdown = $Target
@@ -35,9 +36,9 @@ func _ready():
 	$Timer.wait_time = 1.5 - (.25  * (ShopVar.TransferLevel - 1))
 	SetDropdown()
 
-
-
 func Kill():
+	$AnimationPlayer.play("WindowHide")
+	await get_tree().create_timer(.3).timeout
 	queue_free()
 
 func _process(_delta):

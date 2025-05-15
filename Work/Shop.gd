@@ -2,28 +2,29 @@ extends Window
 
 @export var ShopButtons : ButtonGroup
 
-var Price : int
 var CanBuy : bool
 var LastSelected : Button
 var SelectedButton : Button
 var ShopItem : int
 
 func _ready() -> void:
-	Price = 0
 	CanBuy = false
 	$Buy.disabled = true
 	CheckOpen()
 	SetLevels()
-	var LastSelected = ShopButtons.get_pressed_button()
+	$AnimationPlayer.play("WindowAppear")
+	LastSelected = ShopButtons.get_pressed_button()
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_parent().OpenOptions()
 		
 func kill():
+	$AnimationPlayer.play("WindowHide")
+	await get_tree().create_timer(.3).timeout
 	queue_free()
 
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	SelectedButton = ShopButtons.get_pressed_button()
 	if LastSelected != SelectedButton:
 		LastSelected = SelectedButton

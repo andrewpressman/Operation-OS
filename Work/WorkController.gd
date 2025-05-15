@@ -125,7 +125,7 @@ func CheckAd():
 		PopupChance = LowAdChance
 		
 	var ShowPopup = randi_range(1,PopupChance)
-	ShowPopup = 0
+	#ShowPopup = 1 #DEBUG CODE
 	if FirstTask:
 		FirstTask = false
 	elif ShowPopup == 1:
@@ -249,7 +249,7 @@ func UpdateScore():
 
 func DisplayNumpad():
 	if NumpadIst && is_instance_valid(NumpadIst):
-		NumpadIst.queue_free()
+		NumpadIst.Kill()
 		NumpadIst = null
 	else:
 		var t1 = Numpad.instantiate()
@@ -259,7 +259,7 @@ func DisplayNumpad():
 #TODO: convert to control panel
 func DisplayButtons():
 	if ButtonsIst && is_instance_valid(ButtonsIst):
-		ButtonsIst.queue_free()
+		ButtonsIst.Kill()
 		ButtonsIst = null
 	else:
 		var t2 = Buttons.instantiate()
@@ -268,7 +268,7 @@ func DisplayButtons():
 		
 func DisplayRequest():
 	if RequestIst && is_instance_valid(RequestIst):
-		RequestIst.queue_free()
+		RequestIst.Kill()
 		RequestIst = null
 	else:
 		var t3 = Request.instantiate()
@@ -277,7 +277,7 @@ func DisplayRequest():
 		
 func DisplayFileManager():
 	if FileManagerIst && is_instance_valid(FileManagerIst):
-		FileManagerIst.queue_free()
+		FileManagerIst.Kill()
 		FileManagerIst = null
 	else:
 		var t4 = FileManager.instantiate()
@@ -286,7 +286,7 @@ func DisplayFileManager():
 
 func DisplayPopup():
 	if PopupIst && is_instance_valid(PopupIst):
-		PopupIst.queue_free()
+		PopupIst.Kill()
 		PopupIst = null
 	else:
 		var t6 = PopupAd.instantiate()
@@ -295,7 +295,7 @@ func DisplayPopup():
 
 func DisplayShop():
 	if ShopIst && is_instance_valid(ShopIst):
-		ShopIst.queue_free()
+		ShopIst.kill()
 		ShopIst = null
 	else:
 		var t7 = Shop.instantiate()

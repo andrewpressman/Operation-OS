@@ -1,12 +1,69 @@
-[gd_scene load_steps=2 format=3 uid="uid://dev5dbnhd2diw"]
+[gd_scene load_steps=6 format=3 uid="uid://dev5dbnhd2diw"]
 
 [ext_resource type="Script" uid="uid://ctwub6ej1nynm" path="res://Tasks/FileManager.gd" id="1_oo73u"]
+
+[sub_resource type="Animation" id="Animation_7mab4"]
+resource_name = "WindowShow"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(0, 0), Vector2i(638, 244)]
+}
+
+[sub_resource type="Animation" id="Animation_bjc3w"]
+resource_name = "WindowHide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(638, 244), Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_q8ua8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(638, 244)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q8ua8"]
+_data = {
+&"RESET": SubResource("Animation_q8ua8"),
+&"WindowHide": SubResource("Animation_bjc3w"),
+&"WindowShow": SubResource("Animation_7mab4")
+}
 
 [node name="Panel" type="Window"]
 title = "File Transfer Manager"
 initial_position = 1
 size = Vector2i(638, 244)
 script = ExtResource("1_oo73u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_q8ua8")
+}
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5

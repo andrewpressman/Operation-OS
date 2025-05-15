@@ -6,6 +6,8 @@ var close : bool
 var NewAd : int
 
 func _ready() -> void:
+	$AnimationPlayer.play("WindowAppear")
+	await get_tree().create_timer(.3).timeout
 	$Timer.start()
 	$Button.text = str(Countdown)
 	$Button.disabled = true
@@ -39,6 +41,8 @@ func ClearAds():
 	
 func Kill():
 	ClearAds()
+	$AnimationPlayer.play("WindowHide")
+	await get_tree().create_timer(.3).timeout
 	queue_free()
 
 func _on_timer_timeout() -> void:

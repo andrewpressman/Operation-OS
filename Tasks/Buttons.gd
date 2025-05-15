@@ -13,8 +13,8 @@ var NumTasks
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$AnimationPlayer.play("WindowShow")
 	NumTasks = GlobalVar.CurrentLevel + 1
-	
 	#reduce tasks by shop value
 	NumTasks -= ShopVar.ButtonLevel - 1
 	$Remaining/Text.text = "REMAINING: " + str(NumTasks)
@@ -34,10 +34,12 @@ func GetNewTask():
 
 #close the window
 func Kill():
+	$AnimationPlayer.play("WindowHide")
+	await get_tree().create_timer(.3).timeout
 	queue_free()
 
 var IsListening : bool
-func _process(delta):
+func _process(_delta):
 	if GlobalObj.TargetWindow == 4:
 		IsListening = true
 	if IsListening:

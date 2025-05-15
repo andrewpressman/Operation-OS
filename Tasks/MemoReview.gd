@@ -18,7 +18,8 @@ func _ready():
 		line = line.replace("\\n","\n")
 		Memos.append(line)
 	file.close()
-
+	
+	$AnimationPlayer.play("WindowShow")
 	ClearText()
 	LockButtons()
 	$Memo/Analyze.disabled = true
@@ -35,6 +36,8 @@ func _input(_event: InputEvent) -> void:
 		get_parent().OpenOptions()
 
 func Kill():
+	$AnimationPlayer.play("WindowHide")
+	await get_tree().create_timer(.3).timeout
 	queue_free()
 
 func Review():

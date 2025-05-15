@@ -6,6 +6,7 @@ var TypeLockout : bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$AnimationPlayer.play("WindowShow")
 	TypeLockout = false
 	SetKey()
 
@@ -54,6 +55,8 @@ func Clear():
 	$Display/Label.text = WholeNumber
 
 func Kill():
+	$AnimationPlayer.play("WindowHide")
+	await get_tree().create_timer(.3).timeout
 	queue_free()
 
 func SetKey():

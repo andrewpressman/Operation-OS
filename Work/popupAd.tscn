@@ -1,8 +1,60 @@
-[gd_scene load_steps=2 format=3 uid="uid://djqvn2k0bajbs"]
+[gd_scene load_steps=6 format=3 uid="uid://djqvn2k0bajbs"]
 
 [ext_resource type="Script" uid="uid://fy67ht8f02cu" path="res://Work/popup_ad.gd" id="1_tcsk7"]
 
-[node name="Panel" type="Window"]
+[sub_resource type="Animation" id="Animation_tcsk7"]
+resource_name = "WindowAppear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(0, 0), Vector2i(896, 512)]
+}
+
+[sub_resource type="Animation" id="Animation_didta"]
+resource_name = "WindowHide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(896, 512), Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_f8ak0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(896, 512)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_didta"]
+_data = {
+&"RESET": SubResource("Animation_f8ak0"),
+&"WindowAppear": SubResource("Animation_tcsk7"),
+&"WindowHide": SubResource("Animation_didta")
+}
+
+[node name="PopupAd" type="Window"]
 initial_position = 1
 size = Vector2i(896, 512)
 unresizable = true
@@ -10,6 +62,11 @@ borderless = true
 always_on_top = true
 script = ExtResource("1_tcsk7")
 Countdown = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_didta")
+}
 
 [node name="Ad1" type="Panel" parent="."]
 offset_right = 896.0
