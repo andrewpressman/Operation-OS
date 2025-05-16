@@ -369,9 +369,9 @@ text = "Go Home"
 
 [node name="Bribe" type="Panel" parent="."]
 offset_left = 480.0
-offset_top = 464.0
+offset_top = 664.0
 offset_right = 672.0
-offset_bottom = 592.0
+offset_bottom = 792.0
 scale = Vector2(0.907, 0.907)
 pivot_offset = Vector2(96, 65)
 size_flags_horizontal = 4

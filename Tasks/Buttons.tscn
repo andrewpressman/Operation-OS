@@ -17,20 +17,17 @@ tracks/0/keys = {
 "update": 1,
 "values": [Vector2i(768, 448)]
 }
-
-[sub_resource type="Animation" id="Animation_vx7ot"]
-resource_name = "WindowHide"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2i(0, 0), Vector2i(768, 448)]
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(192, 100)]
 }
 
 [sub_resource type="Animation" id="Animation_l3ubj"]
@@ -46,6 +43,45 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2i(768, 448), Vector2i(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(192, 100), Vector2i(512, 650)]
+}
+
+[sub_resource type="Animation" id="Animation_vx7ot"]
+resource_name = "WindowHide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(0, 0), Vector2i(768, 448)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(512, 650), Vector2i(192, 100)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_exqui"]
@@ -161,7 +197,7 @@ corner_radius_bottom_left = 60
 
 [node name="Window" type="Window"]
 title = "Control Panel"
-initial_position = 1
+position = Vector2i(192, 100)
 size = Vector2i(768, 448)
 unresizable = true
 script = ExtResource("1_y6534")

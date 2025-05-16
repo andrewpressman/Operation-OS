@@ -41,6 +41,7 @@ func _ready():
 	ShiftComplete = false
 	$FileUnlocked.visible = false
 	ShopVar.OpenShop()
+	$Animations/BribeShow.play("RESET")
 
 	#Set inital values
 	match GlobalVar.CurrentLevel:

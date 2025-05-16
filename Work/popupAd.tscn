@@ -2,6 +2,33 @@
 
 [ext_resource type="Script" uid="uid://fy67ht8f02cu" path="res://Work/popup_ad.gd" id="1_tcsk7"]
 
+[sub_resource type="Animation" id="Animation_f8ak0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(896, 512)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(128, 68)]
+}
+
 [sub_resource type="Animation" id="Animation_tcsk7"]
 resource_name = "WindowAppear"
 tracks/0/type = "value"
@@ -15,6 +42,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2i(0, 0), Vector2i(896, 512)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(500, 856), Vector2i(128, 68)]
 }
 
 [sub_resource type="Animation" id="Animation_didta"]
@@ -31,20 +70,17 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2i(896, 512), Vector2i(0, 0)]
 }
-
-[sub_resource type="Animation" id="Animation_f8ak0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(896, 512)]
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(128, 68), Vector2i(500, 856)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_didta"]
@@ -55,7 +91,7 @@ _data = {
 }
 
 [node name="PopupAd" type="Window"]
-initial_position = 1
+position = Vector2i(128, 68)
 size = Vector2i(896, 512)
 unresizable = true
 borderless = true

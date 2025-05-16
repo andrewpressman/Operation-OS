@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ctwub6ej1nynm" path="res://Tasks/FileManager.gd" id="1_oo73u"]
 
-[sub_resource type="Animation" id="Animation_7mab4"]
-resource_name = "WindowShow"
+[sub_resource type="Animation" id="Animation_q8ua8"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -11,10 +11,22 @@ tracks/0/path = NodePath(".:size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2i(0, 0), Vector2i(638, 244)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(638, 244)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(257, 202)]
 }
 
 [sub_resource type="Animation" id="Animation_bjc3w"]
@@ -31,9 +43,21 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2i(638, 244), Vector2i(0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(257, 202), Vector2i(256, 650)]
+}
 
-[sub_resource type="Animation" id="Animation_q8ua8"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_7mab4"]
+resource_name = "WindowShow"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -41,10 +65,22 @@ tracks/0/path = NodePath(".:size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(638, 244)]
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(0, 0), Vector2i(638, 244)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(256, 650), Vector2i(257, 202)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q8ua8"]
@@ -56,7 +92,7 @@ _data = {
 
 [node name="Panel" type="Window"]
 title = "File Transfer Manager"
-initial_position = 1
+position = Vector2i(257, 202)
 size = Vector2i(638, 244)
 script = ExtResource("1_oo73u")
 

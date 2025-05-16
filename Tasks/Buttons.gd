@@ -35,8 +35,13 @@ func GetNewTask():
 #close the window
 func Kill():
 	$AnimationPlayer.play("WindowHide")
+	getPosition()
 	await get_tree().create_timer(.3).timeout
 	queue_free()
+
+func getPosition():
+	var Hide = $AnimationPlayer.get_animation("WindowHide")
+	Hide.track_set_key_value(1,0,Vector2i(position.x,position.y))
 
 var IsListening : bool
 func _process(_delta):

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c7qhlnl0gidp7" path="res://Tasks/MemoReview.gd" id="1_0nkbs"]
 
-[sub_resource type="Animation" id="Animation_obb74"]
-resource_name = "WindowShow"
+[sub_resource type="Animation" id="Animation_7wkuo"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -11,10 +11,22 @@ tracks/0/path = NodePath(".:size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2i(0, 0), Vector2i(448, 512)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(448, 512)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(352, 68)]
 }
 
 [sub_resource type="Animation" id="Animation_rhiyx"]
@@ -31,9 +43,21 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2i(448, 512), Vector2i(0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(352, 68), Vector2i(416, 650)]
+}
 
-[sub_resource type="Animation" id="Animation_7wkuo"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_obb74"]
+resource_name = "WindowShow"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -41,10 +65,22 @@ tracks/0/path = NodePath(".:size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(448, 512)]
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(0, 0), Vector2i(448, 512)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(416, 650), Vector2i(352, 68)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w0hir"]
@@ -56,7 +92,7 @@ _data = {
 
 [node name="Requests" type="Window"]
 title = "Memo Review"
-initial_position = 2
+position = Vector2i(352, 68)
 size = Vector2i(448, 512)
 script = ExtResource("1_0nkbs")
 

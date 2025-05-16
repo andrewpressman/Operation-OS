@@ -17,6 +17,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [Vector2i(380, 450)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(386, 99)]
+}
 
 [sub_resource type="Animation" id="Animation_hse1e"]
 resource_name = "ShopAppear"
@@ -31,6 +43,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2i(0, 0), Vector2i(380, 450)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(640, 650), Vector2i(386, 99)]
 }
 
 [sub_resource type="Animation" id="Animation_ebmus"]
@@ -47,6 +71,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2i(380, 450), Vector2i(0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(386, 99), Vector2i(640, 650)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5omfx"]
 _data = {
@@ -57,7 +93,7 @@ _data = {
 
 [node name="Shop" type="Window"]
 title = "Shop"
-initial_position = 1
+position = Vector2i(386, 99)
 size = Vector2i(380, 450)
 script = ExtResource("1_0iwdr")
 ShopButtons = ExtResource("2_ctu5i")

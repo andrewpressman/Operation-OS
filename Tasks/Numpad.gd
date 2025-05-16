@@ -55,9 +55,14 @@ func Clear():
 	$Display/Label.text = WholeNumber
 
 func Kill():
+	getPosition()
 	$AnimationPlayer.play("WindowHide")
 	await get_tree().create_timer(.3).timeout
 	queue_free()
+
+func getPosition():
+	var Hide = $AnimationPlayer.get_animation("WindowHide")
+	Hide.track_set_key_value(1,0,Vector2i(position.x,position.y))
 
 func SetKey():
 	if !GlobalObj.ObjectiveComplete:

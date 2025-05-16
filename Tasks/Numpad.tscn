@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dwwul1673fc4e" path="res://Tasks/Numpad.gd" id="1_kf71x"]
 
-[sub_resource type="Animation" id="Animation_6xlph"]
-resource_name = "WindowShow"
+[sub_resource type="Animation" id="Animation_q74ti"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -11,10 +11,22 @@ tracks/0/path = NodePath(".:size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2i(0, 0), Vector2i(200, 320)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(200, 320)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(476, 164)]
 }
 
 [sub_resource type="Animation" id="Animation_1hs5b"]
@@ -31,9 +43,21 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2i(200, 320), Vector2i(0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(476, 164), Vector2i(160, 650)]
+}
 
-[sub_resource type="Animation" id="Animation_q74ti"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_6xlph"]
+resource_name = "WindowShow"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -41,10 +65,22 @@ tracks/0/path = NodePath(".:size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(200, 320)]
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(0, 0), Vector2i(200, 320)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(160, 650), Vector2i(476, 164)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1hs5b"]
@@ -56,7 +92,7 @@ _data = {
 
 [node name="Window" type="Window"]
 title = "Number pad"
-initial_position = 2
+position = Vector2i(476, 164)
 size = Vector2i(200, 320)
 unresizable = true
 popup_window = true
