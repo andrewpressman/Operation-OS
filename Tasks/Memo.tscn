@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3ocxjuqehi5p"]
+[gd_scene load_steps=7 format=3 uid="uid://b3ocxjuqehi5p"]
 
 [ext_resource type="Script" uid="uid://c7qhlnl0gidp7" path="res://Tasks/MemoReview.gd" id="1_0nkbs"]
+[ext_resource type="Theme" uid="uid://jjnq4k3kut6u" path="res://Tasks/TaskTheme.tres" id="1_rhiyx"]
 
 [sub_resource type="Animation" id="Animation_7wkuo"]
 length = 0.001
@@ -94,7 +95,13 @@ _data = {
 title = "Memo Review"
 position = Vector2i(352, 68)
 size = Vector2i(448, 512)
+theme = ExtResource("1_rhiyx")
 script = ExtResource("1_0nkbs")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 448.0
+offset_bottom = 512.0
+color = Color(0.400698, 0.400698, 0.400698, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -1,7 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://b5wvidfv3nema"]
+[gd_scene load_steps=18 format=3 uid="uid://b5wvidfv3nema"]
 
+[ext_resource type="Theme" uid="uid://jjnq4k3kut6u" path="res://Tasks/TaskTheme.tres" id="1_vx7ot"]
 [ext_resource type="Script" uid="uid://2xxxsq35ea4d" path="res://Tasks/Buttons.gd" id="1_y6534"]
 [ext_resource type="StyleBox" uid="uid://d03i1mx53io2p" path="res://Assets/StyleBoxes/Buttons.tres" id="2_gfsxd"]
+[ext_resource type="Theme" uid="uid://bu4om3wwt61kc" path="res://Tasks/ControlPanelTheme.tres" id="3_exqui"]
 
 [sub_resource type="Animation" id="Animation_exqui"]
 length = 0.001
@@ -200,8 +202,14 @@ title = "Control Panel"
 position = Vector2i(192, 100)
 size = Vector2i(768, 448)
 unresizable = true
+theme = ExtResource("1_vx7ot")
 script = ExtResource("1_y6534")
 metadata/_edit_lock_ = true
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 768.0
+offset_bottom = 453.0
+color = Color(0.513233, 0.513233, 0.513233, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -213,6 +221,7 @@ offset_left = 576.0
 offset_top = 8.0
 offset_right = 736.0
 offset_bottom = 56.0
+theme = ExtResource("3_exqui")
 text = "Confirm"
 
 [node name="Buttons" type="Panel" parent="."]
@@ -220,6 +229,7 @@ offset_left = 256.0
 offset_top = 64.0
 offset_right = 512.0
 offset_bottom = 288.0
+theme = ExtResource("3_exqui")
 
 [node name="Yellow" type="Button" parent="Buttons"]
 layout_mode = 0
@@ -266,6 +276,7 @@ offset_top = 8.0
 offset_right = 128.0
 offset_bottom = 56.0
 grow_horizontal = 2
+theme = ExtResource("3_exqui")
 
 [node name="Label" type="Label" parent="Display"]
 layout_mode = 0
@@ -273,6 +284,7 @@ offset_left = 8.0
 offset_top = 10.0
 offset_right = 249.0
 offset_bottom = 42.0
+theme = ExtResource("3_exqui")
 text = "No task Assigned"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -282,6 +294,7 @@ offset_left = 32.0
 offset_top = 64.0
 offset_right = 224.0
 offset_bottom = 432.0
+theme = ExtResource("3_exqui")
 
 [node name="Slider1" type="Panel" parent="Levers"]
 layout_mode = 0
@@ -289,12 +302,14 @@ offset_left = 16.0
 offset_top = 16.0
 offset_right = 88.0
 offset_bottom = 336.0
+theme = ExtResource("3_exqui")
 theme_override_styles/panel = SubResource("StyleBoxFlat_7isnw")
 
 [node name="VSlider" type="VSlider" parent="Levers/Slider1"]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 320.0
+theme = ExtResource("3_exqui")
 min_value = 10.0
 step = 10.0
 value = 10.0
@@ -306,6 +321,7 @@ layout_mode = 0
 offset_left = 32.0
 offset_right = 64.0
 offset_bottom = 320.0
+theme = ExtResource("3_exqui")
 theme_override_font_sizes/font_size = 10
 text = "10
 
@@ -334,12 +350,14 @@ offset_left = 104.0
 offset_top = 16.0
 offset_right = 176.0
 offset_bottom = 336.0
+theme = ExtResource("3_exqui")
 theme_override_styles/panel = SubResource("StyleBoxFlat_7isnw")
 
 [node name="VSlider" type="VSlider" parent="Levers/Slider2"]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 320.0
+theme = ExtResource("3_exqui")
 min_value = 10.0
 step = 10.0
 value = 10.0
@@ -351,6 +369,7 @@ layout_mode = 0
 offset_left = 32.0
 offset_right = 64.0
 offset_bottom = 320.0
+theme = ExtResource("3_exqui")
 theme_override_font_sizes/font_size = 10
 text = "10
 
@@ -379,6 +398,7 @@ offset_left = 16.0
 offset_top = 336.0
 offset_right = 88.0
 offset_bottom = 367.0
+theme = ExtResource("3_exqui")
 text = "L1"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -389,6 +409,7 @@ offset_left = 104.0
 offset_top = 336.0
 offset_right = 176.0
 offset_bottom = 367.0
+theme = ExtResource("3_exqui")
 text = "R1"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -398,6 +419,7 @@ offset_left = 240.0
 offset_top = 296.0
 offset_right = 528.0
 offset_bottom = 432.0
+theme = ExtResource("3_exqui")
 
 [node name="Panel2" type="Panel" parent="Dials"]
 layout_mode = 0
@@ -405,6 +427,7 @@ offset_left = 152.0
 offset_top = 8.0
 offset_right = 272.0
 offset_bottom = 128.0
+theme = ExtResource("3_exqui")
 theme_override_styles/panel = SubResource("StyleBoxFlat_s0c3u")
 
 [node name="Panel3" type="Panel" parent="Dials"]
@@ -413,60 +436,63 @@ offset_left = 16.0
 offset_top = 8.0
 offset_right = 136.0
 offset_bottom = 128.0
+theme = ExtResource("3_exqui")
 theme_override_styles/panel = SubResource("StyleBoxFlat_s0c3u")
 
 [node name="Switches" type="Panel" parent="."]
-offset_left = 544.0
+offset_left = 576.0
 offset_top = 64.0
 offset_right = 744.0
 offset_bottom = 432.0
+theme = ExtResource("3_exqui")
 
-[node name="Switch1" type="CheckButton" parent="Switches"]
+[node name="Board" type="GridContainer" parent="Switches"]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 16.0
-offset_right = 156.0
-offset_bottom = 47.0
+offset_top = 8.0
+offset_right = 168.0
+offset_bottom = 356.0
+theme_override_constants/v_separation = 30
+
+[node name="Switch1" type="CheckButton" parent="Switches/Board"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme = ExtResource("3_exqui")
 text = "Option A"
 
-[node name="Switch2" type="CheckButton" parent="Switches"]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 80.0
-offset_right = 156.0
-offset_bottom = 111.0
+[node name="Switch2" type="CheckButton" parent="Switches/Board"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme = ExtResource("3_exqui")
 text = "Option B"
 
-[node name="Switch3" type="CheckButton" parent="Switches"]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 144.0
-offset_right = 156.0
-offset_bottom = 175.0
+[node name="Switch3" type="CheckButton" parent="Switches/Board"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme = ExtResource("3_exqui")
 text = "Option C"
 
-[node name="Switch4" type="CheckButton" parent="Switches"]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 208.0
-offset_right = 156.0
-offset_bottom = 239.0
+[node name="Switch4" type="CheckButton" parent="Switches/Board"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme = ExtResource("3_exqui")
 text = "Option D"
 
-[node name="Switch5" type="CheckButton" parent="Switches"]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 272.0
-offset_right = 156.0
-offset_bottom = 303.0
+[node name="Switch5" type="CheckButton" parent="Switches/Board"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme = ExtResource("3_exqui")
 text = "Option E"
 
-[node name="Switch6" type="CheckButton" parent="Switches"]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 328.0
-offset_right = 156.0
-offset_bottom = 359.0
+[node name="Switch6" type="CheckButton" parent="Switches/Board"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme = ExtResource("3_exqui")
 text = "Option F"
 
 [node name="Remaining" type="Panel" parent="."]
@@ -474,6 +500,7 @@ offset_left = 32.0
 offset_top = 8.0
 offset_right = 224.0
 offset_bottom = 58.0
+theme = ExtResource("3_exqui")
 
 [node name="Text" type="RichTextLabel" parent="Remaining"]
 layout_mode = 0
@@ -481,6 +508,7 @@ offset_left = 8.0
 offset_top = 10.0
 offset_right = 184.0
 offset_bottom = 42.0
+theme = ExtResource("3_exqui")
 bbcode_enabled = true
 text = "REMAINING: X"
 horizontal_alignment = 1

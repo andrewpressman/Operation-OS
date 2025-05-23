@@ -136,10 +136,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Finances" type="Panel" parent="."]
-offset_left = 784.0
-offset_top = 64.0
-offset_right = 1120.0
-offset_bottom = 456.0
+offset_left = 808.0
+offset_top = 48.0
+offset_right = 1144.0
+offset_bottom = 440.0
 script = ExtResource("3_qon11")
 HealthChange = 6
 HungerChange = 6
@@ -277,53 +277,82 @@ offset_bottom = 368.0
 text = "Pay bills"
 
 [node name="Files" type="Panel" parent="."]
-visible = false
-offset_left = 192.0
-offset_top = 64.0
-offset_right = 768.0
+offset_left = 431.0
+offset_top = 48.0
+offset_right = 799.0
 offset_bottom = 576.0
 script = ExtResource("4_x257b")
 
 [node name="Audio" type="Button" parent="Files"]
 layout_mode = 0
-offset_left = 24.0
-offset_top = 24.0
-offset_right = 128.0
-offset_bottom = 60.0
+offset_left = 17.0
+offset_top = 26.0
+offset_right = 121.0
+offset_bottom = 57.0
 text = "Audio Files"
 
 [node name="AudioFiles" type="Panel" parent="Files"]
 visible = false
 layout_mode = 0
-offset_left = 24.0
+offset_left = 15.315
 offset_top = 64.0
-offset_right = 560.0
+offset_right = 351.315
 offset_bottom = 496.0
 
 [node name="Text" type="Button" parent="Files"]
 layout_mode = 0
-offset_left = 136.0
-offset_top = 24.0
-offset_right = 240.0
-offset_bottom = 60.0
-text = "Text Files"
+offset_left = 129.0
+offset_top = 26.0
+offset_right = 226.0
+offset_bottom = 57.0
+text = "Documents"
 
 [node name="TextFiles" type="Panel" parent="Files"]
 visible = false
 layout_mode = 0
-offset_left = 24.0
+offset_left = 15.315
 offset_top = 64.0
-offset_right = 560.0
+offset_right = 351.315
+offset_bottom = 496.0
+
+[node name="News" type="Button" parent="Files"]
+layout_mode = 0
+offset_left = 233.0
+offset_top = 26.0
+offset_right = 313.0
+offset_bottom = 57.0
+text = "News"
+
+[node name="NewsFiles" type="Panel" parent="Files"]
+layout_mode = 0
+offset_left = 15.315
+offset_top = 64.0
+offset_right = 351.315
 offset_bottom = 496.0
 
 [node name="Close" type="Button" parent="Files"]
 visible = false
 layout_mode = 0
-offset_left = 512.0
+offset_left = 297.0
 offset_top = 72.0
-offset_right = 552.0
+offset_right = 337.0
 offset_bottom = 104.0
 text = "X"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = 40.0
+offset_top = 108.0
+offset_right = 416.0
+offset_bottom = 576.0
+color = Color(0.621524, 0.621524, 0.621524, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 0
+offset_right = 376.0
+offset_bottom = 468.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
 
 [connection signal="pressed" from="DEBUG BUTTON" to="." method="UpdateStats"]
 [connection signal="pressed" from="Taskbar/UnlockedFiles" to="." method="FilesButton"]
@@ -339,4 +368,5 @@ text = "X"
 [connection signal="pressed" from="Finances/Pay" to="Finances" method="PayBills"]
 [connection signal="pressed" from="Files/Audio" to="Files" method="ShowAudioFiles"]
 [connection signal="pressed" from="Files/Text" to="Files" method="ShowTextFiles"]
+[connection signal="pressed" from="Files/News" to="Files" method="ShowTextFiles"]
 [connection signal="pressed" from="Files/Close" to="Files" method="Close"]

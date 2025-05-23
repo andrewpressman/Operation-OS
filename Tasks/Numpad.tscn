@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2shk4b3e116w"]
+[gd_scene load_steps=7 format=3 uid="uid://d2shk4b3e116w"]
 
+[ext_resource type="Theme" uid="uid://jjnq4k3kut6u" path="res://Tasks/TaskTheme.tres" id="1_1hs5b"]
 [ext_resource type="Script" uid="uid://dwwul1673fc4e" path="res://Tasks/Numpad.gd" id="1_kf71x"]
 
 [sub_resource type="Animation" id="Animation_q74ti"]
@@ -91,12 +92,14 @@ _data = {
 }
 
 [node name="Window" type="Window"]
-title = "Number pad"
+title = "Numpad"
 position = Vector2i(476, 164)
 size = Vector2i(200, 320)
 unresizable = true
 popup_window = true
 content_scale_aspect = 1
+theme = ExtResource("1_1hs5b")
+theme_override_font_sizes/title_font_size = 15
 script = ExtResource("1_kf71x")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

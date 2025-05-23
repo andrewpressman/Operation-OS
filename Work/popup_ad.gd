@@ -6,6 +6,7 @@ var close : bool
 var NewAd : int
 
 func _ready() -> void:
+	ClearAds()
 	$AnimationPlayer.play("WindowAppear")
 	await get_tree().create_timer(.3).timeout
 	$Timer.start()

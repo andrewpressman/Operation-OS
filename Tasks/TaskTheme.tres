@@ -1,0 +1,19 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://jjnq4k3kut6u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ca2oy"]
+content_margin_left = 84.0
+content_margin_top = 99.0
+content_margin_right = 34.0
+content_margin_bottom = 134.0
+bg_color = Color(0.923152, 0.445498, 0.0284037, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 10.0
+expand_margin_top = 35.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[resource]
+Window/styles/embedded_border = SubResource("StyleBoxFlat_ca2oy")

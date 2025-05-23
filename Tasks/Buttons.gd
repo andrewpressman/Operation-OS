@@ -100,30 +100,30 @@ func SetDisplay():
 
 func SetSwitchBoard(input : bool):
 	if input:
-		if GlobalObj.SwitchBoard[0] == 1: $Switches/Switch1.button_pressed = true
-		else: $Switches/Switch1.button_pressed = false
-		if GlobalObj.SwitchBoard[1] == 1: $Switches/Switch2.button_pressed = true 
-		else: $Switches/Switch2.button_pressed = false 
-		if GlobalObj.SwitchBoard[2] == 1: $Switches/Switch3.button_pressed = true 
-		else: $Switches/Switch3.button_pressed = false 
-		if GlobalObj.SwitchBoard[3] == 1: $Switches/Switch4.button_pressed = true 
-		else: $Switches/Switch4.button_pressed = false 
-		if GlobalObj.SwitchBoard[4] == 1: $Switches/Switch5.button_pressed = true 
-		else: $Switches/Switch5.button_pressed = false 
-		if GlobalObj.SwitchBoard[5] == 1: $Switches/Switch6.button_pressed = true 
-		else: $Switches/Switch6.button_pressed = false
+		if GlobalObj.SwitchBoard[0] == 1: $Switches/Board/Switch1.button_pressed = true
+		else: $Switches/Board/Switch1.button_pressed = false
+		if GlobalObj.SwitchBoard[1] == 1: $Switches/Board/Switch2.button_pressed = true 
+		else: $Switches/Board/Switch2.button_pressed = false 
+		if GlobalObj.SwitchBoard[2] == 1: $Switches/Board/Switch3.button_pressed = true 
+		else: $Switches/Board/Switch3.button_pressed = false 
+		if GlobalObj.SwitchBoard[3] == 1: $Switches/Board/Switch4.button_pressed = true 
+		else: $Switches/Board/Switch4.button_pressed = false 
+		if GlobalObj.SwitchBoard[4] == 1: $Switches/Board/Switch5.button_pressed = true 
+		else: $Switches/Board/Switch5.button_pressed = false 
+		if GlobalObj.SwitchBoard[5] == 1: $Switches/Board/Switch6.button_pressed = true 
+		else: $Switches/Board/Switch6.button_pressed = false
 	else:
-		if $Switches/Switch1.button_pressed: GlobalObj.SwitchBoard[0] = 1 
+		if $Switches/Board/Switch1.button_pressed: GlobalObj.SwitchBoard[0] = 1 
 		else: GlobalObj.SwitchBoard[0] = 0 
-		if $Switches/Switch2.button_pressed: GlobalObj.SwitchBoard[1] = 1 
+		if $Switches/Board/Switch2.button_pressed: GlobalObj.SwitchBoard[1] = 1 
 		else: GlobalObj.SwitchBoard[1] = 0 
-		if $Switches/Switch3.button_pressed: GlobalObj.SwitchBoard[2] = 1 
+		if $Switches/Board/Switch3.button_pressed: GlobalObj.SwitchBoard[2] = 1 
 		else: GlobalObj.SwitchBoard[2] = 0 
-		if $Switches/Switch4.button_pressed: GlobalObj.SwitchBoard[3] = 1 
+		if $Switches/Board/Switch4.button_pressed: GlobalObj.SwitchBoard[3] = 1 
 		else: GlobalObj.SwitchBoard[3] = 0 
-		if $Switches/Switch5.button_pressed: GlobalObj.SwitchBoard[4] = 1 
+		if $Switches/Board/Switch5.button_pressed: GlobalObj.SwitchBoard[4] = 1 
 		else: GlobalObj.SwitchBoard[4] = 0 
-		if $Switches/Switch6.button_pressed: GlobalObj.SwitchBoard[5] = 1 
+		if $Switches/Board/Switch6.button_pressed: GlobalObj.SwitchBoard[5] = 1 
 		else: GlobalObj.SwitchBoard[5] = 0
 
 func SetLevers(input : bool):
