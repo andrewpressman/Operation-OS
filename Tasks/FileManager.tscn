@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dev5dbnhd2diw"]
 
-[ext_resource type="Theme" uid="uid://jjnq4k3kut6u" path="res://Tasks/TaskTheme.tres" id="1_bjc3w"]
+[ext_resource type="Theme" uid="uid://jjnq4k3kut6u" path="res://Assets/StyleBoxes/TaskTheme.tres" id="1_bjc3w"]
 [ext_resource type="Script" uid="uid://ctwub6ej1nynm" path="res://Tasks/FileManager.gd" id="1_oo73u"]
 
 [sub_resource type="Animation" id="Animation_q8ua8"]

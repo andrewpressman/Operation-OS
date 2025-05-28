@@ -20,6 +20,7 @@ func Continue():
 
 func PurgeSave():
 	SaveLoad.ClearDir()
+	SaveLoad.ClearOptDir()
 
 func Quit():
 	get_tree().quit()

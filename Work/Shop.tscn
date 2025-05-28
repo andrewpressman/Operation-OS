@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dhgnmu7lj6eh4"]
 
 [ext_resource type="Script" uid="uid://c6mcc4won4fru" path="res://Work/Shop.gd" id="1_0iwdr"]
-[ext_resource type="Theme" uid="uid://jjnq4k3kut6u" path="res://Tasks/TaskTheme.tres" id="1_5omfx"]
+[ext_resource type="Theme" uid="uid://jjnq4k3kut6u" path="res://Assets/StyleBoxes/TaskTheme.tres" id="1_5omfx"]
 [ext_resource type="ButtonGroup" uid="uid://4lojvif78jd" path="res://Work/ShopButtons.tres" id="2_ctu5i"]
 
 [sub_resource type="Animation" id="Animation_5omfx"]

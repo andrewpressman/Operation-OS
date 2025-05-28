@@ -3,6 +3,8 @@ extends Node2D
 var Options = preload("res://Menu/Options.tscn")
 var OptionsIst: Node = null
 
+var CanWork : bool
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SaveLoad.CurrentScreen = "HOME"
@@ -10,6 +12,9 @@ func _ready() -> void:
 	if SaveLoad.PaidBills[0] == 0:
 		$Taskbar/GoWork.disabled = true
 		$Taskbar/GoWork.text = "Unpaid Bills"
+		CanWork = false
+	else:
+		CanWork = true
 	GlobalVar.optionsVisible = false
 	$Finances.visible = false
 	$Files.visible = false
@@ -18,6 +23,7 @@ func _ready() -> void:
 	
 func EnableWork():
 	$Taskbar/GoWork.text = "Go to work"
+	CanWork = true
 	$Taskbar/GoWork.disabled = false
 	
 func GoWork():
@@ -47,7 +53,8 @@ func ToggleOptions():
 	GlobalVar.optionsVisible = false
 	$Taskbar/Finances.disabled = false
 	$Taskbar/UnlockedFiles.disabled = false
-	$Taskbar/GoWork.disabled = false
+	if CanWork:
+		$Taskbar/GoWork.disabled = false
 	SaveLoad.SaveOptions()	
 
 func UpdateStats():

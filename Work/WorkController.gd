@@ -203,7 +203,7 @@ func GetNewTask(bribe : bool):
 	while Obj == LastTask:
 		Obj = randi_range(1,4)
 	#Obj = 2 #DEBUG CODE
-	match Obj:
+	match Obj: 
 		1:
 			GlobalObj.GetRandomNumber()
 		2:
@@ -256,6 +256,7 @@ func DisplayNumpad():
 		var t1 = Numpad.instantiate()
 		NumpadIst = t1
 		add_child(t1)
+		AutoClose(1)
 
 #TODO: convert to control panel
 func DisplayButtons():
@@ -266,6 +267,7 @@ func DisplayButtons():
 		var t2 = Buttons.instantiate()
 		ButtonsIst = t2
 		add_child(t2)
+		AutoClose(2)
 		
 func DisplayRequest():
 	if RequestIst && is_instance_valid(RequestIst):
@@ -275,6 +277,7 @@ func DisplayRequest():
 		var t3 = Request.instantiate()
 		RequestIst = t3
 		add_child(t3)
+		AutoClose(3)
 		
 func DisplayFileManager():
 	if FileManagerIst && is_instance_valid(FileManagerIst):
@@ -284,6 +287,7 @@ func DisplayFileManager():
 		var t4 = FileManager.instantiate()
 		FileManagerIst = t4
 		add_child(t4)
+		AutoClose(4)
 
 func DisplayPopup():
 	if PopupIst && is_instance_valid(PopupIst):
@@ -302,6 +306,32 @@ func DisplayShop():
 		var t7 = Shop.instantiate()
 		ShopIst = t7
 		add_child(t7)
+		AutoClose(5)
+
+func AutoClose(window : int):
+	if SaveLoad.ExclusiveWindow:
+		if window != 1:
+			if NumpadIst && is_instance_valid(NumpadIst):
+				NumpadIst.Kill()
+				NumpadIst = null
+		if window != 2:
+			if ButtonsIst && is_instance_valid(ButtonsIst):
+				ButtonsIst.Kill()
+				ButtonsIst = null
+		if window != 3:
+			if RequestIst && is_instance_valid(RequestIst):
+				RequestIst.Kill()
+				RequestIst = null
+		if window != 4:
+			if FileManagerIst && is_instance_valid(FileManagerIst):
+				FileManagerIst.Kill()
+				FileManagerIst = null
+		if window != 5:
+			if ShopIst && is_instance_valid(ShopIst):
+				ShopIst.kill()
+				ShopIst = null
+	else:
+		pass
 
 func DisplayMessages():
 	pass

@@ -50,7 +50,6 @@ offset_right = 902.0
 offset_bottom = 446.0
 
 [node name="GameOptions" type="GridContainer" parent="Options"]
-visible = false
 layout_mode = 0
 offset_left = 56.0
 offset_top = 48.0
@@ -69,6 +68,18 @@ offset_bottom = 32.0
 text = "Auto Close task window on completion"
 vertical_alignment = 1
 
+[node name="ExclusiveWindow" type="CheckButton" parent="Options/GameOptions"]
+layout_mode = 2
+text = "OFF"
+
+[node name="Label" type="Label" parent="Options/GameOptions/ExclusiveWindow"]
+layout_mode = 0
+offset_left = 88.0
+offset_right = 388.0
+offset_bottom = 32.0
+text = "Close all other windows when opening  a new one"
+vertical_alignment = 1
+
 [node name="SoundOptions" type="GridContainer" parent="Options"]
 visible = false
 layout_mode = 0
@@ -78,6 +89,7 @@ offset_right = 568.0
 offset_bottom = 304.0
 
 [node name="VideoOptions" type="GridContainer" parent="Options"]
+visible = false
 layout_mode = 0
 offset_left = 56.0
 offset_top = 48.0
@@ -126,6 +138,7 @@ text = "Video"
 [connection signal="pressed" from="Button" to="." method="Menu"]
 [connection signal="pressed" from="Resume" to="." method="Kill"]
 [connection signal="toggled" from="Options/GameOptions/AutoClose" to="." method="ToggleAutoClose"]
+[connection signal="toggled" from="Options/GameOptions/ExclusiveWindow" to="." method="ToggleWindowClose"]
 [connection signal="item_selected" from="Options/VideoOptions/DisplayMode" to="." method="OnDisplayModeSelected"]
 [connection signal="pressed" from="Options/Tabs/Game" to="." method="GameOP"]
 [connection signal="pressed" from="Options/Tabs/Sound" to="." method="SoundOP"]

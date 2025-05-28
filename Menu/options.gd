@@ -5,6 +5,10 @@ func _ready():
 	if SaveLoad.AutoClose:
 		$Options/GameOptions/AutoClose.button_pressed = true
 		$Options/GameOptions/AutoClose.text = "ON"
+	if SaveLoad.ExclusiveWindow:
+		$Options/GameOptions/ExclusiveWindow.button_pressed = true
+		$Options/GameOptions/ExclusiveWindow.text = "ON"
+	
 		
 	$Options/VideoOptions/DisplayMode.select(SaveLoad.WindowMode)
 
@@ -30,6 +34,14 @@ func ToggleAutoClose(toggle):
 	else:
 		SaveLoad.AutoClose = false
 		$Options/GameOptions/AutoClose.text = "OFF"
+
+func ToggleWindowClose(toggle):
+	if toggle:
+		$Options/GameOptions/ExclusiveWindow.text = "ON"
+		SaveLoad.ExclusiveWindow = true
+	else:
+		SaveLoad.ExclusiveWindow = false
+		$Options/GameOptions/ExclusiveWindow.text = "OFF"
 
 func Menu():
 	if SaveLoad.CurrentScreen == "WORK":

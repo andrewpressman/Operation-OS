@@ -18,7 +18,8 @@ func _ready():
 		line = line.replace("\\n","\n")
 		Memos.append(line)
 	file.close()
-	
+	$Panel/Approve.disabled = true
+	$Panel/Deny.disabled = true
 	$AnimationPlayer.play("WindowShow")
 	ClearText()
 	LockButtons()

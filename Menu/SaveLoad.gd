@@ -6,6 +6,7 @@ var PaidBills
 #Options menu settings
 var AutoClose : bool
 var WindowMode : int
+var ExclusiveWindow : bool
 
 var CurrentScreen
 
@@ -101,6 +102,7 @@ func SaveOptions():
 	var Settigns = FileAccess.open("user://Options.save", FileAccess.WRITE)
 	var options = {
 		"AutoClose" : AutoClose,
+		"ExclusiveWindow" : ExclusiveWindow,
 		"WindowMode" : WindowMode
 	}
 	var json_str = JSON.stringify(options)
@@ -117,6 +119,8 @@ func LoadOptions():
 	var options = JSON.parse_string(json_str)
 	if "AutoClose" in options:
 		AutoClose = options["AutoClose"]
+	if "ExclusiveWindow" in options:
+		ExclusiveWindow = options["ExclusiveWindow"]
 	if "WindowMode" in options:
 		WindowMode = options["WindowMode"]
 	
