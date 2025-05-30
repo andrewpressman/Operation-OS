@@ -123,6 +123,9 @@ func UpdateDue():
 		$Pay.disabled = false
 	$AmountDue.text = "Amount Due: $" + str(AmountDue)
 	
+	if AmountDue > GlobalVar.Money:
+		$AmountDue.text = "Amount Due: $" + str(AmountDue) + ": DEBT"
+	
 func SetPrices():
 	if GlobalVar.CurrentLevel > 1 && GlobalVar.NewLevel:
 		GlobalVar.RentPrice = GlobalVar.RentPrice + (GlobalVar.RentIncrease * GlobalVar.CurrentLevel)

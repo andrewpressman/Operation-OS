@@ -3,6 +3,9 @@ extends Node2D
 var Options = preload("res://Menu/Options.tscn")
 var OptionsIst: Node = null
 
+var Emails = preload("res://Home/Emails.tscn")
+var EmailsIst: Node = null
+
 var CanWork : bool
 
 # Called when the node enters the scene tree for the first time.
@@ -16,8 +19,9 @@ func _ready() -> void:
 	else:
 		CanWork = true
 	GlobalVar.optionsVisible = false
+	
 	$Finances.visible = false
-	$Files.visible = false
+	
 	UpdateStats()
 	SaveLoad.Save()
 	
@@ -33,9 +37,15 @@ func GoWork():
 
 func FinancesButton():
 	$Finances.visible = !$Finances.visible
-	
-func FilesButton():
-	$Files.visible = !$Files.visible
+
+func DisplayEmails():
+	if EmailsIst && is_instance_valid(EmailsIst):
+		EmailsIst.kill()
+		EmailsIst = null
+	else:
+		var t1 = Emails.instantiate()
+		EmailsIst = t1
+		add_child(t1)
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):

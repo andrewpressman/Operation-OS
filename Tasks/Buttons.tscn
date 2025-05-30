@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://jjnq4k3kut6u" path="res://Assets/StyleBoxes/TaskTheme.tres" id="1_vx7ot"]
 [ext_resource type="Script" uid="uid://2xxxsq35ea4d" path="res://Tasks/Buttons.gd" id="1_y6534"]
-[ext_resource type="StyleBox" uid="uid://d03i1mx53io2p" path="res://Assets/StyleBoxes/Buttons.tres" id="2_gfsxd"]
+[ext_resource type="StyleBox" uid="uid://d03i1mx53io2p" path="res://Assets/StyleBoxes/CtrlPanelButtons.tres" id="2_gfsxd"]
 [ext_resource type="Theme" uid="uid://bu4om3wwt61kc" path="res://Tasks/ControlPanelTheme.tres" id="3_exqui"]
 
 [sub_resource type="Animation" id="Animation_exqui"]

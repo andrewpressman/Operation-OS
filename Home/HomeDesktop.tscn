@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7ona7h1qsp11"]
+[gd_scene load_steps=7 format=3 uid="uid://b7ona7h1qsp11"]
 
 [ext_resource type="Script" uid="uid://xfshrrfypgpw" path="res://Home/HomeController.gd" id="1_h8ttb"]
 [ext_resource type="Texture2D" uid="uid://c7ecxux7xtje8" path="res://Assets/Images/TempTorrN.jpg" id="2_83bdw"]
 [ext_resource type="Script" uid="uid://bu5bal6bbm8dn" path="res://Work/clock.gd" id="2_g4fyx"]
 [ext_resource type="PackedScene" uid="uid://bg77iwchwhc56" path="res://Menu/Options.tscn" id="2_ouabc"]
 [ext_resource type="Script" uid="uid://wx6udpnlcvrg" path="res://Home/finances.gd" id="3_qon11"]
-[ext_resource type="Script" uid="uid://0yisn75o4osx" path="res://Home/UnlockedFiles.gd" id="4_x257b"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ouabc"]
 
@@ -62,14 +61,14 @@ offset_top = 608.0
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="UnlockedFiles" type="Button" parent="Taskbar"]
+[node name="Emails" type="Button" parent="Taskbar"]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 8.0
 offset_right = 144.0
 offset_bottom = 33.0
 theme_override_font_sizes/font_size = 12
-text = "Files"
+text = "Emails"
 
 [node name="Finances" type="Button" parent="Taskbar"]
 layout_mode = 0
@@ -276,69 +275,6 @@ offset_right = 313.0
 offset_bottom = 368.0
 text = "Pay bills"
 
-[node name="Files" type="Panel" parent="."]
-offset_left = 431.0
-offset_top = 48.0
-offset_right = 799.0
-offset_bottom = 576.0
-script = ExtResource("4_x257b")
-
-[node name="Audio" type="Button" parent="Files"]
-layout_mode = 0
-offset_left = 17.0
-offset_top = 26.0
-offset_right = 121.0
-offset_bottom = 57.0
-text = "Audio Files"
-
-[node name="AudioFiles" type="Panel" parent="Files"]
-visible = false
-layout_mode = 0
-offset_left = 15.315
-offset_top = 64.0
-offset_right = 351.315
-offset_bottom = 496.0
-
-[node name="Text" type="Button" parent="Files"]
-layout_mode = 0
-offset_left = 129.0
-offset_top = 26.0
-offset_right = 226.0
-offset_bottom = 57.0
-text = "Documents"
-
-[node name="TextFiles" type="Panel" parent="Files"]
-visible = false
-layout_mode = 0
-offset_left = 15.315
-offset_top = 64.0
-offset_right = 351.315
-offset_bottom = 496.0
-
-[node name="News" type="Button" parent="Files"]
-layout_mode = 0
-offset_left = 233.0
-offset_top = 26.0
-offset_right = 313.0
-offset_bottom = 57.0
-text = "News"
-
-[node name="NewsFiles" type="Panel" parent="Files"]
-layout_mode = 0
-offset_left = 15.315
-offset_top = 64.0
-offset_right = 351.315
-offset_bottom = 496.0
-
-[node name="Close" type="Button" parent="Files"]
-visible = false
-layout_mode = 0
-offset_left = 297.0
-offset_top = 72.0
-offset_right = 337.0
-offset_bottom = 104.0
-text = "X"
-
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
 offset_left = 40.0
@@ -355,7 +291,7 @@ theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
 
 [connection signal="pressed" from="DEBUG BUTTON" to="." method="UpdateStats"]
-[connection signal="pressed" from="Taskbar/UnlockedFiles" to="." method="FilesButton"]
+[connection signal="pressed" from="Taskbar/Emails" to="." method="DisplayEmails"]
 [connection signal="pressed" from="Taskbar/Finances" to="." method="FinancesButton"]
 [connection signal="pressed" from="Taskbar/GoWork" to="." method="GoWork"]
 [connection signal="pressed" from="Finances/Bills/Rent" to="Finances" method="ToggleRent"]
@@ -366,7 +302,3 @@ bbcode_enabled = true
 [connection signal="pressed" from="Finances/Bills/Security" to="Finances" method="ToggleSecurity"]
 [connection signal="pressed" from="Finances/Bills/Debt" to="Finances" method="ToggleDebt"]
 [connection signal="pressed" from="Finances/Pay" to="Finances" method="PayBills"]
-[connection signal="pressed" from="Files/Audio" to="Files" method="ShowAudioFiles"]
-[connection signal="pressed" from="Files/Text" to="Files" method="ShowTextFiles"]
-[connection signal="pressed" from="Files/News" to="Files" method="ShowTextFiles"]
-[connection signal="pressed" from="Files/Close" to="Files" method="Close"]
