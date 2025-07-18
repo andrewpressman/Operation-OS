@@ -112,9 +112,9 @@ libraries = {
 
 [node name="Header" type="RichTextLabel" parent="."]
 offset_left = 6.0
-offset_top = 5.0
+offset_top = 4.0
 offset_right = 374.0
-offset_bottom = 77.0
+offset_bottom = 76.0
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "Select an item to view its properties"

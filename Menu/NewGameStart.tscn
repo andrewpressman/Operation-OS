@@ -17,7 +17,6 @@ color = Color(0.446777, 0.446777, 0.446777, 1)
 metadata/_edit_lock_ = true
 
 [node name="Intro" type="Panel" parent="."]
-visible = false
 offset_right = 1152.0
 offset_bottom = 648.0
 
@@ -57,11 +56,12 @@ This program will handle anything and everything you will need to fullfill your 
 
 Just kidding.
 
-but seriously, stay on task, we are watchiong. 
+but seriously, stay on task, we are watching. 
 
 Accept below to begin your journey."
 
 [node name="Tutorial" type="Panel" parent="."]
+visible = false
 offset_right = 1152.0
 offset_bottom = 648.0
 

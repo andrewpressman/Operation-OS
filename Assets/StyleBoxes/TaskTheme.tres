@@ -5,15 +5,21 @@ content_margin_left = 84.0
 content_margin_top = 99.0
 content_margin_right = 34.0
 content_margin_bottom = 134.0
-bg_color = Color(0.923152, 0.445498, 0.0284037, 1)
+bg_color = Color(0.807843, 0.505882, 0.278431, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+corner_detail = 10
 expand_margin_left = 10.0
 expand_margin_top = 35.0
 expand_margin_right = 10.0
 expand_margin_bottom = 10.0
+shadow_size = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3ifq"]
 content_margin_left = 84.0
