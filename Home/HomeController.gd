@@ -6,6 +6,9 @@ var OptionsIst: Node = null
 var Emails = preload("res://Home/Emails.tscn")
 var EmailsIst: Node = null
 
+var Shop = (preload("res://Work/Shop.tscn"))
+var ShopIst : Node = null
+
 var CanWork : bool
 
 # Called when the node enters the scene tree for the first time.
@@ -66,6 +69,15 @@ func ToggleOptions():
 	if CanWork:
 		$Taskbar/GoWork.disabled = false
 	SaveLoad.SaveOptions()	
+
+func DisplayShop():
+	if ShopIst && is_instance_valid(ShopIst):
+		ShopIst.kill()
+		ShopIst = null
+	else:
+		var t7 = Shop.instantiate()
+		ShopIst = t7
+		add_child(t7)
 
 func UpdateStats():
 	var HungerStr = "Hunger: "

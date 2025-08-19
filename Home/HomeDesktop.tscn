@@ -80,6 +80,17 @@ rotation = 0.00132338
 theme_override_font_sizes/font_size = 12
 text = "Finances"
 
+[node name="Shop" type="Button" parent="Taskbar"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 8.0
+offset_right = 400.0
+offset_bottom = 33.0
+rotation = 0.00132338
+theme_override_font_sizes/font_size = 12
+text = "Shop
+"
+
 [node name="GoWork" type="Button" parent="Taskbar"]
 layout_mode = 0
 offset_left = 897.0
@@ -293,6 +304,7 @@ bbcode_enabled = true
 [connection signal="pressed" from="DEBUG BUTTON" to="." method="UpdateStats"]
 [connection signal="pressed" from="Taskbar/Emails" to="." method="DisplayEmails"]
 [connection signal="pressed" from="Taskbar/Finances" to="." method="FinancesButton"]
+[connection signal="pressed" from="Taskbar/Shop" to="." method="DisplayShop"]
 [connection signal="pressed" from="Taskbar/GoWork" to="." method="GoWork"]
 [connection signal="pressed" from="Finances/Bills/Rent" to="Finances" method="ToggleRent"]
 [connection signal="pressed" from="Finances/Bills/Food" to="Finances" method="ToggleFood"]

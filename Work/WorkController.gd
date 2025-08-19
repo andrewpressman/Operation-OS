@@ -20,9 +20,6 @@ var OptionsIst: Node = null
 var PopupAd = preload("res://Work/popupAd.tscn")
 var PopupIst : Node = null
 
-var Shop = (preload("res://Work/Shop.tscn"))
-var ShopIst : Node = null
-
 var ShiftComplete : bool
 
 var FirstTask : bool
@@ -298,16 +295,6 @@ func DisplayPopup():
 		PopupIst = t6
 		add_child(t6)
 
-func DisplayShop():
-	if ShopIst && is_instance_valid(ShopIst):
-		ShopIst.kill()
-		ShopIst = null
-	else:
-		var t7 = Shop.instantiate()
-		ShopIst = t7
-		add_child(t7)
-		AutoClose(5)
-
 func AutoClose(window : int):
 	if SaveLoad.ExclusiveWindow:
 		if window != 1:
@@ -326,10 +313,6 @@ func AutoClose(window : int):
 			if FileManagerIst && is_instance_valid(FileManagerIst):
 				FileManagerIst.Kill()
 				FileManagerIst = null
-		if window != 5:
-			if ShopIst && is_instance_valid(ShopIst):
-				ShopIst.kill()
-				ShopIst = null
 	else:
 		pass
 
