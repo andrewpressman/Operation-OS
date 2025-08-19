@@ -73,6 +73,9 @@ var GameOverReason : int
 
 var optionsVisible = false
 
+#Email tracker
+var AvailableEmails : int
+
 func Reset():
 	SaveLoad.PaidBills = [0,0,0,0,0]
 	CurrentLevel = 0
@@ -96,3 +99,5 @@ func Reset():
 	Debt = StartDebt
 	
 	ShiftFails = 0
+	
+	AvailableEmails = 0

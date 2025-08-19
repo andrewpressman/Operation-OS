@@ -83,6 +83,8 @@ func LoadGame():
 		GlobalVar.SecurityPrice = save_data["SecurityPrice"]
 	if "SecurityRate" in save_data:
 		GlobalVar.SecurityIncrease = save_data["SecurityRate"]
+	if "AvailableEmails" in save_data:
+		GlobalVar.AvailableEmails = save_data["AvailableEmails"]
 	if "PaidBills" in save_data:
 		PaidBills = save_data["PaidBills"]
 	if "ButtonLevel" in save_data:

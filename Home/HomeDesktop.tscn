@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7ona7h1qsp11"]
+[gd_scene load_steps=8 format=3 uid="uid://b7ona7h1qsp11"]
 
 [ext_resource type="Script" uid="uid://xfshrrfypgpw" path="res://Home/HomeController.gd" id="1_h8ttb"]
 [ext_resource type="Texture2D" uid="uid://c7ecxux7xtje8" path="res://Assets/Images/TempTorrN.jpg" id="2_83bdw"]
 [ext_resource type="Script" uid="uid://bu5bal6bbm8dn" path="res://Work/clock.gd" id="2_g4fyx"]
 [ext_resource type="PackedScene" uid="uid://bg77iwchwhc56" path="res://Menu/Options.tscn" id="2_ouabc"]
 [ext_resource type="Script" uid="uid://wx6udpnlcvrg" path="res://Home/finances.gd" id="3_qon11"]
+[ext_resource type="Texture2D" uid="uid://dnqccpv63m80a" path="res://Assets/Images/notificationBell.png" id="4_ouabc"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ouabc"]
 
@@ -69,6 +70,22 @@ offset_right = 144.0
 offset_bottom = 33.0
 theme_override_font_sizes/font_size = 12
 text = "Emails"
+
+[node name="Bell" type="Sprite2D" parent="Taskbar/Emails"]
+position = Vector2(8, -2.47955e-05)
+scale = Vector2(0.04875, 0.0482501)
+texture = ExtResource("4_ouabc")
+
+[node name="Number" type="RichTextLabel" parent="Taskbar/Emails/Bell"]
+offset_left = -164.0
+offset_top = -166.0
+offset_right = 164.0
+offset_bottom = 166.0
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 177
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Finances" type="Button" parent="Taskbar"]
 layout_mode = 0
